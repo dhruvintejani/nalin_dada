@@ -34,7 +34,7 @@ const Navbar = () => {
           <Brand />
         </NavLink>
 
-        <nav className="hidden items-center gap-5 lg:flex" aria-label="मुख्य नेविगेशन">
+        <nav className="hidden items-center gap-3 lg:flex xl:gap-5" aria-label="मुख्य नेविगेशन">
           {links.map((link) => (
             <NavLink
               key={link.to}
