@@ -1,75 +1,102 @@
-import { Link, useLocation } from 'react-router-dom';
-import { Phone, Mail, Share2, Globe, Video, MessageCircle } from 'lucide-react';
-import { cn } from '../utils/cn';
+import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
+import { NavLink, useLocation } from "react-router-dom";
+import Brand from "./Brand";
+
+const links = [
+  { label: "मुख्य पृष्ठ", to: "/" },
+  { label: "हमारे बारे में", to: "/about" },
+  { label: "सेवाएँ", to: "/services" },
+  { label: "पुस्तकें", to: "/books" },
+  { label: "आश्रम", to: "/ashram" },
+  { label: "अपॉइंटमेंट एवं संपर्क", to: "/appointment" },
+];
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
   const location = useLocation();
-  
-  const navLinks = [
-    { name: 'मुख्य पृष्ठ', path: '/' },
-    { name: 'हमारे बारे में', path: '/about' },
-    { name: 'सेवाएं', path: '/services' },
-    { name: 'पुस्तकें', path: '/books' },
-    { name: 'आश्रम', path: '/ashram' },
-    { name: 'अपॉइंटमेंट', path: '/appointment' },
-    { name: 'संपर्क', path: '/contact' },
-  ];
+
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
-    <nav className="w-full bg-white shadow-sm sticky top-0 z-50">
-      {/* Top bar */}
-      <div className="bg-[#5c0a0a] text-white py-1 px-4 text-sm hidden md:block">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="flex gap-4">
-            <span className="flex items-center gap-1"><Phone size={14} /> +91 98765 43210</span>
-            <span className="flex items-center gap-1"><Mail size={14} /> info@nalinsir.in</span>
-          </div>
-          <div className="flex gap-4 items-center">
-            <div className="flex gap-2">
-              <Share2 size={14} />
-              <Globe size={14} />
-              <Video size={14} />
-            </div>
-            <div className="border-l border-white/30 pl-4 flex gap-3">
-              <button className="hover:text-gold-400">English</button>
-              <button className="text-gold-400 font-bold underline">हिन्दी</button>
-              <button className="hover:text-gold-400">ગુજરાતી</button>
-            </div>
-          </div>
-        </div>
-      </div>
+    <header className="sticky top-0 z-50 border-b border-[#eadfcd] bg-[#fffdf9]/95 backdrop-blur-md">
+      <div className="site-shell flex h-[76px] items-center justify-between gap-5">
+        <NavLink to="/" aria-label="Nalin Dada मुख्य पृष्ठ" className="shrink-0">
+          <Brand />
+        </NavLink>
 
-      {/* Main Navbar */}
-      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-3">
-          <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&q=80&w=100" alt="Logo" className="w-12 h-12 rounded-full border-2 border-amber-600" />
-          <div>
-            <h1 className="text-[#5c0a0a] text-2xl font-serif font-bold leading-tight">Nalin Sir</h1>
-            <p className="text-[#a67c00] text-xs font-semibold tracking-widest">Dr. Nalin Pandya</p>
-          </div>
-        </Link>
-
-        <div className="hidden lg:flex items-center gap-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={cn(
-                "text-sm font-bold transition-colors hover:text-amber-700",
-                location.pathname === link.path ? "text-[#5c0a0a] border-b-2 border-[#5c0a0a]" : "text-gray-700"
-              )}
+        <nav className="hidden items-center gap-5 lg:flex" aria-label="मुख्य नेविगेशन">
+          {links.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={({ isActive }) =>
+                `nav-link ${isActive ? "nav-link-active" : ""}`
+              }
+              end={link.to === "/"}
             >
-              {link.name}
-            </Link>
+              {link.label}
+            </NavLink>
           ))}
+        </nav>
+
+        <div className="hidden items-center gap-2 border-l border-[#dfd5c5] pl-4 xl:flex" aria-label="भाषा विकल्प">
+          <span className="language-chip">English</span>
+          <span className="language-divider">|</span>
+          <span className="language-chip language-active">हिन्दी</span>
+          <span className="language-divider">|</span>
+          <span className="language-chip">ગુજરાતી</span>
         </div>
 
-        <Link to="/appointment" className="hidden md:flex items-center gap-2 bg-[#008a4e] text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-[#00703e] transition-colors">
-          <MessageCircle size={18} />
-          व्हाट्सएप करें
-        </Link>
+        <button
+          type="button"
+          className="grid h-11 w-11 place-items-center rounded-full border border-[#e5d7c3] text-[#7f171b] transition hover:bg-[#fbf2e5] lg:hidden"
+          aria-label={open ? "मेनू बंद करें" : "मेनू खोलें"}
+          aria-expanded={open}
+          onClick={() => setOpen((value) => !value)}
+        >
+          {open ? <X size={23} /> : <Menu size={23} />}
+        </button>
       </div>
-    </nav>
+
+      {open && (
+        <div className="fixed inset-x-0 top-[77px] z-50 h-[calc(100dvh-77px)] overflow-y-auto bg-[#fffdf9] lg:hidden">
+          <div className="site-shell py-6">
+            <nav className="grid gap-1" aria-label="मोबाइल नेविगेशन">
+              {links.map((link) => (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  className={({ isActive }) =>
+                    `rounded-xl px-4 py-3.5 text-base font-semibold transition ${isActive ? "bg-[#8f181c] text-white" : "text-[#4d3b31] hover:bg-[#fbf2e5]"}`
+                  }
+                  end={link.to === "/"}
+                >
+                  {link.label}
+                </NavLink>
+              ))}
+            </nav>
+
+            <div className="mt-6 flex items-center gap-3 border-t border-[#eadfcd] pt-5 text-sm">
+              <span>English</span>
+              <span className="text-[#b68a54]">|</span>
+              <span className="font-bold text-[#9b151a]">हिन्दी</span>
+              <span className="text-[#b68a54]">|</span>
+              <span>ગુજરાતી</span>
+            </div>
+          </div>
+        </div>
+      )}
+    </header>
   );
 };
 
