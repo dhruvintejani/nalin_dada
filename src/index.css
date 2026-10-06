@@ -1,1 +1,430 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@600;700&display=swap");
 @import "tailwindcss";
+
+:root {
+  color: #3e342d;
+  background: #fffdf9;
+  font-family: "Noto Sans Devanagari", "Noto Sans Gujarati", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #fffdf9;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at 8% 8%, rgba(220, 159, 69, 0.06), transparent 24rem),
+    #fffdf9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+.font-serif {
+  font-family: "Noto Serif Devanagari", "Noto Serif", Georgia, serif;
+}
+
+.site-shell {
+  width: min(1180px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.nav-link {
+  position: relative;
+  padding: 1.7rem 0 1.4rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #473c34;
+  transition: color 180ms ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 1.08rem;
+  width: 0;
+  height: 2px;
+  transform: translateX(-50%);
+  background: #9b151a;
+  transition: width 180ms ease;
+}
+
+.nav-link:hover,
+.nav-link-active {
+  color: #9b151a;
+}
+
+.nav-link-active::after {
+  width: 100%;
+}
+
+.language-chip {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #5a4b41;
+}
+
+.language-active {
+  color: #9b151a;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.language-divider {
+  color: #c7b7a3;
+}
+
+.hero-surface {
+  overflow: hidden;
+  border-bottom: 1px solid #efe2d0;
+  background:
+    linear-gradient(90deg, rgba(255, 252, 246, 0.98) 0%, rgba(255, 248, 237, 0.94) 58%, rgba(246, 226, 196, 0.8) 100%);
+}
+
+.hero-glow {
+  position: absolute;
+  right: -9rem;
+  top: -10rem;
+  height: 36rem;
+  width: 36rem;
+  border-radius: 999px;
+  background: rgba(219, 148, 55, 0.18);
+  filter: blur(55px);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #9b5d20;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 2rem;
+  height: 1px;
+  background: #d39a49;
+}
+
+.button-primary,
+.button-secondary,
+.button-gold {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border-radius: 999px;
+  padding: 0.78rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 800;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.button-primary {
+  color: white;
+  background: #9b151a;
+  box-shadow: 0 10px 24px rgba(155, 21, 26, 0.18);
+}
+
+.button-primary:hover {
+  transform: translateY(-2px);
+  background: #7f1015;
+  box-shadow: 0 14px 28px rgba(155, 21, 26, 0.24);
+}
+
+.button-secondary {
+  color: #76451d;
+  border: 1px solid #d7a456;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.button-secondary:hover {
+  transform: translateY(-2px);
+  background: #fff8ed;
+}
+
+.button-gold {
+  color: #143c35;
+  background: #edb45e;
+}
+
+.button-gold:hover {
+  transform: translateY(-2px);
+  background: #f2c274;
+}
+
+.hero-stat {
+  border: 1px solid #ebdcc8;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.66);
+  padding: 0.8rem 0.95rem;
+}
+
+.hero-stat-label {
+  display: block;
+  color: #9b5d20;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.hero-stat strong {
+  display: block;
+  margin-top: 0.15rem;
+  color: #8f181c;
+  font-family: "Noto Serif Devanagari", Georgia, serif;
+  font-size: 1.2rem;
+}
+
+.hero-stat small {
+  color: #76685c;
+  font-size: 0.72rem;
+}
+
+.quote-card {
+  border: 1px solid #ead4b6;
+  border-radius: 1.2rem;
+  background: rgba(255, 252, 245, 0.97);
+  padding: 1rem 1.1rem;
+  box-shadow: 0 18px 35px rgba(76, 44, 22, 0.14);
+  color: #654834;
+}
+
+.quote-card p {
+  font-family: "Noto Serif Devanagari", Georgia, serif;
+  font-size: 0.94rem;
+  line-height: 1.8;
+}
+
+.quote-card span {
+  display: block;
+  margin-top: 0.45rem;
+  text-align: right;
+  color: #9b151a;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.section-block {
+  padding-block: 4.6rem;
+}
+
+.section-title {
+  max-width: 850px;
+  color: #8f181c;
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #8f181c;
+  font-weight: 800;
+}
+
+.text-link:hover {
+  color: #b36a22;
+}
+
+.service-card {
+  min-height: 224px;
+  border: 1px solid #eadbc7;
+  border-radius: 1rem;
+  background: #fffdf9;
+  padding: 1.35rem 1.15rem;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(91, 55, 28, 0.04);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  border-color: #ddb874;
+  box-shadow: 0 14px 28px rgba(91, 55, 28, 0.09);
+}
+
+.service-icon {
+  display: grid;
+  width: 3.6rem;
+  height: 3.6rem;
+  margin-inline: auto;
+  place-items: center;
+  border: 1px solid #e8c38b;
+  border-radius: 999px;
+  color: #b56522;
+  background: #fff8ec;
+}
+
+.service-card h3 {
+  margin-top: 0.9rem;
+  color: #7f171b;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.45;
+}
+
+.service-card p {
+  margin-top: 0.55rem;
+  color: #6f6258;
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.book-preview-card {
+  min-height: 190px;
+  perspective: 900px;
+}
+
+.book-spine {
+  display: flex;
+  height: 100%;
+  min-height: 190px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-radius: 0.65rem 0.95rem 0.95rem 0.65rem;
+  border-left: 7px solid rgba(66, 34, 22, 0.22);
+  padding: 1.2rem 0.8rem;
+  color: white;
+  text-align: center;
+  box-shadow: 8px 12px 20px rgba(69, 42, 25, 0.12);
+  transition: transform 180ms ease;
+}
+
+.book-preview-card:hover .book-spine {
+  transform: translateY(-4px) rotateY(-3deg);
+}
+
+.book-spine span {
+  font-size: 0.88rem;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.book-tone-1 { background: linear-gradient(150deg, #9a2525, #6e1519); }
+.book-tone-2 { background: linear-gradient(150deg, #13806d, #0d5e54); }
+.book-tone-3 { background: linear-gradient(150deg, #273f73, #182b56); }
+.book-tone-4 { background: linear-gradient(150deg, #c9872a, #9a5d18); }
+
+.location-card {
+  display: flex;
+  gap: 1.2rem;
+  border: 1px solid #e6d6c1;
+  border-radius: 1.35rem;
+  background: rgba(255, 253, 249, 0.9);
+  padding: 1.5rem;
+  box-shadow: 0 10px 24px rgba(86, 53, 31, 0.05);
+}
+
+.location-icon {
+  display: grid;
+  height: 3.5rem;
+  width: 3.5rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 1rem;
+  color: #b56522;
+  background: #fff3df;
+}
+
+.card-kicker {
+  color: #b06a24;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.location-card h2 {
+  margin-top: 0.15rem;
+  color: #8f181c;
+  font-family: "Noto Serif Devanagari", Georgia, serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+}
+
+.location-card p {
+  margin-top: 0.5rem;
+  color: #65594f;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.appointment-band {
+  background:
+    radial-gradient(circle at 20% 0%, rgba(225, 171, 82, 0.12), transparent 24rem),
+    #123f37;
+}
+
+.footer-title {
+  color: #f0c275;
+  font-family: "Noto Serif Devanagari", Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.footer-link {
+  color: #d7dfd6;
+  transition: color 150ms ease;
+}
+
+.footer-link:hover {
+  color: #f0c275;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(197, 137, 53, 0.45);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .site-shell {
+    width: min(100% - 1.25rem, 1180px);
+  }
+
+  .section-block {
+    padding-block: 3.6rem;
+  }
+
+  .location-card {
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
