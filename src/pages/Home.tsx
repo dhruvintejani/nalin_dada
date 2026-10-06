@@ -15,6 +15,7 @@ import {
   WalletCards,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { siteConfig } from "../config/site";
 
 const services = [
   { title: "ज्योतिष", text: "जीवन के विभिन्न पहलुओं पर ज्योतिषीय मार्गदर्शन।", icon: Sparkles },
@@ -64,7 +65,7 @@ const Home = () => (
           <div className="mt-8 grid max-w-[680px] gap-3 sm:grid-cols-3">
             <div className="hero-stat">
               <span className="hero-stat-label">परामर्श शुल्क</span>
-              <strong>₹1,100</strong>
+              <strong>{siteConfig.consultationFee}</strong>
               <small>कार्यालय में भुगतान</small>
             </div>
             <div className="hero-stat">
@@ -203,10 +204,10 @@ const Home = () => (
               <span className="card-kicker">व्यक्तिगत परामर्श</span>
               <h2>परामर्श कार्यालय</h2>
               <p>
-                18 Ushadeep Society, 1st Floor, next to H2 Seven Unisex Salon, near Regional Passport Office, Gulbai Tekra, Ahmedabad.
+                {siteConfig.officeAddress}
               </p>
               <p className="mt-3 font-semibold text-[#7e201f]">
-                सोमवार–शनिवार · 11:00 AM–1:00 PM · 6:00 PM–8:00 PM · केवल अपॉइंटमेंट
+                {siteConfig.appointmentDays} · {siteConfig.morningSlot} · {siteConfig.eveningSlot} · केवल अपॉइंटमेंट
               </p>
             </div>
           </article>
@@ -222,7 +223,7 @@ const Home = () => (
             <span className="text-sm font-bold tracking-[.14em]">व्यक्तिगत परामर्श</span>
           </div>
           <h2 className="mt-3 font-serif text-3xl font-bold text-white md:text-4xl">
-            अपॉइंटमेंट शुल्क ₹1,100
+            अपॉइंटमेंट शुल्क {siteConfig.consultationFee}
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-7 text-[#dfe8e4] md:text-base">
             शुल्क कार्यालय में भुगतान किया जाएगा। वेबसाइट पर ऑनलाइन भुगतान या ऑनलाइन/वीडियो परामर्श उपलब्ध नहीं है।
