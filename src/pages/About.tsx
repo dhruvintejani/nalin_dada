@@ -7,10 +7,12 @@ import {
   Hand,
   Hash,
   Heart,
-  Leaf,
-  UserRound,
+  Leaf
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import MediaSlot from "../components/MediaSlot";
+import { media } from "../config/media";
+import { siteConfig } from "../config/site";
 
 const areas = [
   { title: "आध्यात्मिक मार्गदर्शन", icon: Flower2 },
@@ -38,30 +40,6 @@ const journey = [
     text: "Nalin Dada के अनुसार पिछले लगभग 35 वर्षों से इस साधना भूमि पर उनके जप, तप और अनुष्ठान होते रहे हैं। यह स्थान सार्वजनिक पर्यटन स्थल नहीं, बल्कि निजी साधना भूमि के रूप में रखा गया है।",
   },
 ];
-
-const PhotoPlaceholder = ({
-  label,
-  className = "",
-}: {
-  label: string;
-  className?: string;
-}) => (
-  <div
-    className={"relative grid min-h-[280px] place-items-center overflow-hidden rounded-[1.4rem] border border-[#e4d4bf] bg-[linear-gradient(145deg,#f8ead3,#fffaf2_58%,#f2dfbf)] " + className}
-    role="img"
-    aria-label={label}
-  >
-    <div className="absolute -right-10 -top-12 h-40 w-40 rounded-full border border-[#d6a354]/40" />
-    <div className="absolute -bottom-14 -left-10 h-44 w-44 rounded-full border border-[#d6a354]/30" />
-    <div className="relative z-10 max-w-[220px] text-center">
-      <div className="mx-auto grid h-16 w-16 place-items-center rounded-full border border-[#ddb675] bg-white/75 text-[#a45f23]">
-        <UserRound size={29} strokeWidth={1.5} />
-      </div>
-      <p className="mt-4 text-sm font-bold text-[#7f171b]">वास्तविक फोटो यहाँ जोड़ी जाएगी</p>
-      <p className="mt-2 text-xs leading-5 text-[#766457]">{label}</p>
-    </div>
-  </div>
-);
 
 const About = () => (
   <div className="overflow-hidden bg-[#fffdf9]">
@@ -91,10 +69,10 @@ const About = () => (
 
         <div className="relative mx-auto w-full max-w-[500px]">
           <div className="absolute -inset-4 rounded-[2rem] border border-[#e3b86f]/45" />
-          <img
-            src="/images/nalin-speaking.jpg"
-            alt="Nalin Dada speaking at an astrology and spiritual event"
-            className="relative h-[440px] w-full rounded-[1.7rem] border-[7px] border-white object-cover object-[center_27%] shadow-[0_24px_60px_rgba(78,44,22,.17)]"
+          <MediaSlot
+            asset={media.photos.aboutHero}
+            priority
+            className="relative h-[440px] rounded-[1.7rem] border-[7px] border-white shadow-[0_24px_60px_rgba(78,44,22,.17)]"
           />
         </div>
       </div>
@@ -102,9 +80,10 @@ const About = () => (
 
     <section className="section-block">
       <div className="site-shell grid items-center gap-10 lg:grid-cols-[.92fr_1.08fr]">
-        <PhotoPlaceholder
-          label="यहाँ Nalin Dada की एक साफ व्यक्तिगत या परामर्श देते हुए फोटो जोड़ी जाएगी।"
-          className="min-h-[390px]"
+        <MediaSlot
+          asset={media.photos.aboutPortrait}
+          className="min-h-[390px] rounded-[1.4rem]"
+          label="Nalin Dada की व्यक्तिगत फोटो"
         />
 
         <div>
@@ -183,8 +162,16 @@ const About = () => (
         </div>
 
         <div className="mt-8 grid gap-5 md:grid-cols-2">
-          <PhotoPlaceholder label="यहाँ पुरानी साधना यात्रा, गुरु-सान्निध्य या शुरुआती वर्षों से जुड़ी वास्तविक फोटो जोड़ी जाएगी।" />
-          <PhotoPlaceholder label="यहाँ आश्रम / साधना भूमि या Nalin Dada के आध्यात्मिक जीवन से जुड़ी वास्तविक फोटो जोड़ी जाएगी।" />
+          <MediaSlot
+            asset={media.photos.aboutJourneyOne}
+            className="min-h-[300px] rounded-[1.35rem]"
+            label="आध्यात्मिक यात्रा की वास्तविक फोटो"
+          />
+          <MediaSlot
+            asset={media.photos.aboutJourneyTwo}
+            className="min-h-[300px] rounded-[1.35rem]"
+            label="साधना भूमि से जुड़ी वास्तविक फोटो"
+          />
         </div>
       </div>
     </section>
@@ -237,7 +224,7 @@ const About = () => (
                 Nalin Dada से व्यक्तिगत परामर्श के लिए
               </h2>
               <p className="mt-3 max-w-3xl text-sm leading-7 text-[#675b51]">
-                परामर्श केवल अपॉइंटमेंट से होता है। शुल्क ₹1,100 है और कार्यालय में भुगतान किया जाएगा। ऑनलाइन या वीडियो परामर्श उपलब्ध नहीं है।
+                परामर्श केवल अपॉइंटमेंट से होता है। शुल्क {siteConfig.consultationFee} है और कार्यालय में भुगतान किया जाएगा। ऑनलाइन या वीडियो परामर्श उपलब्ध नहीं है।
               </p>
             </div>
             <Link to="/appointment" className="button-primary">
