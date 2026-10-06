@@ -1,6 +1,7 @@
 import { Clock3, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import Brand from "./Brand";
+import { siteConfig } from "../config/site";
 
 const footerLinks = [
   { label: "मुख्य पृष्ठ", to: "/" },
@@ -39,13 +40,13 @@ const Footer = () => (
             <p className="flex gap-3">
               <MapPin className="mt-1 shrink-0 text-[#e2aa51]" size={18} />
               <span>
-                18 Ushadeep Society, 1st Floor, next to H2 Seven Unisex Salon, near Regional Passport Office, Gulbai Tekra, Ahmedabad.
+                {siteConfig.officeAddress}
               </span>
             </p>
             <p className="flex gap-3">
               <Clock3 className="mt-1 shrink-0 text-[#e2aa51]" size={18} />
               <span>
-                सोमवार–शनिवार: 11:00 AM–1:00 PM और 6:00 PM–8:00 PM · केवल अपॉइंटमेंट · रविवार बंद
+                {siteConfig.appointmentDays}: {siteConfig.morningSlot} और {siteConfig.eveningSlot} · केवल अपॉइंटमेंट · {siteConfig.sundayStatus}
               </span>
             </p>
           </div>
