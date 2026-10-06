@@ -18,6 +18,7 @@ import {
   WalletCards,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { siteConfig } from "../config/site";
 
 const services = [
   {
@@ -227,10 +228,10 @@ const Services = () => (
               <WalletCards size={24} />
             </div>
             <h3 className="mt-4 font-serif text-xl font-bold text-[#7f171b]">
-              परामर्श शुल्क ₹1,100
+              परामर्श शुल्क {siteConfig.consultationFee}
             </h3>
             <p className="mt-3 text-sm leading-7 text-[#675b51]">
-              शुल्क कार्यालय में भुगतान किया जाएगा। वेबसाइट पर ऑनलाइन भुगतान की सुविधा नहीं होगी।
+              शुल्क ({siteConfig.consultationFee}) कार्यालय में भुगतान किया जाएगा। वेबसाइट पर ऑनलाइन भुगतान की सुविधा नहीं होगी।
             </p>
           </article>
 
@@ -300,10 +301,10 @@ const Services = () => (
             </span>
           </div>
           <h2 className="mt-3 font-serif text-3xl font-bold text-white md:text-4xl">
-            सोमवार–शनिवार · 11–1 और 6–8
+            {siteConfig.appointmentDays} · {siteConfig.morningSlot} और {siteConfig.eveningSlot}
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-7 text-[#dfe8e4] md:text-base">
-            रविवार को अपॉइंटमेंट नहीं होगा। अंतिम WhatsApp नंबर मिलने के बाद form-to-WhatsApp flow सक्रिय किया जाएगा।
+            {siteConfig.sundayStatus}। अंतिम WhatsApp नंबर मिलने के बाद form-to-WhatsApp flow सक्रिय किया जाएगा।
           </p>
         </div>
         <Link to="/appointment" className="button-gold">
