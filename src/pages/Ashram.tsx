@@ -105,7 +105,7 @@ const Ashram = () => (
             पीताम्बरा पीठ साधना भूमि
           </h1>
           <p className="mt-5 max-w-[720px] text-base leading-8 text-[#51463e] md:text-lg">
-            Nalin Dada द्वारा साझा की गई जानकारी के अनुसार यह एक निजी साधना भूमि है, जहाँ वर्षों से जप, तप और अनुष्ठान होते रहे हैं। इसका स्थान और पता सार्वजनिक रूप से वेबसाइट पर प्रदर्शित नहीं किया जाएगा।
+            Nalin Dada द्वारा साझा की गई जानकारी के अनुसार यह एक निजी साधना भूमि है, जहाँ वर्षों से जप, तप और अनुष्ठान होते रहे हैं। इसका स्थान और पता सार्वजनिक नहीं किया जाता।
           </p>
 
           <div className="mt-7 flex flex-wrap gap-3">
@@ -125,7 +125,7 @@ const Ashram = () => (
             </div>
             <div className="hero-stat">
               <span className="hero-stat-label">साधना</span>
-              <strong>35+ वर्ष</strong>
+              <strong>लगभग 35 वर्ष</strong>
               <small>Nalin Dada द्वारा साझा जानकारी</small>
             </div>
             <div className="hero-stat">
@@ -146,7 +146,7 @@ const Ashram = () => (
             <div className="flex items-start gap-3">
               <LockKeyhole className="mt-0.5 shrink-0 text-[#b56b24]" size={20} />
               <p className="text-xs leading-6 text-[#675a50]">
-                आश्रम का पता, map और exact location वेबसाइट पर प्रकाशित नहीं होंगे।
+                आश्रम का पता, map और exact location सार्वजनिक रूप से साझा नहीं किए जाते।
               </p>
             </div>
           </div>
@@ -181,7 +181,7 @@ const Ashram = () => (
                   गोपनीयता का सम्मान
                 </h3>
                 <p className="mt-2 text-sm leading-7 text-[#675b51]">
-                  वेबसाइट पर कोई Ashram address, Google Map, route, landmark या public visiting hours नहीं दिखाए जाएंगे।
+                  Ashram address, Google Map, route, landmark और public visiting hours सार्वजनिक रूप से उपलब्ध नहीं कराए जाते।
                 </p>
               </div>
             </div>
@@ -198,7 +198,7 @@ const Ashram = () => (
             Nalin Dada द्वारा साझा किए गए प्रमुख पड़ाव
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-[#706158]">
-            इस timeline में केवल वही जानकारी रखी गई है जो Nalin Dada ने वेबसाइट के लिए स्वयं साझा की है।
+            यह यात्रा Nalin Dada द्वारा साझा किए गए प्रमुख अनुभवों और साधना के पड़ावों पर आधारित है।
           </p>
         </div>
 
@@ -293,7 +293,7 @@ const Ashram = () => (
               पता सार्वजनिक नहीं
             </h3>
             <p className="mt-3 text-sm leading-7 text-[#675b51]">
-              Ashram address, route और location website पर नहीं दिखाई जाएगी।
+              Ashram address, route और location सार्वजनिक रूप से साझा नहीं किए जाते।
             </p>
           </article>
 
@@ -337,7 +337,7 @@ const Ashram = () => (
             पहले Nalin Dada से व्यक्तिगत रूप से चर्चा करें
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-7 text-[#dfe8e4] md:text-base">
-            उपयुक्त होने पर आश्रम और साधना से जुड़ी आवश्यक जानकारी व्यक्तिगत रूप से साझा की जाएगी। वेबसाइट पर कोई public address या map नहीं रहेगा।
+            उपयुक्त होने पर आश्रम और साधना से जुड़ी आवश्यक जानकारी व्यक्तिगत रूप से साझा की जाएगी। कोई public address या map उपलब्ध नहीं कराया जाता।
           </p>
         </div>
         <Link to="/appointment" className="button-gold">
