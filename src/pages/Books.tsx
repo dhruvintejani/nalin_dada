@@ -12,7 +12,6 @@ import {
   LibraryBig,
   Search,
   Sparkles,
-  UserRound,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import MediaSlot from "../components/MediaSlot";
