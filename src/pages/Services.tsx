@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { siteConfig } from "../config/site";
+import { media } from "../config/media";
+import MediaSlot from "../components/MediaSlot";
 
 const services = [
   {
@@ -127,10 +129,10 @@ const Services = () => (
 
         <div className="relative mx-auto w-full max-w-[500px]">
           <div className="absolute -inset-4 rounded-[2rem] border border-[#e3b86f]/45" />
-          <img
-            src="/images/nalin-speaking.jpg"
-            alt="Nalin Dada speaking during a spiritual and astrology gathering"
-            className="relative h-[445px] w-full rounded-[1.7rem] border-[7px] border-white object-cover object-[center_27%] shadow-[0_24px_60px_rgba(78,44,22,.17)]"
+          <MediaSlot
+            asset={media.photos.servicesHero}
+            priority
+            className="relative h-[445px] rounded-[1.7rem] border-[7px] border-white shadow-[0_24px_60px_rgba(78,44,22,.17)]"
           />
         </div>
       </div>
@@ -164,21 +166,11 @@ const Services = () => (
 
     <section className="section-block">
       <div className="site-shell grid items-center gap-10 lg:grid-cols-[.92fr_1.08fr]">
-        <div className="relative grid min-h-[410px] place-items-center overflow-hidden rounded-[1.5rem] border border-[#e4d4bf] bg-[linear-gradient(145deg,#f8ead3,#fffaf2_58%,#f2dfbf)]">
-          <div className="absolute -right-12 -top-14 h-44 w-44 rounded-full border border-[#d6a354]/40" />
-          <div className="absolute -bottom-16 -left-12 h-48 w-48 rounded-full border border-[#d6a354]/30" />
-          <div className="relative z-10 max-w-[260px] text-center">
-            <div className="mx-auto grid h-16 w-16 place-items-center rounded-full border border-[#ddb675] bg-white/75 text-[#a45f23]">
-              <UserRound size={29} strokeWidth={1.5} />
-            </div>
-            <p className="mt-4 text-sm font-bold text-[#7f171b]">
-              वास्तविक Consultation Photo
-            </p>
-            <p className="mt-2 text-xs leading-5 text-[#766457]">
-              यहाँ Nalin Dada की किसी व्यक्ति से आमने-सामने चर्चा या परामर्श करते हुए वास्तविक फोटो जोड़ी जाएगी।
-            </p>
-          </div>
-        </div>
+        <MediaSlot
+          asset={media.photos.servicesConsultation}
+          className="min-h-[410px] rounded-[1.5rem]"
+          label="वास्तविक Consultation Photo"
+        />
 
         <div>
           <div className="eyebrow">व्यक्तिगत परामर्श</div>
