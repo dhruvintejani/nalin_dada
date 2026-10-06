@@ -222,7 +222,7 @@ const Appointment = () => {
                 Ashram location private
               </h2>
               <p className="mt-2 text-sm leading-6 text-[#675b51]">
-                Ashram address और map वेबसाइट पर public नहीं किए जाएंगे।
+                Ashram address और map सार्वजनिक रूप से साझा नहीं किए जाते।
               </p>
             </article>
           </div>
@@ -235,7 +235,7 @@ const Appointment = () => {
             <div className="eyebrow">अपॉइंटमेंट फॉर्म</div>
             <h2 className="section-title mt-3">अपनी जानकारी भरें</h2>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-[#706158]">
-              यह frontend-only form है। आपकी जानकारी किसी website database में save नहीं होगी। WhatsApp नंबर जुड़ने के बाद Submit से तैयार message खुलेगा।
+              यह फॉर्म आपकी जानकारी वेबसाइट पर संग्रहीत नहीं करता। WhatsApp नंबर सक्रिय होने पर Submit करने से आपकी जानकारी के साथ तैयार संदेश खुलेगा।
             </p>
 
             <form
@@ -519,7 +519,7 @@ const Appointment = () => {
               {siteConfig.consultationFee} · कार्यालय में भुगतान
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-7 text-[#dfe8e4] md:text-base">
-              कोई online payment, video consultation, social media contact या public Ashram location इस website का हिस्सा नहीं है।
+              ऑनलाइन भुगतान और video consultation उपलब्ध नहीं है। Ashram location निजी रखी जाती है।
             </p>
           </div>
           <a href="#appointment-form" className="button-gold">
