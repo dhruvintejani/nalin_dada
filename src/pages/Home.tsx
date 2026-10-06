@@ -1,225 +1,239 @@
-import { motion } from 'framer-motion';
-import { Sparkles, MapPin, Phone, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import {
+  Activity,
+  ArrowRight,
+  BookOpen,
+  CalendarDays,
+  Compass,
+  Flame,
+  Flower2,
+  Hand,
+  Hash,
+  HeartPulse,
+  Leaf,
+  MapPin,
+  Sparkles,
+  WalletCards,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
-const Home = () => {
-  const services = [
-    { title: 'ज्योतिष', icon: <Sparkles className="w-8 h-8" />, desc: 'जीवन मार्ग एवं वैदिक ज्योतिष मार्गदर्शन' },
-    { title: 'हस्तरेखा', icon: <div className="w-8 h-8 flex items-center justify-center font-bold text-xl">✋</div>, desc: 'आपके स्वाभाविक गुणों की पहचान' },
-    { title: 'अंक ज्योतिष', icon: <div className="w-8 h-8 flex items-center justify-center font-bold text-xl">3 6 9</div>, desc: 'अंकों की शक्ति से अपना मार्ग जानें' },
-    { title: 'आयुर्वेद एवं प्राकृतिक स्वास्थ्य', icon: <div className="w-8 h-8 flex items-center justify-center font-bold text-xl">🌿</div>, desc: 'सरल, प्राकृतिक उपायों से बेहतर स्वास्थ्य' },
-  ];
+const services = [
+  { title: "ज्योतिष", text: "जीवन के विभिन्न पहलुओं पर ज्योतिषीय मार्गदर्शन।", icon: Sparkles },
+  { title: "हस्तरेखा", text: "हस्तरेखा के माध्यम से व्यक्तित्व और जीवन दिशा की समझ।", icon: Hand },
+  { title: "अंक ज्योतिष", text: "अंकों के आधार पर जीवन के पैटर्न और संभावनाओं की व्याख्या।", icon: Hash },
+  { title: "आयुर्वेद एवं प्राकृतिक स्वास्थ्य", text: "पारंपरिक ज्ञान और प्राकृतिक जीवनशैली से जुड़ी जानकारी।", icon: Leaf },
+  { title: "समग्र उपचार", text: "मन, शरीर और जीवनशैली को संतुलित दृष्टि से देखने का मार्गदर्शन।", icon: HeartPulse },
+  { title: "नाभि चिकित्सा", text: "नाभि चिकित्सा से जुड़ी पारंपरिक पद्धतियों की जानकारी।", icon: Activity },
+  { title: "आध्यात्मिक मार्गदर्शन", text: "शांति, साधना और जीवन के उद्देश्य के लिए व्यक्तिगत दिशा।", icon: Flower2 },
+  { title: "तंत्र एवं मंत्र", text: "परंपरागत साधना, मंत्र और आध्यात्मिक अभ्यास से जुड़ा मार्गदर्शन।", icon: Flame },
+  { title: "जीवन मार्गदर्शन", text: "व्यक्तिगत चुनौतियों को शांत और व्यावहारिक दृष्टि से समझना।", icon: Compass },
+];
 
-  return (
-    <div className="overflow-hidden">
-      {/* Hero Section */}
-      <section className="relative bg-[#fdf8f3] py-20 lg:py-32">
-        <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-12">
-          <motion.div 
-            className="lg:w-1/2"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="mb-6 flex items-center gap-2 text-amber-700 font-bold tracking-widest text-sm uppercase">
-              <span className="w-8 h-[2px] bg-amber-700"></span>
-              जीवन • ज्ञान • उपचार • उच्चतर चेतना की ओर
-            </div>
-            <h1 className="text-4xl lg:text-6xl font-serif font-bold text-[#5c0a0a] leading-tight mb-6">
-              अध्यात्मिक मार्गदर्शन, ज्योतिष एवं समग्र उपचार
-            </h1>
-            <p className="text-lg text-gray-700 mb-8 leading-relaxed max-w-xl">
-              ज्योतिष | हस्तरेखा | अंक ज्योतिष | आयुर्वेद एवं प्राकृतिक स्वास्थ्य | समग्र उपचार | नाभि चिकित्सा | आध्यात्मिक मार्गदर्शन | तंत्र एवं मंत्र पारंपरिक उपाय | अधिक संतुलित एवं सार्थक जीवन की ओर
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/appointment" className="bg-[#5c0a0a] text-white px-8 py-4 rounded-md font-bold hover:bg-[#7a0d0d] transition-all transform hover:-translate-y-1 shadow-lg flex items-center gap-2">
-                अपॉइंटमेंट बुक करें <ArrowRight size={20} />
-              </Link>
-              <Link to="/services" className="bg-white border-2 border-amber-200 text-amber-900 px-8 py-4 rounded-md font-bold hover:bg-amber-50 transition-all flex items-center gap-2">
-                हमारी सेवाएँ देखें
-              </Link>
-            </div>
-          </motion.div>
-          
-          <motion.div 
-            className="lg:w-1/2 relative"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="relative z-10 rounded-2xl overflow-hidden border-8 border-white shadow-2xl">
-              <img 
-                src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&q=80&w=800" 
-                alt="Dr. Nalin Pandya" 
-                className="w-full h-auto"
-              />
-            </div>
-            {/* Quote decoration */}
-            <div className="absolute -top-6 -right-6 bg-white p-6 rounded-lg shadow-xl max-w-[240px] hidden md:block z-20 border-l-4 border-amber-600">
-              <p className="text-amber-900 font-serif italic text-sm mb-2">
-                "सफलता केवल बाहरी उपलब्धि में नहीं, बल्कि भीतर की शांति में है, और यही शांति हम सभी के अंदर पहले से मौजूद है।"
-              </p>
-              <p className="text-right text-xs font-bold text-gray-500">— डॉ. नलिन पण्ड्या</p>
-            </div>
-            {/* Background elements */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-amber-100 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -z-0 animate-pulse"></div>
-          </motion.div>
-        </div>
-      </section>
+const bookThemes = [
+  "ज्योतिष",
+  "अंक ज्योतिष",
+  "आयुर्वेद",
+  "वास्तु शास्त्र",
+  "तंत्र-मंत्र",
+  "स्वास्थ्य",
+  "आध्यात्मिक साधना",
+  "जीवन मार्गदर्शन",
+];
 
-      {/* About Nalin Pandya */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <motion.div 
-              className="lg:w-1/2 grid grid-cols-2 gap-4"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-            >
-              <img src="https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?auto=format&fit=crop&q=80&w=400" className="rounded-2xl shadow-lg mt-8" alt="Nalin Dada 1" />
-              <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=400" className="rounded-2xl shadow-lg" alt="Nalin Dada 2" />
-            </motion.div>
-            
-            <motion.div 
-              className="lg:w-1/2"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-amber-600 font-bold mb-2">हमारे बारे में</h2>
-              <h3 className="text-3xl lg:text-4xl font-serif font-bold text-[#5c0a0a] mb-6">डॉ. नलिन पण्ड्या</h3>
-              <p className="text-gray-700 mb-6 leading-relaxed">
-                डॉ. नलिन पण्ड्या, जिन्हें प्रेमपूर्वक नलिन सर कहा जाता है, एक आध्यात्मिक मार्गदर्शक, ज्योतिषी, उपचारकर्ता और लेखक हैं। दशकों के अनुभव के साथ, उन्होंने दुनिया भर के हजारों लोगों के जीवन को बेहतर बनाने में मदद की है।
-              </p>
-              <p className="text-gray-700 mb-8 leading-relaxed">
-                उनकी शिक्षाएँ भारतीय आध्यात्मिक परंपराओं में गहराई से निहित हैं, जिसमें आधुनिक जीवन की चुनौतियों के लिए सरल और प्रभावी उपायों पर विशेष जोर है।
-              </p>
-              <Link to="/about" className="text-[#5c0a0a] font-bold border-b-2 border-[#5c0a0a] pb-1 hover:text-amber-700 hover:border-amber-700 transition-colors inline-flex items-center gap-2">
-                डॉ. नलिन सर के बारे में और जानें <ArrowRight size={16} />
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Grid */}
-      <section className="py-20 bg-[#fdf8f3]">
-        <div className="container mx-auto px-4 text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-amber-600 font-bold mb-2">हमारी सेवाएँ</h2>
-            <h3 className="text-3xl lg:text-4xl font-serif font-bold text-[#5c0a0a]">एक बेहतर, स्वस्थ और अधिक सार्थक जीवन के लिए मार्गदर्शन</h3>
-          </motion.div>
-        </div>
-
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow border-t-4 border-amber-600 text-center group"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <div className="bg-amber-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 text-amber-700 group-hover:bg-amber-600 group-hover:text-white transition-colors duration-300">
-                  {service.icon}
-                </div>
-                <h4 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">{service.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Ashram Preview */}
-      <section className="py-20 relative overflow-hidden">
-        <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-16">
-          <motion.div 
-            className="lg:w-1/2"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-amber-600 font-bold mb-2">आश्रम एवं परामर्श केंद्र</h2>
-            <h3 className="text-3xl lg:text-4xl font-serif font-bold text-[#5c0a0a] mb-6">दो स्थानों से, एक उदे दिशा में पहला कदम</h3>
-            
-            <div className="space-y-8 mt-10">
-              <div className="flex gap-4">
-                <div className="bg-amber-100 p-3 rounded-full self-start">
-                  <MapPin className="text-amber-700" size={24} />
-                </div>
-                <div>
-                  <h4 className="text-xl font-bold mb-1">पीतांबरा पीठ आश्रम</h4>
-                  <p className="text-gray-600 mb-2">अध्यात्मिक अध्ययन, सत्संग और समग्र जीवन के लिए एक शांत स्थान।</p>
-                  <p className="text-amber-800 font-semibold flex items-center gap-1 text-sm">
-                    <MapPin size={14} /> अहमदाबाद - गुजरात
-                  </p>
-                </div>
-              </div>
-              
-              <div className="flex gap-4">
-                <div className="bg-amber-100 p-3 rounded-full self-start">
-                  <Phone className="text-amber-700" size={24} />
-                </div>
-                <div>
-                  <h4 className="text-xl font-bold mb-1">परामर्श केंद्र</h4>
-                  <p className="text-gray-600 mb-2">ज्योतिष, उपचार और मार्गदर्शन के लिए व्यक्तिगत परामर्श।</p>
-                  <p className="text-amber-800 font-semibold flex items-center gap-1 text-sm">
-                    <MapPin size={14} /> अहमदाबाद - गुजरात
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-10">
-              <Link to="/ashram" className="bg-[#5c0a0a] text-white px-8 py-4 rounded-md font-bold hover:bg-[#7a0d0d] transition-all inline-block">
-                आश्रम के बारे में और जानें
-              </Link>
-            </div>
-          </motion.div>
-
-          <motion.div 
-            className="lg:w-1/2 relative h-[400px] w-full"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <img 
-              src="https://images.unsplash.com/photo-1603566592036-6e47b310e6e7?auto=format&fit=crop&q=80&w=800" 
-              alt="Ashram" 
-              className="w-full h-full object-cover rounded-2xl shadow-2xl"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl"></div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-amber-600 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl lg:text-5xl font-serif font-bold mb-8 italic">"सच्ची सफलता केवल बाहरी उपलब्धि में नहीं, बल्कि सही दिशा में है।"</h2>
-            <p className="text-xl mb-12 opacity-90 max-w-2xl mx-auto">आज ही अपना व्यक्तिगत मार्गदर्शन सत्र शुरू करें और अपने जीवन में सकारात्मक परिवर्तन लाएं।</p>
-            <Link to="/appointment" className="bg-white text-amber-900 px-10 py-5 rounded-full font-bold text-lg hover:bg-amber-50 transition-all shadow-xl inline-flex items-center gap-2">
-              व्हाट्सएप पर जानकारी प्राप्त करें <ArrowRight size={22} />
+const Home = () => (
+  <div className="overflow-hidden bg-[#fffdf9]">
+    <section className="hero-surface relative">
+      <div className="hero-glow" />
+      <div className="site-shell grid min-h-[560px] items-center gap-10 py-12 lg:grid-cols-[1.08fr_.92fr] lg:py-16">
+        <div className="relative z-10 max-w-[720px]">
+          <div className="eyebrow">जीवन · ज्ञान · उपचार · उच्चतर चेतना की ओर</div>
+          <h1 className="mt-4 max-w-[760px] font-serif text-[2.5rem] font-bold leading-[1.17] tracking-[-0.03em] text-[#8f181c] sm:text-[3.2rem] lg:text-[4.15rem]">
+            आध्यात्मिक मार्गदर्शन, ज्योतिष एवं समग्र जीवन दृष्टि
+          </h1>
+          <p className="mt-5 max-w-[680px] text-base leading-8 text-[#4f443b] md:text-lg">
+            ज्योतिष, हस्तरेखा, अंक ज्योतिष, आयुर्वेद एवं प्राकृतिक स्वास्थ्य, नाभि चिकित्सा, आध्यात्मिक मार्गदर्शन तथा पारंपरिक साधना से जुड़ी जानकारी और व्यक्तिगत दिशा।
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Link to="/appointment" className="button-primary">
+              <CalendarDays size={18} /> अपॉइंटमेंट बुक करें <ArrowRight size={18} />
             </Link>
-          </motion.div>
+            <Link to="/services" className="button-secondary">
+              हमारी सेवाएँ देखें
+            </Link>
+          </div>
+
+          <div className="mt-8 grid max-w-[680px] gap-3 sm:grid-cols-3">
+            <div className="hero-stat">
+              <span className="hero-stat-label">परामर्श शुल्क</span>
+              <strong>₹1,100</strong>
+              <small>कार्यालय में भुगतान</small>
+            </div>
+            <div className="hero-stat">
+              <span className="hero-stat-label">समय</span>
+              <strong>11–1 / 6–8</strong>
+              <small>केवल अपॉइंटमेंट</small>
+            </div>
+            <div className="hero-stat">
+              <span className="hero-stat-label">रविवार</span>
+              <strong>बंद</strong>
+              <small>कोई अपॉइंटमेंट नहीं</small>
+            </div>
+          </div>
         </div>
-      </section>
-    </div>
-  );
-};
+
+        <div className="relative mx-auto w-full max-w-[520px] lg:justify-self-end">
+          <div className="absolute -inset-5 rounded-[2.5rem] border border-[#e6bd7d]/50" />
+          <div className="relative overflow-hidden rounded-[2.15rem] border-[7px] border-white bg-white shadow-[0_25px_65px_rgba(81,43,21,.18)]">
+            <img
+              src="/images/nalin-speaking.jpg"
+              alt="Nalin Dada speaking at an astrology and spiritual event"
+              className="h-[470px] w-full object-cover object-[center_30%] sm:h-[560px]"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#2e160f]/85 via-[#2e160f]/30 to-transparent px-6 pb-6 pt-20 text-white">
+              <p className="font-serif text-xl font-semibold">Nalin Dada</p>
+              <p className="mt-1 text-sm text-white/80">Dr. Nalin Pandya</p>
+            </div>
+          </div>
+          <div className="quote-card absolute -bottom-6 -left-7 hidden max-w-[280px] md:block">
+            <p>“सच्ची दिशा बाहर से नहीं थोपी जाती; वह भीतर की स्पष्टता से जन्म लेती है।”</p>
+            <span>— Nalin Dada</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="section-block">
+      <div className="site-shell grid items-center gap-10 lg:grid-cols-[.92fr_1.08fr]">
+        <div className="relative mx-auto w-full max-w-[520px]">
+          <div className="absolute -left-4 -top-4 h-24 w-24 rounded-3xl bg-[#f3dfbd]" />
+          <img
+            src="/images/nalin-speaking.jpg"
+            alt="Nalin Dada sharing guidance"
+            className="relative h-[420px] w-full rounded-[1.6rem] object-cover object-[center_22%] shadow-[0_18px_45px_rgba(74,44,24,.14)]"
+          />
+        </div>
+
+        <div>
+          <div className="eyebrow">हमारे बारे में</div>
+          <h2 className="section-title mt-3">Nalin Dada · Dr. Nalin Pandya</h2>
+          <p className="mt-5 text-base leading-8 text-[#5c5147]">
+            Nalin Dada ज्योतिष, हस्तरेखा, अंक ज्योतिष, प्राकृतिक स्वास्थ्य, नाभि चिकित्सा, आध्यात्मिक मार्गदर्शन और पारंपरिक साधना से जुड़े अपने दीर्घ अनुभव को सरल, संवादपूर्ण और जीवनोपयोगी रूप में साझा करते हैं।
+          </p>
+          <p className="mt-4 text-base leading-8 text-[#5c5147]">
+            उनकी आध्यात्मिक यात्रा में 1981 के आसपास करनाली में गायत्री संत शांतवनजी महाराज की साधना भूमि से जुड़ा अनुभव, गायत्री अनुष्ठान और बाद के वर्षों में अपनी साधना भूमि का पुनर्जीवन शामिल है। वेबसाइट पर केवल वही तथ्य रखे जाएंगे जिन्हें Nalin Dada ने स्वयं साझा किया है।
+          </p>
+          <Link to="/about" className="text-link mt-6">
+            Nalin Dada के बारे में और जानें <ArrowRight size={17} />
+          </Link>
+        </div>
+      </div>
+    </section>
+
+    <section className="section-block bg-[#fbf5eb]">
+      <div className="site-shell">
+        <div className="max-w-3xl">
+          <div className="eyebrow">हमारी सेवाएँ</div>
+          <h2 className="section-title mt-3">एक बेहतर, शांत और अधिक सार्थक जीवन के लिए मार्गदर्शन</h2>
+        </div>
+
+        <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          {services.map(({ title, text, icon: Icon }) => (
+            <article key={title} className="service-card">
+              <div className="service-icon">
+                <Icon size={26} strokeWidth={1.8} />
+              </div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-8 text-center">
+          <Link to="/services" className="button-secondary">
+            सभी सेवाएँ देखें <ArrowRight size={17} />
+          </Link>
+        </div>
+      </div>
+    </section>
+
+    <section className="section-block">
+      <div className="site-shell">
+        <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
+          <div>
+            <div className="eyebrow">पुस्तकें एवं प्रकाशन</div>
+            <h2 className="section-title mt-3">ज्ञान, साधना और जीवन से जुड़े विषय</h2>
+          </div>
+          <Link to="/books" className="text-link">
+            पुस्तक संग्रह देखें <ArrowRight size={17} />
+          </Link>
+        </div>
+
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
+          {bookThemes.map((theme, index) => (
+            <article key={theme} className="book-preview-card">
+              <div className={`book-spine book-tone-${(index % 4) + 1}`}>
+                <BookOpen size={24} />
+                <span>{theme}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section className="section-block bg-[#fbf5eb]">
+      <div className="site-shell">
+        <div className="grid gap-5 lg:grid-cols-2">
+          <article className="location-card">
+            <div className="location-icon"><Flower2 size={28} /></div>
+            <div>
+              <span className="card-kicker">साधना भूमि</span>
+              <h2>आश्रम</h2>
+              <p>
+                आश्रम एक निजी साधना भूमि है। इसका पता सार्वजनिक रूप से वेबसाइट पर नहीं दिखाया जाएगा। आवश्यकता होने पर विवरण Nalin Dada से मिलने के बाद व्यक्तिगत रूप से साझा किया जाएगा।
+              </p>
+              <Link to="/ashram" className="text-link mt-4">
+                आश्रम के बारे में जानें <ArrowRight size={16} />
+              </Link>
+            </div>
+          </article>
+
+          <article className="location-card">
+            <div className="location-icon"><MapPin size={28} /></div>
+            <div>
+              <span className="card-kicker">व्यक्तिगत परामर्श</span>
+              <h2>परामर्श कार्यालय</h2>
+              <p>
+                18 Ushadeep Society, 1st Floor, next to H2 Seven Unisex Salon, near Regional Passport Office, Gulbai Tekra, Ahmedabad.
+              </p>
+              <p className="mt-3 font-semibold text-[#7e201f]">
+                सोमवार–शनिवार · 11:00 AM–1:00 PM · 6:00 PM–8:00 PM · केवल अपॉइंटमेंट
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section className="appointment-band">
+      <div className="site-shell grid items-center gap-7 py-10 lg:grid-cols-[1fr_auto]">
+        <div>
+          <div className="flex items-center gap-3 text-[#e5ac53]">
+            <WalletCards size={23} />
+            <span className="text-sm font-bold tracking-[.14em]">व्यक्तिगत परामर्श</span>
+          </div>
+          <h2 className="mt-3 font-serif text-3xl font-bold text-white md:text-4xl">
+            अपॉइंटमेंट शुल्क ₹1,100
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-[#dfe8e4] md:text-base">
+            शुल्क कार्यालय में भुगतान किया जाएगा। वेबसाइट पर ऑनलाइन भुगतान या ऑनलाइन/वीडियो परामर्श उपलब्ध नहीं है।
+          </p>
+        </div>
+        <Link to="/appointment" className="button-gold">
+          अपॉइंटमेंट एवं संपर्क <ArrowRight size={18} />
+        </Link>
+      </div>
+    </section>
+  </div>
+);
 
 export default Home;
