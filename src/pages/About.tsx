@@ -98,7 +98,7 @@ const About = () => (
 
           <div className="mt-7 rounded-[1.2rem] border-l-4 border-[#d7a04b] bg-[#fff7e9] px-5 py-4">
             <p className="font-serif text-lg leading-8 text-[#6d4931]">
-              साधना, ज्ञान और जीवन अनुभव — About page की पूरी कहानी इन्हीं तीन आधारों के आसपास प्रस्तुत की गई है।
+              साधना, ज्ञान और जीवन अनुभव — Nalin Dada की यात्रा के तीन महत्वपूर्ण आधार।
             </p>
             <p className="mt-2 text-sm font-bold text-[#8f181c]">Nalin Dada · परिचय</p>
           </div>
