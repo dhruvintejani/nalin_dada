@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { siteConfig } from "../config/site";
+import { media } from "../config/media";
+import MediaSlot from "../components/MediaSlot";
 
 const services = [
   { title: "ज्योतिष", text: "जीवन के विभिन्न पहलुओं पर ज्योतिषीय मार्गदर्शन।", icon: Sparkles },
@@ -84,10 +86,10 @@ const Home = () => (
         <div className="relative mx-auto w-full max-w-[520px] lg:justify-self-end">
           <div className="absolute -inset-5 rounded-[2.5rem] border border-[#e6bd7d]/50" />
           <div className="relative overflow-hidden rounded-[2.15rem] border-[7px] border-white bg-white shadow-[0_25px_65px_rgba(81,43,21,.18)]">
-            <img
-              src="/images/nalin-speaking.jpg"
-              alt="Nalin Dada speaking at an astrology and spiritual event"
-              className="h-[470px] w-full object-cover object-[center_30%] sm:h-[560px]"
+            <MediaSlot
+              asset={media.photos.homeHero}
+              priority
+              className="h-[470px] sm:h-[560px]"
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#2e160f]/85 via-[#2e160f]/30 to-transparent px-6 pb-6 pt-20 text-white">
               <p className="font-serif text-xl font-semibold">Nalin Dada</p>
@@ -106,10 +108,9 @@ const Home = () => (
       <div className="site-shell grid items-center gap-10 lg:grid-cols-[.92fr_1.08fr]">
         <div className="relative mx-auto w-full max-w-[520px]">
           <div className="absolute -left-4 -top-4 h-24 w-24 rounded-3xl bg-[#f3dfbd]" />
-          <img
-            src="/images/nalin-speaking.jpg"
-            alt="Nalin Dada sharing guidance"
-            className="relative h-[420px] w-full rounded-[1.6rem] object-cover object-[center_22%] shadow-[0_18px_45px_rgba(74,44,24,.14)]"
+          <MediaSlot
+            asset={media.photos.homeAbout}
+            className="relative h-[420px] rounded-[1.6rem] shadow-[0_18px_45px_rgba(74,44,24,.14)]"
           />
         </div>
 
