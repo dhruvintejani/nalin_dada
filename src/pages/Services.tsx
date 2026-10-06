@@ -1,156 +1,317 @@
-import { motion } from 'framer-motion';
-import { Heart, Sun, MapPin, ArrowRight, MessageCircle, Star } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import {
+  Activity,
+  ArrowRight,
+  CalendarDays,
+  CheckCircle2,
+  Compass,
+  Flame,
+  Flower2,
+  Hand,
+  Hash,
+  HeartHandshake,
+  HeartPulse,
+  Leaf,
+  MessageCircleMore,
+  ShieldCheck,
+  Sparkles,
+  UserRound,
+  WalletCards,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
-const Services = () => {
-  const allServices = [
-    { title: 'ज्योतिष', icon: '✨', desc: 'जीवन मार्ग एवं वैदिक ज्योतिष मार्गदर्शन के माध्यम से भविष्य की संभावनाओं को जानें।' },
-    { title: 'हस्तरेखा', icon: '✋', desc: 'आपके स्वाभाविक गुणों की पहचान और आपके हाथों की लकीरों में छिपे संकेतों का विश्लेषण।' },
-    { title: 'अंक ज्योतिष', icon: '🔢', desc: 'अंकों की शक्ति और आपके जीवन पर उनके प्रभाव को जानकर सही मार्ग का चयन करें।' },
-    { title: 'आयुर्वेद एवं प्राकृतिक स्वास्थ्य', icon: '🌿', desc: 'सरल, प्राकृतिक और प्रभावी आयुर्वेदिक उपायों से अपने स्वास्थ्य को बेहतर बनाएं।' },
-    { title: 'समग्र उपचार', icon: '🧘', desc: 'मन, शरीर और आत्मा का संतुलन और संपूर्ण कल्याण के लिए आध्यात्मिक उपचार।' },
-    { title: 'नाभि चिकित्सा', icon: '🌀', desc: 'पारंपरिक चिकित्सा पद्धति द्वारा पाचन और ऊर्जा का संतुलन बनाए रखें।' },
-    { title: 'आध्यात्मिक मार्गदर्शन', icon: '🕉️', desc: 'आंतरिक शांति, स्पष्टता और उच्चतर जागरूकता के लिए व्यक्तिगत मार्गदर्शन।' },
-    { title: 'तंत्र एवं मंत्र साधना', icon: '🔱', desc: 'पारंपरिक पद्धतियों द्वारा आध्यात्मिक विकास और सुरक्षा के लिए साधना।' },
-    { title: 'पारंपरिक उपाय', icon: '📿', desc: 'व्यावहारिक और पारंपरिक उपचार दैनिक जीवन की चुनौतियों के समाधान के लिए।' },
-  ];
+const services = [
+  {
+    title: "ज्योतिष",
+    icon: Sparkles,
+    text: "जीवन के विभिन्न पहलुओं को ज्योतिषीय दृष्टि से समझने के लिए व्यक्तिगत मार्गदर्शन।",
+  },
+  {
+    title: "हस्तरेखा",
+    icon: Hand,
+    text: "हस्तरेखा के आधार पर व्यक्तित्व, प्रवृत्तियों और जीवन दिशा से जुड़ी समझ।",
+  },
+  {
+    title: "अंक ज्योतिष",
+    icon: Hash,
+    text: "अंकों और जन्म-संबंधी विवरण के आधार पर जीवन के पैटर्न को समझने का पारंपरिक दृष्टिकोण।",
+  },
+  {
+    title: "आयुर्वेद एवं प्राकृतिक स्वास्थ्य",
+    icon: Leaf,
+    text: "प्राकृतिक जीवनशैली, पारंपरिक स्वास्थ्य ज्ञान और दैनिक दिनचर्या से जुड़ी सामान्य जानकारी।",
+  },
+  {
+    title: "समग्र जीवन मार्गदर्शन",
+    icon: HeartPulse,
+    text: "मन, जीवनशैली और व्यक्तिगत परिस्थितियों को संतुलित दृष्टि से समझने के लिए संवाद।",
+  },
+  {
+    title: "नाभि चिकित्सा",
+    icon: Activity,
+    text: "नाभि चिकित्सा से जुड़ी पारंपरिक पद्धतियों और Nalin Dada के अनुभव पर आधारित जानकारी।",
+  },
+  {
+    title: "आध्यात्मिक मार्गदर्शन",
+    icon: Flower2,
+    text: "साधना, शांति, आत्मचिंतन और जीवन के उद्देश्य से जुड़े प्रश्नों पर व्यक्तिगत दिशा।",
+  },
+  {
+    title: "तंत्र एवं मंत्र साधना",
+    icon: Flame,
+    text: "परंपरागत मंत्र, जप और साधना पद्धतियों से जुड़ा मार्गदर्शन, परिस्थिति और पात्रता के अनुसार।",
+  },
+  {
+    title: "पारंपरिक उपाय",
+    icon: Compass,
+    text: "जीवन की परिस्थितियों से जुड़े पारंपरिक और आध्यात्मिक उपायों पर सामान्य मार्गदर्शन।",
+  },
+];
 
-  return (
-    <div className="bg-white">
-      {/* Header */}
-      <section className="bg-[#5c0a0a] text-white py-20 text-center">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-6">नलिन दादा की सेवाएँ</h1>
-            <p className="text-xl opacity-90 max-w-3xl mx-auto leading-relaxed">
-              आध्यात्मिक मार्गदर्शन, ज्योतिष परामर्श, प्राकृतिक उपचार और भारतीय परंपरा के गहन ज्ञान के माध्यम से नलिन दादा संतुलित, स्वस्थ और सार्थक जीवन की दिशा प्रदान करते हैं।
-            </p>
-          </motion.div>
-        </div>
-      </section>
+const consultationPoints = [
+  "व्यक्तिगत रूप से आपकी बात और प्रश्न समझना",
+  "उपयुक्त विषय या सेवा की दिशा तय करना",
+  "सरल भाषा में मार्गदर्शन और आवश्यक जानकारी देना",
+  "जरूरत होने पर आगे की प्रक्रिया स्पष्ट करना",
+];
 
-      {/* Main Services Grid */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl lg:text-4xl font-serif font-bold text-[#5c0a0a] mb-16 text-center italic flex items-center justify-center gap-4">
-            <span className="w-12 h-px bg-amber-600"></span>
-            हमारी प्रमुख सेवाएँ
-            <span className="w-12 h-px bg-amber-600"></span>
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {allServices.map((service, index) => (
-              <motion.div
-                key={index}
-                className="bg-white border border-amber-100 p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 group"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-              >
-                <div className="text-4xl mb-6 bg-amber-50 w-16 h-16 flex items-center justify-center rounded-xl group-hover:bg-amber-600 transition-colors duration-300">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-bold text-[#5c0a0a] mb-4">{service.title}</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">{service.desc}</p>
-                <Link to="/appointment" className="text-amber-700 font-bold text-sm inline-flex items-center gap-2 group-hover:gap-3 transition-all">
-                  इसके बारे में और जानें <ArrowRight size={16} />
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+const process = [
+  {
+    step: "01",
+    title: "अपॉइंटमेंट अनुरोध",
+    text: "Appointment & Contact page पर अपनी मूल जानकारी और प्रश्न भरें।",
+    icon: CalendarDays,
+  },
+  {
+    step: "02",
+    title: "व्हाट्सऐप संदेश",
+    text: "Submit करने पर तैयार संदेश WhatsApp में खुलेगा। अंतिम नंबर मिलने पर इसे सक्रिय किया जाएगा।",
+    icon: MessageCircleMore,
+  },
+  {
+    step: "03",
+    title: "समय की पुष्टि",
+    text: "उपलब्ध समय की पुष्टि के बाद कार्यालय में व्यक्तिगत परामर्श होगा।",
+    icon: CheckCircle2,
+  },
+  {
+    step: "04",
+    title: "व्यक्तिगत मार्गदर्शन",
+    text: "आपके प्रश्न और चुने गए विषय के अनुसार Nalin Dada से आमने-सामने बातचीत होगी।",
+    icon: HeartHandshake,
+  },
+];
 
-      {/* Service Detail Highlight */}
-      <section className="py-20 bg-[#fdf8f3]">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <motion.div 
-              className="lg:w-1/2"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <img src="https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?auto=format&fit=crop&q=80&w=800" alt="Consultation" className="rounded-2xl shadow-2xl" />
-            </motion.div>
-            
-            <motion.div 
-              className="lg:w-1/2"
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-amber-600 text-white rounded-full flex items-center justify-center">
-                  <Sun size={24} />
-                </div>
-                <h3 className="text-3xl font-serif font-bold text-[#5c0a0a]">व्यक्तिगत परामर्श</h3>
-              </div>
-              <p className="text-gray-700 text-lg mb-8 leading-relaxed">
-                नलिन दादा व्यक्तिगत रूप से आपकी परिस्थितियों को समझकर, ज्योतिष, हस्तरेखा, अंक ज्योतिष और जीवन के विभिन्न पहलुओं पर मार्गदर्शन प्रदान करते हैं। यह परामर्श आपके प्रश्नों के व्यावहारिक और सार्थक समाधान देने में सहायक होता है।
-              </p>
-              <ul className="space-y-4 mb-10">
-                {[
-                  'जटिल समस्याओं का सरल समाधान',
-                  'जीवन के प्रति सकारात्मक दृष्टिकोण',
-                  'आंतरिक शांति और मानसिक संतुलन',
-                  'व्यक्तिगत मार्गदर्शन और ध्यान'
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-gray-700 font-medium">
-                    <div className="w-2 h-2 bg-amber-600 rounded-full"></div>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Link to="/appointment" className="bg-[#5c0a0a] text-white px-8 py-4 rounded-md font-bold hover:bg-[#7a0d0d] transition-all inline-flex items-center gap-2">
-                परामर्श के लिए अपॉइंटमेंट लें <ArrowRight size={20} />
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl lg:text-4xl font-serif font-bold text-[#5c0a0a] mb-16 text-center">नलिन दादा की सेवाएँ क्यों चुनें?</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { title: 'अनुभव आधारित मार्गदर्शन', desc: 'वर्षों के अध्ययन और अनुभव पर आधारित सटीक और विश्वसनीय सलाह।', icon: <Star className="text-amber-600" /> },
-              { title: 'सरल और व्यावहारिक दृष्टिकोण', desc: 'जटिल विषयों को सरल भाषा में समझाकर व्यावहारिक समाधान।', icon: <Heart className="text-amber-600" /> },
-              { title: 'आध्यात्मिक एवं समग्र सोच', desc: 'जीवन के भौतिक, मानसिक और आध्यात्मिक पहलुओं का संतुलित दृष्टिकोण।', icon: <Sun className="text-amber-600" /> },
-              { title: 'भारतीय परंपरा से जुड़ा ज्ञान', desc: 'वेद, ज्योतिष, आयुर्वेद और सनातन परंपरा के गहन ज्ञान पर आधारित सेवाएँ।', icon: <MapPin className="text-amber-600" /> },
-            ].map((item, index) => (
-              <div key={index} className="text-center p-6 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                <div className="bg-amber-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                  {item.icon}
-                </div>
-                <h4 className="text-lg font-bold text-[#5c0a0a] mb-3">{item.title}</h4>
-                <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Bottom CTA */}
-      <section className="py-20 bg-[#fdf8f3] text-center border-t border-amber-100">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-serif font-bold text-[#5c0a0a] mb-8 italic">"सही मार्गदर्शन जीवन की दिशा बदल सकता है, और संतुलन से भरा जीवन ही सच्ची सफलता है।"</h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/appointment" className="bg-[#008a4e] text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-[#00703e] transition-all shadow-xl inline-flex items-center gap-2">
-              <MessageCircle size={22} /> व्हाट्सएप पर अपॉइंटमेंट बुक करें
+const Services = () => (
+  <div className="overflow-hidden bg-[#fffdf9]">
+    <section className="hero-surface relative">
+      <div className="hero-glow" />
+      <div className="site-shell grid min-h-[510px] items-center gap-10 py-12 lg:grid-cols-[1.08fr_.92fr] lg:py-16">
+        <div className="relative z-10">
+          <div className="eyebrow">मुख्य पृष्ठ · सेवाएँ</div>
+          <h1 className="mt-4 font-serif text-[2.65rem] font-bold leading-[1.14] tracking-[-0.035em] text-[#8f181c] sm:text-[3.3rem] lg:text-[4rem]">
+            Nalin Dada की सेवाएँ
+          </h1>
+          <p className="mt-5 max-w-[720px] text-base leading-8 text-[#51463e] md:text-lg">
+            ज्योतिष, हस्तरेखा, अंक ज्योतिष, प्राकृतिक स्वास्थ्य ज्ञान, नाभि चिकित्सा, आध्यात्मिक मार्गदर्शन तथा मंत्र-साधना से जुड़े विषयों को एक ही स्थान पर सरल और व्यवस्थित रूप में प्रस्तुत किया गया है।
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Link to="/appointment" className="button-primary">
+              <CalendarDays size={18} /> अपॉइंटमेंट बुक करें <ArrowRight size={18} />
             </Link>
+            <a href="#all-services" className="button-secondary">
+              सभी सेवाएँ देखें
+            </a>
           </div>
         </div>
-      </section>
-    </div>
-  );
-};
+
+        <div className="relative mx-auto w-full max-w-[500px]">
+          <div className="absolute -inset-4 rounded-[2rem] border border-[#e3b86f]/45" />
+          <img
+            src="/images/nalin-speaking.jpg"
+            alt="Nalin Dada speaking during a spiritual and astrology gathering"
+            className="relative h-[445px] w-full rounded-[1.7rem] border-[7px] border-white object-cover object-[center_27%] shadow-[0_24px_60px_rgba(78,44,22,.17)]"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="all-services" className="section-block scroll-mt-24 bg-[#fbf5eb]">
+      <div className="site-shell">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="eyebrow justify-center">हमारी प्रमुख सेवाएँ</div>
+          <h2 className="section-title mx-auto mt-3">
+            अलग-अलग जरूरतों के लिए अलग मार्गदर्शन
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-[#706158]">
+            हर व्यक्ति की परिस्थिति अलग होती है। इसलिए सेवा का चयन भी प्रश्न, उद्देश्य और आवश्यकता के अनुसार किया जाता है।
+          </p>
+        </div>
+
+        <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          {services.map(({ title, icon: Icon, text }) => (
+            <article key={title} className="service-card">
+              <div className="service-icon">
+                <Icon size={26} strokeWidth={1.75} />
+              </div>
+              <h3>{title}</h3>
+              <p>{text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section className="section-block">
+      <div className="site-shell grid items-center gap-10 lg:grid-cols-[.92fr_1.08fr]">
+        <div className="relative grid min-h-[410px] place-items-center overflow-hidden rounded-[1.5rem] border border-[#e4d4bf] bg-[linear-gradient(145deg,#f8ead3,#fffaf2_58%,#f2dfbf)]">
+          <div className="absolute -right-12 -top-14 h-44 w-44 rounded-full border border-[#d6a354]/40" />
+          <div className="absolute -bottom-16 -left-12 h-48 w-48 rounded-full border border-[#d6a354]/30" />
+          <div className="relative z-10 max-w-[260px] text-center">
+            <div className="mx-auto grid h-16 w-16 place-items-center rounded-full border border-[#ddb675] bg-white/75 text-[#a45f23]">
+              <UserRound size={29} strokeWidth={1.5} />
+            </div>
+            <p className="mt-4 text-sm font-bold text-[#7f171b]">
+              वास्तविक Consultation Photo
+            </p>
+            <p className="mt-2 text-xs leading-5 text-[#766457]">
+              यहाँ Nalin Dada की किसी व्यक्ति से आमने-सामने चर्चा या परामर्श करते हुए वास्तविक फोटो जोड़ी जाएगी।
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div className="eyebrow">व्यक्तिगत परामर्श</div>
+          <h2 className="section-title mt-3">
+            पहले प्रश्न समझना, फिर सही दिशा पर बात करना
+          </h2>
+          <p className="mt-5 text-base leading-8 text-[#5d5148]">
+            व्यक्तिगत परामर्श का उद्देश्य आगंतुक के प्रश्न और परिस्थिति को समझना है। उसके बाद ज्योतिष, हस्तरेखा, अंक ज्योतिष, आध्यात्मिक मार्गदर्शन या अन्य संबंधित विषय के आधार पर बातचीत आगे बढ़ती है।
+          </p>
+
+          <div className="mt-6 grid gap-3">
+            {consultationPoints.map((point) => (
+              <div
+                key={point}
+                className="flex items-start gap-3 rounded-[.9rem] border border-[#eadbc7] bg-[#fffdf9] px-4 py-3.5"
+              >
+                <CheckCircle2 className="mt-0.5 shrink-0 text-[#bd7729]" size={20} />
+                <p className="text-sm leading-6 text-[#5d5148]">{point}</p>
+              </div>
+            ))}
+          </div>
+
+          <Link to="/appointment" className="button-primary mt-7">
+            व्यक्तिगत परामर्श के लिए अपॉइंटमेंट लें <ArrowRight size={18} />
+          </Link>
+        </div>
+      </div>
+    </section>
+
+    <section className="section-block bg-[#fbf5eb]">
+      <div className="site-shell">
+        <div className="grid gap-5 lg:grid-cols-3">
+          <article className="rounded-[1.25rem] border border-[#ead9c1] bg-[#fffdf9] p-6">
+            <div className="grid h-12 w-12 place-items-center rounded-full bg-[#fff2dd] text-[#b56522]">
+              <ShieldCheck size={24} />
+            </div>
+            <h3 className="mt-4 font-serif text-xl font-bold text-[#7f171b]">
+              व्यक्तिगत और निजी संवाद
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-[#675b51]">
+              परामर्श व्यक्तिगत रूप से होता है। वेबसाइट पर आपकी निजी जानकारी सार्वजनिक रूप से प्रदर्शित नहीं की जाएगी।
+            </p>
+          </article>
+
+          <article className="rounded-[1.25rem] border border-[#ead9c1] bg-[#fffdf9] p-6">
+            <div className="grid h-12 w-12 place-items-center rounded-full bg-[#fff2dd] text-[#b56522]">
+              <WalletCards size={24} />
+            </div>
+            <h3 className="mt-4 font-serif text-xl font-bold text-[#7f171b]">
+              परामर्श शुल्क ₹1,100
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-[#675b51]">
+              शुल्क कार्यालय में भुगतान किया जाएगा। वेबसाइट पर ऑनलाइन भुगतान की सुविधा नहीं होगी।
+            </p>
+          </article>
+
+          <article className="rounded-[1.25rem] border border-[#ead9c1] bg-[#fffdf9] p-6">
+            <div className="grid h-12 w-12 place-items-center rounded-full bg-[#fff2dd] text-[#b56522]">
+              <UserRound size={24} />
+            </div>
+            <h3 className="mt-4 font-serif text-xl font-bold text-[#7f171b]">
+              केवल Offline Consultation
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-[#675b51]">
+              ऑनलाइन या वीडियो परामर्श उपलब्ध नहीं है। अपॉइंटमेंट के बाद मुलाकात परामर्श कार्यालय में होगी।
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section className="section-block">
+      <div className="site-shell">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="eyebrow justify-center">परामर्श की प्रक्रिया</div>
+          <h2 className="section-title mx-auto mt-3">
+            अपॉइंटमेंट से व्यक्तिगत मार्गदर्शन तक
+          </h2>
+        </div>
+
+        <div className="mt-9 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          {process.map(({ step, title, text, icon: Icon }) => (
+            <article
+              key={step}
+              className="relative overflow-hidden rounded-[1.2rem] border border-[#e6d6c1] bg-white p-6 shadow-[0_8px_24px_rgba(84,51,28,.05)]"
+            >
+              <span className="absolute right-4 top-2 font-serif text-6xl font-bold text-[#f2e1c6]">
+                {step}
+              </span>
+              <div className="relative">
+                <div className="grid h-12 w-12 place-items-center rounded-full bg-[#8f181c] text-white">
+                  <Icon size={22} strokeWidth={1.8} />
+                </div>
+                <h3 className="mt-5 font-serif text-xl font-bold text-[#7f171b]">
+                  {title}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-[#675b51]">{text}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section className="border-y border-[#eadbc7] bg-[#fff8ec] py-8">
+      <div className="site-shell">
+        <p className="mx-auto max-w-4xl text-center text-xs leading-6 text-[#76675c]">
+          प्राकृतिक स्वास्थ्य, आयुर्वेद, नाभि चिकित्सा या अन्य स्वास्थ्य-संबंधी सामग्री सामान्य पारंपरिक जानकारी और व्यक्तिगत अनुभव के संदर्भ में प्रस्तुत की जाएगी। यह आपातकालीन या चिकित्सकीय निदान/उपचार का विकल्प नहीं है।
+        </p>
+      </div>
+    </section>
+
+    <section className="appointment-band">
+      <div className="site-shell grid items-center gap-7 py-10 lg:grid-cols-[1fr_auto]">
+        <div>
+          <div className="flex items-center gap-3 text-[#e5ac53]">
+            <WalletCards size={23} />
+            <span className="text-sm font-bold tracking-[.14em]">
+              अपॉइंटमेंट केवल पूर्व पुष्टि से
+            </span>
+          </div>
+          <h2 className="mt-3 font-serif text-3xl font-bold text-white md:text-4xl">
+            सोमवार–शनिवार · 11–1 और 6–8
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-7 text-[#dfe8e4] md:text-base">
+            रविवार को अपॉइंटमेंट नहीं होगा। अंतिम WhatsApp नंबर मिलने के बाद form-to-WhatsApp flow सक्रिय किया जाएगा।
+          </p>
+        </div>
+        <Link to="/appointment" className="button-gold">
+          Appointment & Contact <ArrowRight size={18} />
+        </Link>
+      </div>
+    </section>
+  </div>
+);
 
 export default Services;
