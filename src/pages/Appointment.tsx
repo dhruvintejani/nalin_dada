@@ -16,6 +16,8 @@ import {
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { siteConfig } from "../config/site";
+import { media } from "../config/media";
+import MediaSlot from "../components/MediaSlot";
 
 const serviceOptions = [
   "ज्योतिष",
@@ -191,10 +193,10 @@ const Appointment = () => {
 
           <div className="relative mx-auto w-full max-w-[500px]">
             <div className="absolute -inset-4 rounded-[2rem] border border-[#e3b86f]/45" />
-            <img
-              src="/images/nalin-speaking.jpg"
-              alt="Nalin Dada speaking and guiding people at an event"
-              className="relative h-[445px] w-full rounded-[1.7rem] border-[7px] border-white object-cover object-[center_27%] shadow-[0_24px_60px_rgba(78,44,22,.17)]"
+            <MediaSlot
+              asset={media.photos.appointmentHero}
+              priority
+              className="relative h-[445px] rounded-[1.7rem] border-[7px] border-white shadow-[0_24px_60px_rgba(78,44,22,.17)]"
             />
             <div className="absolute -bottom-5 left-5 right-5 rounded-[1rem] border border-[#ead4b6] bg-[#fffdf9]/95 px-5 py-4 shadow-[0_16px_34px_rgba(77,45,25,.13)] backdrop-blur">
               <p className="text-xs leading-6 text-[#675a50]">
