@@ -28,7 +28,7 @@ const Navbar = () => {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#eadfcd] bg-[#fffdf9]/95 backdrop-blur-md">
+    <header className="premium-navbar sticky top-0 z-50 border-b border-[#eadfcd] bg-[#fffdf9]/95 backdrop-blur-md">
       <div className="site-shell flex h-[76px] items-center justify-between gap-5">
         <NavLink to="/" aria-label="Nalin Dada मुख्य पृष्ठ" className="shrink-0">
           <Brand />
@@ -49,7 +49,7 @@ const Navbar = () => {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2 border-l border-[#dfd5c5] pl-4 xl:flex" aria-label="भाषा विकल्प">
+        <div className="language-switcher hidden items-center gap-2 xl:flex" aria-label="भाषा विकल्प">
           <span className="language-chip">English</span>
           <span className="language-divider">|</span>
           <span className="language-chip language-active">हिन्दी</span>
@@ -59,7 +59,7 @@ const Navbar = () => {
 
         <button
           type="button"
-          className="grid h-11 w-11 place-items-center rounded-full border border-[#e5d7c3] text-[#7f171b] transition hover:bg-[#fbf2e5] lg:hidden"
+          className="nav-menu-button grid h-11 w-11 place-items-center rounded-full lg:hidden"
           aria-label={open ? "मेनू बंद करें" : "मेनू खोलें"}
           aria-expanded={open}
           onClick={() => setOpen((value) => !value)}
@@ -69,7 +69,7 @@ const Navbar = () => {
       </div>
 
       {open && (
-        <div className="fixed inset-x-0 top-[77px] z-50 h-[calc(100dvh-77px)] overflow-y-auto bg-[#fffdf9] lg:hidden">
+        <div className="mobile-menu-surface fixed inset-x-0 top-[77px] z-50 h-[calc(100dvh-77px)] overflow-y-auto bg-[#fffdf9] lg:hidden">
           <div className="site-shell py-6">
             <nav className="grid gap-1" aria-label="मोबाइल नेविगेशन">
               {links.map((link) => (
