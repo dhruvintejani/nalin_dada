@@ -17,6 +17,54 @@ export default function ScrollToTop() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     document.title = pageTitles[pathname] ?? "Nalin Dada | Dr. Nalin Pandya";
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (reduceMotion) {
+      return;
+    }
+
+    const targets = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        "main section, main article, main .section-title, main .eyebrow",
+      ),
+    );
+
+    targets.forEach((element, index) => {
+      element.dataset.reveal = "pending";
+      element.style.setProperty(
+        "--reveal-delay",
+        `${Math.min(index % 5, 4) * 42}ms`,
+      );
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          const element = entry.target as HTMLElement;
+          element.dataset.reveal = "visible";
+          observer.unobserve(element);
+        });
+      },
+      {
+        rootMargin: "0px 0px -7% 0px",
+        threshold: 0.08,
+      },
+    );
+
+    targets.forEach((element) => observer.observe(element));
+
+    return () => {
+      observer.disconnect();
+      targets.forEach((element) => {
+        delete element.dataset.reveal;
+        element.style.removeProperty("--reveal-delay");
+      });
+    };
   }, [pathname]);
 
   return null;
