@@ -26,19 +26,7 @@ export default function ScrollToTop() {
       return;
     }
 
-    const targets = Array.from(
-      document.querySelectorAll<HTMLElement>(
-        "main section, main article, main .section-title, main .eyebrow",
-      ),
-    );
-
-    targets.forEach((element, index) => {
-      element.dataset.reveal = "pending";
-      element.style.setProperty(
-        "--reveal-delay",
-        `${Math.min(index % 5, 4) * 42}ms`,
-      );
-    });
+    const observed = new WeakSet<Element>();
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -56,14 +44,48 @@ export default function ScrollToTop() {
       },
     );
 
-    targets.forEach((element) => observer.observe(element));
+    const scan = () => {
+      const targets = Array.from(
+        document.querySelectorAll<HTMLElement>(
+          "main section, main article, main .section-title, main .eyebrow",
+        ),
+      );
+
+      targets.forEach((element, index) => {
+        if (observed.has(element)) return;
+
+        observed.add(element);
+        element.dataset.reveal = "pending";
+        element.style.setProperty(
+          "--reveal-delay",
+          `${Math.min(index % 5, 4) * 42}ms`,
+        );
+        observer.observe(element);
+      });
+    };
+
+    scan();
+
+    const main = document.querySelector("main");
+    const mutationObserver = new MutationObserver(scan);
+
+    if (main) {
+      mutationObserver.observe(main, {
+        childList: true,
+        subtree: true,
+      });
+    }
 
     return () => {
       observer.disconnect();
-      targets.forEach((element) => {
-        delete element.dataset.reveal;
-        element.style.removeProperty("--reveal-delay");
-      });
+      mutationObserver.disconnect();
+
+      document
+        .querySelectorAll<HTMLElement>("[data-reveal]")
+        .forEach((element) => {
+          delete element.dataset.reveal;
+          element.style.removeProperty("--reveal-delay");
+        });
     };
   }, [pathname]);
 
