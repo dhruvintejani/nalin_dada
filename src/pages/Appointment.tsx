@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   ArrowRight,
@@ -31,12 +31,20 @@ const serviceOptions = [
 ];
 
 const formSchema = z.object({
-  name: z.string().trim().min(2, "कृपया अपना पूरा नाम दर्ज करें"),
+  name: z
+    .string()
+    .trim()
+    .min(2, "कृपया अपना पूरा नाम दर्ज करें")
+    .max(80, "नाम 80 अक्षरों से कम रखें"),
   mobile: z
     .string()
     .trim()
-    .regex(/^[6-9][0-9]{9}$/, "कृपया वैध 10-अंकीय मोबाइल नंबर दर्ज करें"),
-  city: z.string().trim().min(2, "कृपया अपना शहर दर्ज करें"),
+    .regex(/^[6-9][0-9]{9}$/, "कृपया वैध 10-अंकीय भारतीय मोबाइल नंबर दर्ज करें"),
+  city: z
+    .string()
+    .trim()
+    .min(2, "कृपया अपना शहर दर्ज करें")
+    .max(80, "शहर का नाम 80 अक्षरों से कम रखें"),
   service: z.string().min(1, "कृपया सेवा चुनें"),
   date: z
     .string()
@@ -58,19 +66,33 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-const fieldClass =
-  "w-full rounded-xl border border-[#dfcfb9] bg-white px-4 py-3.5 text-sm text-[#463b33] outline-none transition placeholder:text-[#9b8d82] focus:border-[#c48a3c] focus:ring-4 focus:ring-[#e8c792]/30";
+const getLocalDateInputValue = () => {
+  const now = new Date();
+  const local = new Date(now.getTime() - now.getTimezoneOffset() * 60_000);
+  return local.toISOString().slice(0, 10);
+};
 
 const Appointment = () => {
   const [submitNote, setSubmitNote] = useState("");
+  const minDate = useMemo(getLocalDateInputValue, []);
 
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    watch,
+    formState: {
+      errors,
+      isSubmitting,
+      isValid,
+      dirtyFields,
+    },
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
-    mode: "onBlur",
+    mode: "onChange",
+    reValidateMode: "onChange",
+    criteriaMode: "firstError",
+    delayError: 120,
+    shouldFocusError: true,
     defaultValues: {
       name: "",
       mobile: "",
@@ -82,12 +104,20 @@ const Appointment = () => {
     },
   });
 
+  const messageLength = watch("message")?.length ?? 0;
+
+  const fieldState = (name: keyof FormData) => {
+    if (errors[name]) return "form-control-error";
+    if (dirtyFields[name]) return "form-control-valid";
+    return "";
+  };
+
   const onSubmit = (data: FormData) => {
     setSubmitNote("");
 
     if (!siteConfig.whatsappNumber) {
       setSubmitNote(
-        "फॉर्म तैयार है। Nalin Dada का नया WhatsApp नंबर मिलते ही यहाँ नंबर जोड़कर WhatsApp sending सक्रिय कर दी जाएगी।",
+        "फॉर्म की validation पूरी तरह काम कर रही है। Nalin Dada का नया WhatsApp नंबर मिलते ही इसी flow से तैयार WhatsApp message खुलेगा।",
       );
       return;
     }
@@ -240,60 +270,98 @@ const Appointment = () => {
 
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="mt-8 rounded-[1.5rem] border border-[#e4d3bd] bg-[#fbf5eb] p-5 shadow-[0_12px_34px_rgba(82,50,29,.06)] sm:p-7 lg:p-9"
+              className="premium-form mt-8 rounded-[1.5rem] border border-[#e4d3bd] bg-[#fbf5eb] p-5 shadow-[0_12px_34px_rgba(82,50,29,.06)] sm:p-7 lg:p-9"
               noValidate
             >
+              <div className="mb-6 flex flex-col gap-2 rounded-[1rem] border border-[#ead9c1] bg-white/80 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-center gap-2 text-sm font-semibold text-[#62554b]">
+                  <CheckCircle2
+                    size={18}
+                    className={isValid ? "text-[#3f7f5b]" : "text-[#b89363]"}
+                  />
+                  <span>
+                    {isValid
+                      ? "सभी आवश्यक जानकारी सही है"
+                      : "आवश्यक fields भरते ही validation तुरंत दिखाई देगी"}
+                  </span>
+                </div>
+                <span
+                  className={
+                    "validation-status " +
+                    (isValid ? "validation-status-valid" : "validation-status-pending")
+                  }
+                >
+                  {isValid ? "Ready" : "Incomplete"}
+                </span>
+              </div>
+
               <div className="grid gap-5 md:grid-cols-2">
-                <label className="block text-sm font-bold text-[#54483f]">
-                  आपका नाम <span className="text-[#9b151a]">*</span>
+                <label className="field-label" htmlFor="appointment-name">
+                  आपका नाम <span className="required-mark">*</span>
                   <input
+                    id="appointment-name"
                     {...register("name")}
                     autoComplete="name"
                     placeholder="अपना नाम दर्ज करें"
-                    className={fieldClass + " mt-2"}
+                    aria-invalid={Boolean(errors.name)}
+                    aria-describedby={errors.name ? "name-error" : undefined}
+                    className={"form-control mt-2 " + fieldState("name")}
                   />
                   {errors.name && (
-                    <span className="mt-1.5 block text-xs font-medium text-[#a51f24]">
+                    <span id="name-error" className="field-error" role="alert">
                       {errors.name.message}
                     </span>
                   )}
                 </label>
 
-                <label className="block text-sm font-bold text-[#54483f]">
-                  मोबाइल नंबर <span className="text-[#9b151a]">*</span>
+                <label className="field-label" htmlFor="appointment-mobile">
+                  मोबाइल नंबर <span className="required-mark">*</span>
                   <input
+                    id="appointment-mobile"
                     {...register("mobile")}
                     inputMode="numeric"
                     autoComplete="tel"
                     maxLength={10}
+                    pattern="[0-9]*"
                     placeholder="10-अंकीय मोबाइल नंबर"
-                    className={fieldClass + " mt-2"}
+                    aria-invalid={Boolean(errors.mobile)}
+                    aria-describedby={errors.mobile ? "mobile-error" : undefined}
+                    className={"form-control mt-2 " + fieldState("mobile")}
                   />
                   {errors.mobile && (
-                    <span className="mt-1.5 block text-xs font-medium text-[#a51f24]">
+                    <span id="mobile-error" className="field-error" role="alert">
                       {errors.mobile.message}
                     </span>
                   )}
                 </label>
 
-                <label className="block text-sm font-bold text-[#54483f]">
-                  शहर <span className="text-[#9b151a]">*</span>
+                <label className="field-label" htmlFor="appointment-city">
+                  शहर <span className="required-mark">*</span>
                   <input
+                    id="appointment-city"
                     {...register("city")}
                     autoComplete="address-level2"
                     placeholder="अपना शहर दर्ज करें"
-                    className={fieldClass + " mt-2"}
+                    aria-invalid={Boolean(errors.city)}
+                    aria-describedby={errors.city ? "city-error" : undefined}
+                    className={"form-control mt-2 " + fieldState("city")}
                   />
                   {errors.city && (
-                    <span className="mt-1.5 block text-xs font-medium text-[#a51f24]">
+                    <span id="city-error" className="field-error" role="alert">
                       {errors.city.message}
                     </span>
                   )}
                 </label>
 
-                <label className="block text-sm font-bold text-[#54483f]">
-                  सेवा / विषय <span className="text-[#9b151a]">*</span>
-                  <select {...register("service")} className={fieldClass + " mt-2"}>
+                <label className="field-label" htmlFor="appointment-service">
+                  सेवा / विषय <span className="required-mark">*</span>
+                  <select
+                    id="appointment-service"
+                    {...register("service")}
+                    aria-invalid={Boolean(errors.service)}
+                    aria-describedby={errors.service ? "service-error" : undefined}
+                    className={"form-control premium-select mt-2 " + fieldState("service")}
+                  >
                     <option value="">सेवा चुनें</option>
                     {serviceOptions.map((service) => (
                       <option key={service} value={service}>
@@ -302,51 +370,73 @@ const Appointment = () => {
                     ))}
                   </select>
                   {errors.service && (
-                    <span className="mt-1.5 block text-xs font-medium text-[#a51f24]">
+                    <span id="service-error" className="field-error" role="alert">
                       {errors.service.message}
                     </span>
                   )}
                 </label>
 
-                <label className="block text-sm font-bold text-[#54483f]">
-                  पसंदीदा तारीख <span className="text-[#9b151a]">*</span>
+                <label className="field-label" htmlFor="appointment-date">
+                  पसंदीदा तारीख <span className="required-mark">*</span>
                   <input
+                    id="appointment-date"
                     type="date"
+                    min={minDate}
                     {...register("date")}
-                    className={fieldClass + " mt-2"}
+                    aria-invalid={Boolean(errors.date)}
+                    aria-describedby={errors.date ? "date-error" : undefined}
+                    className={"form-control mt-2 " + fieldState("date")}
                   />
                   {errors.date && (
-                    <span className="mt-1.5 block text-xs font-medium text-[#a51f24]">
+                    <span id="date-error" className="field-error" role="alert">
                       {errors.date.message}
                     </span>
                   )}
                 </label>
 
-                <label className="block text-sm font-bold text-[#54483f]">
-                  पसंदीदा समय <span className="text-[#9b151a]">*</span>
-                  <select {...register("timeSlot")} className={fieldClass + " mt-2"}>
+                <label className="field-label" htmlFor="appointment-time">
+                  पसंदीदा समय <span className="required-mark">*</span>
+                  <select
+                    id="appointment-time"
+                    {...register("timeSlot")}
+                    aria-invalid={Boolean(errors.timeSlot)}
+                    aria-describedby={errors.timeSlot ? "time-error" : undefined}
+                    className={"form-control premium-select mt-2 " + fieldState("timeSlot")}
+                  >
                     <option value="">समय चुनें</option>
                     <option value={siteConfig.morningSlot}>सुबह {siteConfig.morningSlot}</option>
                     <option value={siteConfig.eveningSlot}>शाम {siteConfig.eveningSlot}</option>
                   </select>
                   {errors.timeSlot && (
-                    <span className="mt-1.5 block text-xs font-medium text-[#a51f24]">
+                    <span id="time-error" className="field-error" role="alert">
                       {errors.timeSlot.message}
                     </span>
                   )}
                 </label>
               </div>
 
-              <label className="mt-5 block text-sm font-bold text-[#54483f]">
+              <label className="field-label mt-5 block" htmlFor="appointment-message">
                 आपका प्रश्न / संदेश
                 <textarea
+                  id="appointment-message"
                   {...register("message")}
                   rows={5}
                   placeholder="संक्षेप में बताएं कि आप किस विषय पर परामर्श चाहते हैं..."
-                  className={fieldClass + " mt-2 resize-y"}
+                  aria-invalid={Boolean(errors.message)}
+                  aria-describedby={errors.message ? "message-error" : "message-count"}
+                  className={"form-control mt-2 resize-y " + fieldState("message")}
                 />
+                <span
+                  id="message-count"
+                  className={
+                    "mt-1.5 block text-right text-[0.7rem] " +
+                    (messageLength > 560 ? "text-[#9b151a]" : "text-[#8c7e72]")
+                  }
+                >
+                  {messageLength}/600
+                </span>
                 {errors.message && (
-                  <span className="mt-1.5 block text-xs font-medium text-[#a51f24]">
+                  <span id="message-error" className="field-error" role="alert">
                     {errors.message.message}
                   </span>
                 )}
@@ -364,24 +454,22 @@ const Appointment = () => {
               <div className="mt-6">
                 <button
                   type="submit"
-                  disabled={isSubmitting}
-                  className="button-primary w-full sm:w-auto"
+                  disabled={isSubmitting || !isValid}
+                  className="button-primary button-submit w-full sm:w-auto"
                 >
                   <MessageCircleMore size={19} />
-                  WhatsApp पर अनुरोध तैयार करें
+                  {isSubmitting ? "तैयार हो रहा है..." : "WhatsApp पर अनुरोध तैयार करें"}
                   <ArrowRight size={18} />
                 </button>
 
                 <p className="mt-3 max-w-2xl text-xs leading-6 text-[#7b6c60]">
-                  Submit करने पर WhatsApp खुलेगा; message भेजने के लिए आपको वहाँ Send दबाना होगा।
+                  सभी required fields valid होने के बाद button सक्रिय होगा। Submit करने पर WhatsApp खुलेगा; message भेजने के लिए आपको वहाँ Send दबाना होगा।
                 </p>
 
                 {submitNote && (
-                  <div
-                    className="mt-4 rounded-[1rem] border border-[#d9b77f] bg-[#fff5e4] px-4 py-3 text-sm leading-6 text-[#744a25]"
-                    role="status"
-                  >
-                    {submitNote}
+                  <div className="form-notice mt-4" role="status" aria-live="polite">
+                    <Info size={18} className="shrink-0" />
+                    <span>{submitNote}</span>
                   </div>
                 )}
               </div>
