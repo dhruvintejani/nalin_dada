@@ -219,7 +219,7 @@ const Services = () => (
               व्यक्तिगत और निजी संवाद
             </h3>
             <p className="mt-3 text-sm leading-7 text-[#675b51]">
-              परामर्श व्यक्तिगत रूप से होता है। वेबसाइट पर आपकी निजी जानकारी सार्वजनिक रूप से प्रदर्शित नहीं की जाएगी।
+              परामर्श व्यक्तिगत रूप से होता है। आपकी निजी जानकारी सार्वजनिक रूप से प्रदर्शित नहीं की जाती।
             </p>
           </article>
 
@@ -231,7 +231,7 @@ const Services = () => (
               परामर्श शुल्क {siteConfig.consultationFee}
             </h3>
             <p className="mt-3 text-sm leading-7 text-[#675b51]">
-              शुल्क ({siteConfig.consultationFee}) कार्यालय में भुगतान किया जाएगा। वेबसाइट पर ऑनलाइन भुगतान की सुविधा नहीं होगी।
+              शुल्क ({siteConfig.consultationFee}) कार्यालय में भुगतान किया जाएगा। ऑनलाइन भुगतान की सुविधा उपलब्ध नहीं है।
             </p>
           </article>
 
@@ -304,7 +304,7 @@ const Services = () => (
             {siteConfig.appointmentDays} · {siteConfig.morningSlot} और {siteConfig.eveningSlot}
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-7 text-[#dfe8e4] md:text-base">
-            {siteConfig.sundayStatus}। अंतिम WhatsApp नंबर मिलने के बाद form-to-WhatsApp flow सक्रिय किया जाएगा।
+            {siteConfig.sundayStatus}। नया WhatsApp नंबर पुष्टि होने के बाद form-to-WhatsApp सुविधा सक्रिय होगी।
           </p>
         </div>
         <Link to="/appointment" className="button-gold">
