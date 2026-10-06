@@ -94,8 +94,8 @@ const Home = () => (
             </div>
           </div>
           <div className="quote-card absolute -bottom-6 -left-7 hidden max-w-[280px] md:block">
-            <p>“सच्ची दिशा बाहर से नहीं थोपी जाती; वह भीतर की स्पष्टता से जन्म लेती है।”</p>
-            <span>— Nalin Dada</span>
+            <p>ज्योतिष · साधना · आध्यात्मिक मार्गदर्शन</p>
+            <span>Nalin Dada · Dr. Nalin Pandya</span>
           </div>
         </div>
       </div>
