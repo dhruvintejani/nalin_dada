@@ -10,11 +10,11 @@ import {
   MoonStar,
   ShieldCheck,
   Sparkles,
-  TreePine,
-  UserRound,
   Waves,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import MediaSlot from "../components/MediaSlot";
+import { media } from "../config/media";
 
 const journey = [
   {
@@ -66,34 +66,6 @@ const practices = [
   },
 ];
 
-const AshramPhotoPlaceholder = ({
-  label,
-  tall = false,
-}: {
-  label: string;
-  tall?: boolean;
-}) => (
-  <div
-    role="img"
-    aria-label={label}
-    className={
-      "relative grid place-items-center overflow-hidden rounded-[1.35rem] border border-[#e6d3b8] bg-[linear-gradient(145deg,#f8e9cf,#fff9ef_55%,#ead1a7)] " +
-      (tall ? "min-h-[440px]" : "min-h-[245px]")
-    }
-  >
-    <div className="absolute -right-14 -top-16 h-52 w-52 rounded-full border border-[#d5a45f]/35" />
-    <div className="absolute -bottom-16 -left-14 h-52 w-52 rounded-full border border-[#d5a45f]/30" />
-    <div className="absolute left-1/2 top-1/2 h-36 w-36 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#e1b875]/10 blur-2xl" />
-    <div className="relative z-10 max-w-[245px] px-5 text-center">
-      <div className="mx-auto grid h-16 w-16 place-items-center rounded-full border border-[#ddb675] bg-white/70 text-[#a65e22]">
-        <TreePine size={29} strokeWidth={1.5} />
-      </div>
-      <p className="mt-4 text-sm font-bold text-[#7f171b]">वास्तविक आश्रम फोटो</p>
-      <p className="mt-2 text-xs leading-5 text-[#766457]">{label}</p>
-    </div>
-  </div>
-);
-
 const Ashram = () => (
   <div className="overflow-hidden bg-[#fffdf9]">
     <section className="hero-surface relative">
@@ -138,9 +110,10 @@ const Ashram = () => (
 
         <div className="relative mx-auto w-full max-w-[500px]">
           <div className="absolute -inset-4 rounded-[2rem] border border-[#e3b86f]/45" />
-          <AshramPhotoPlaceholder
-            tall
-            label="यहाँ Nalin Dada द्वारा दी गई वास्तविक पीताम्बरा पीठ / साधना भूमि की मुख्य फोटो जोड़ी जाएगी।"
+          <MediaSlot
+            asset={media.photos.ashramHero}
+            className="min-h-[440px] rounded-[1.35rem]"
+            label="पीताम्बरा पीठ / साधना भूमि की मुख्य फोटो"
           />
           <div className="absolute -bottom-5 left-5 right-5 rounded-[1rem] border border-[#ead4b6] bg-[#fffdf9]/95 px-5 py-4 shadow-[0_16px_34px_rgba(77,45,25,.13)] backdrop-blur">
             <div className="flex items-start gap-3">
@@ -156,9 +129,10 @@ const Ashram = () => (
 
     <section className="section-block">
       <div className="site-shell grid items-center gap-10 lg:grid-cols-[.92fr_1.08fr]">
-        <AshramPhotoPlaceholder
-          tall
-          label="यहाँ साधना भूमि, मंदिर परिसर या Nalin Dada की आश्रम से जुड़ी वास्तविक फोटो जोड़ी जाएगी।"
+        <MediaSlot
+          asset={media.photos.ashramMain}
+          className="min-h-[440px] rounded-[1.35rem]"
+          label="साधना भूमि से जुड़ी वास्तविक फोटो"
         />
 
         <div>
@@ -265,19 +239,19 @@ const Ashram = () => (
           <div>
             <div className="eyebrow">आश्रम की झलकियाँ</div>
             <h2 className="section-title mt-3">
-              वास्तविक तस्वीरें अंतिम चरण में जोड़ी जाएँगी
+              साधना भूमि की शांत और आध्यात्मिक झलकियाँ
             </h2>
           </div>
           <p className="max-w-md text-sm leading-7 text-[#716359]">
-            आपके पास मौजूद Ashram और Nalin Dada की real photos इस gallery में replace की जाएँगी।
+            तस्वीरें केवल साधना-स्थल की गरिमा और गोपनीयता का सम्मान करते हुए प्रस्तुत की जाएँगी।
           </p>
         </div>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <AshramPhotoPlaceholder label="आश्रम / साधना भूमि का बाहरी दृश्य" />
-          <AshramPhotoPlaceholder label="अनुष्ठान या पूजा से जुड़ी वास्तविक तस्वीर" />
-          <AshramPhotoPlaceholder label="Nalin Dada की साधना भूमि से जुड़ी तस्वीर" />
-          <AshramPhotoPlaceholder label="माँ नर्मदा / आध्यात्मिक यात्रा से जुड़ी वास्तविक तस्वीर" />
+          <MediaSlot asset={media.photos.ashramGalleryOne} className="min-h-[245px] rounded-[1.35rem]" label="साधना भूमि का बाहरी दृश्य" />
+          <MediaSlot asset={media.photos.ashramGalleryTwo} className="min-h-[245px] rounded-[1.35rem]" label="अनुष्ठान या पूजा की झलक" />
+          <MediaSlot asset={media.photos.ashramGalleryThree} className="min-h-[245px] rounded-[1.35rem]" label="Nalin Dada की साधना भूमि से जुड़ी तस्वीर" />
+          <MediaSlot asset={media.photos.ashramGalleryFour} className="min-h-[245px] rounded-[1.35rem]" label="माँ नर्मदा / आध्यात्मिक यात्रा की झलक" />
         </div>
       </div>
     </section>
