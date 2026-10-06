@@ -24,7 +24,7 @@ const MediaSlot = ({
           alt={asset.alt}
           loading={priority ? "eager" : "lazy"}
           fetchPriority={priority ? "high" : "auto"}
-          decoding={priority ? "sync" : "async"}
+          decoding="async"
           style={{ objectPosition: asset.position ?? "center" }}
           className={"media-slot-image " + imageClassName}
         />
