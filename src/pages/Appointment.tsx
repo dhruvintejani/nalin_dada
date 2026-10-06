@@ -183,7 +183,7 @@ const Appointment = () => {
                 <WalletCards size={22} />
               </div>
               <h2 className="mt-4 font-serif text-lg font-bold text-[#7f171b]">
-                शुल्क ₹1,100
+                शुल्क {siteConfig.consultationFee}
               </h2>
               <p className="mt-2 text-sm leading-6 text-[#675b51]">
                 शुल्क consultation office में भुगतान किया जाएगा। कोई online payment नहीं है।
@@ -198,7 +198,7 @@ const Appointment = () => {
                 दो समय स्लॉट
               </h2>
               <p className="mt-2 text-sm leading-6 text-[#675b51]">
-                सुबह 11:00–1:00 और शाम 6:00–8:00। केवल prior appointment से।
+                सुबह {siteConfig.morningSlot} और शाम {siteConfig.eveningSlot}। केवल prior appointment से।
               </p>
             </article>
 
