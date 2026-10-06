@@ -169,7 +169,7 @@ const Services = () => (
         <MediaSlot
           asset={media.photos.servicesConsultation}
           className="min-h-[410px] rounded-[1.5rem]"
-          label="वास्तविक Consultation Photo"
+          label="व्यक्तिगत परामर्श की तस्वीर"
         />
 
         <div>
