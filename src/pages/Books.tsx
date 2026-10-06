@@ -1,220 +1,385 @@
-import { motion } from 'framer-motion';
-import { ArrowRight, BookOpen, Search, Filter, Sparkles, Users } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useMemo, useState } from "react";
+import {
+  ArrowRight,
+  BookOpen,
+  Compass,
+  Flame,
+  Flower2,
+  Hash,
+  HeartPulse,
+  Home,
+  Leaf,
+  LibraryBig,
+  Search,
+  Sparkles,
+  UserRound,
+} from "lucide-react";
+import { Link } from "react-router-dom";
+
+const categories = [
+  "सभी",
+  "ज्योतिष",
+  "अंक ज्योतिष",
+  "आयुर्वेद / स्वास्थ्य",
+  "तंत्र-मंत्र",
+  "वास्तु",
+  "साधना",
+  "जीवन मार्गदर्शन",
+];
+
+const books = [
+  {
+    title: "ज्योतिष विषयक पुस्तक",
+    category: "ज्योतिष",
+    alt: "Nalin Dada की ज्योतिष विषयक वास्तविक पुस्तक का कवर",
+    tone: "book-cover-red",
+  },
+  {
+    title: "अंक ज्योतिष विषयक पुस्तक",
+    category: "अंक ज्योतिष",
+    alt: "Nalin Dada की अंक ज्योतिष विषयक वास्तविक पुस्तक का कवर",
+    tone: "book-cover-blue",
+  },
+  {
+    title: "आयुर्वेद एवं प्राकृतिक स्वास्थ्य",
+    category: "आयुर्वेद / स्वास्थ्य",
+    alt: "Nalin Dada की आयुर्वेद और प्राकृतिक स्वास्थ्य विषयक वास्तविक पुस्तक का कवर",
+    tone: "book-cover-green",
+  },
+  {
+    title: "स्वास्थ्य एवं आहार विषयक पुस्तक",
+    category: "आयुर्वेद / स्वास्थ्य",
+    alt: "Nalin Dada की स्वास्थ्य और आहार विषयक वास्तविक पुस्तक का कवर",
+    tone: "book-cover-gold",
+  },
+  {
+    title: "तंत्र-साधना विषयक पुस्तक",
+    category: "तंत्र-मंत्र",
+    alt: "Nalin Dada की तंत्र और साधना विषयक वास्तविक पुस्तक का कवर",
+    tone: "book-cover-maroon",
+  },
+  {
+    title: "मंत्र एवं विशेष प्रयोग",
+    category: "तंत्र-मंत्र",
+    alt: "Nalin Dada की मंत्र और विशेष प्रयोग विषयक वास्तविक पुस्तक का कवर",
+    tone: "book-cover-indigo",
+  },
+  {
+    title: "वास्तु विषयक पुस्तक",
+    category: "वास्तु",
+    alt: "Nalin Dada की वास्तु विषयक वास्तविक पुस्तक का कवर",
+    tone: "book-cover-teal",
+  },
+  {
+    title: "आध्यात्मिक साधना",
+    category: "साधना",
+    alt: "Nalin Dada की आध्यात्मिक साधना विषयक वास्तविक पुस्तक का कवर",
+    tone: "book-cover-saffron",
+  },
+  {
+    title: "गायत्री एवं आध्यात्मिक अभ्यास",
+    category: "साधना",
+    alt: "Nalin Dada की गायत्री और आध्यात्मिक अभ्यास विषयक वास्तविक पुस्तक का कवर",
+    tone: "book-cover-red",
+  },
+  {
+    title: "जीवन मार्गदर्शन",
+    category: "जीवन मार्गदर्शन",
+    alt: "Nalin Dada की जीवन मार्गदर्शन विषयक वास्तविक पुस्तक का कवर",
+    tone: "book-cover-green",
+  },
+  {
+    title: "प्राकृतिक उपचार विषयक पुस्तक",
+    category: "आयुर्वेद / स्वास्थ्य",
+    alt: "Nalin Dada की प्राकृतिक उपचार विषयक वास्तविक पुस्तक का कवर",
+    tone: "book-cover-teal",
+  },
+  {
+    title: "भारतीय ज्ञान परंपरा",
+    category: "जीवन मार्गदर्शन",
+    alt: "Nalin Dada की भारतीय ज्ञान परंपरा विषयक वास्तविक पुस्तक का कवर",
+    tone: "book-cover-gold",
+  },
+];
+
+const subjects = [
+  { name: "ज्योतिष", icon: Sparkles },
+  { name: "अंक ज्योतिष", icon: Hash },
+  { name: "आयुर्वेद", icon: Leaf },
+  { name: "स्वास्थ्य", icon: HeartPulse },
+  { name: "तंत्र-मंत्र", icon: Flame },
+  { name: "वास्तु", icon: Home },
+  { name: "साधना", icon: Flower2 },
+  { name: "जीवन मार्गदर्शन", icon: Compass },
+];
+
+const BookCoverPlaceholder = ({
+  title,
+  category,
+  alt,
+  tone,
+}: {
+  title: string;
+  category: string;
+  alt: string;
+  tone: string;
+}) => (
+  <div className="group" role="img" aria-label={alt}>
+    <div className={"book-cover-placeholder " + tone}>
+      <div className="book-cover-border" />
+      <div className="relative z-10 flex h-full flex-col items-center justify-between py-5 text-center">
+        <span className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-white/70">
+          {category}
+        </span>
+        <div>
+          <BookOpen className="mx-auto text-white/90" size={30} strokeWidth={1.5} />
+          <h3 className="mt-4 font-serif text-base font-bold leading-6 text-white">
+            {title}
+          </h3>
+        </div>
+        <div>
+          <p className="text-[0.68rem] font-semibold text-white/75">Nalin Dada</p>
+          <p className="mt-1 text-[0.6rem] text-white/55">वास्तविक कवर बाद में जोड़ा जाएगा</p>
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 const Books = () => {
-  const categories = ['सभी', 'ज्योतिष', 'अध्यात्म', 'आयुर्वेद', 'जीवन दर्शन', 'तंत्र-मंत्र'];
+  const [activeCategory, setActiveCategory] = useState("सभी");
+  const [query, setQuery] = useState("");
 
-  const books = [
-    { title: 'अध्यात्मिक मार्गदर्शन', category: 'अध्यात्म', color: 'bg-red-800' },
-    { title: 'सिद्धि साधना प्रयोग', category: 'तंत्र-मंत्र', color: 'bg-blue-800' },
-    { title: 'अध्यात्म और सत्य', category: 'अध्यात्म', color: 'bg-indigo-900' },
-    { title: 'वास्तु सरल सूत्र', category: 'जीवन दर्शन', color: 'bg-green-700' },
-    { title: 'आयुर्वेद और स्वास्थ्य', category: 'आयुर्वेद', color: 'bg-teal-700' },
-    { title: 'अंक ज्योतिष सरल परिचय', category: 'ज्योतिष', color: 'bg-blue-600' },
-    { title: 'गायत्री आयुर्वेद', category: 'आयुर्वेद', color: 'bg-orange-600' },
-    { title: 'तंत्र साधना एवं प्रयोग', category: 'तंत्र-मंत्र', color: 'bg-purple-900' },
-    { title: 'श्री सूक्त का रहस्य', category: 'अध्यात्म', color: 'bg-pink-800' },
-    { title: 'स्वास्थ्य आहार-2', category: 'आयुर्वेद', color: 'bg-orange-700' },
-    { title: 'जीवन दिशा', category: 'जीवन दर्शन', color: 'bg-yellow-600' },
-    { title: 'प्राकृतिक उपचार', category: 'आयुर्वेद', color: 'bg-green-600' },
-  ];
+  const visibleBooks = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase();
+
+    return books.filter((book) => {
+      const categoryMatch =
+        activeCategory === "सभी" || book.category === activeCategory;
+      const searchMatch =
+        !normalizedQuery ||
+        book.title.toLowerCase().includes(normalizedQuery) ||
+        book.category.toLowerCase().includes(normalizedQuery);
+
+      return categoryMatch && searchMatch;
+    });
+  }, [activeCategory, query]);
 
   return (
-    <div className="bg-white">
-      {/* Hero Section */}
-      <section className="bg-[#fdf8f3] py-20 border-b border-amber-100">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <motion.div 
-              className="lg:w-1/2"
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-            >
-              <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
-                <Link to="/" className="hover:text-amber-700">घर</Link>
-                <span>›</span>
-                <span className="text-amber-700 font-bold">पुस्तकें एवं प्रकाशन</span>
-              </nav>
-              <h1 className="text-4xl lg:text-5xl font-serif font-bold text-[#5c0a0a] mb-6">नलिन दादा की पुस्तकें एवं प्रकाशन</h1>
-              <p className="text-lg text-gray-700 leading-relaxed mb-8">
-                आध्यात्मिक ज्ञान, ज्योतिष, उपचार, तंत्र-मंत्र, आयुर्वेद, वास्तु और जीवन दर्शन पर आधारित पुस्तकें - जो जीवन को सही दिशा, संतुलन और सकारात्मक ऊर्जा प्रदान करती हैं।
-              </p>
-              <div className="flex gap-4">
-                <button className="bg-[#5c0a0a] text-white px-8 py-3 rounded-md font-bold hover:bg-[#7a0d0d] transition-all flex items-center gap-2 shadow-md">
-                  हमारी पुस्तकों को देखें <ArrowRight size={20} />
-                </button>
-                <button className="bg-white border-2 border-amber-200 text-amber-900 px-8 py-3 rounded-md font-bold hover:bg-amber-50 transition-all">
-                  सभी विषयों की जानकारी
-                </button>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              className="lg:w-1/2 relative"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-            >
-              <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=800" alt="Books Collection" className="rounded-2xl shadow-2xl" />
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-lg shadow-xl border-l-4 border-amber-600 max-w-[280px]">
-                <p className="text-amber-900 font-serif italic text-sm mb-2">
-                  "पुस्तकें केवल ज्ञान का संग्रह नहीं, बल्कि जीवन को बदलने वाली साधना हैं।"
-                </p>
-                <p className="text-right text-xs font-bold text-gray-500">— डॉ. नलिन पण्ड्या</p>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Author Intro */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="bg-[#fdf8f3] rounded-3xl p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-12 border border-amber-100 shadow-sm">
-            <div className="lg:w-1/3">
-              <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&q=80&w=600" alt="Author" className="rounded-2xl shadow-lg border-4 border-white" />
-            </div>
-            <div className="lg:w-2/3">
-              <h3 className="text-amber-600 font-bold mb-2 flex items-center gap-2 italic">
-                <span className="w-8 h-[1px] bg-amber-600"></span> लेखक परिचय
-              </h3>
-              <h2 className="text-3xl font-serif font-bold text-[#5c0a0a] mb-6">डॉ. नलिन पंड्या - ज्ञान को समाज तक पहुँचाने का संकल्प</h2>
-              <p className="text-gray-700 leading-relaxed mb-8">
-                डॉ. नलिन पंड्या ने अपने वर्षों के अध्ययन, साधना, अनुसंधान और अनुभवों के आधार पर विभिन्न विषयों पर अनेक पुस्तकें लिखी हैं। इन पुस्तकों में ज्योतिष, अध्यात्म, आयुर्वेद, तंत्र-मंत्र, वास्तु, अंक ज्योतिष, जीवन प्रबंधन और भारतीय संस्कृति जैसे विषयों पर सरल भाषा में गहन मार्गदर्शन उपलब्ध है। उनका उद्देश्य प्राचीन ज्ञान को आधुनिक जीवन में उपयोगी बनाना और अधिक से अधिक लोगों तक सकारात्मक, व्यावहारिक और जीवनदायी ज्ञान पहुँचाना है।
-              </p>
-              <Link to="/about" className="bg-amber-100 text-amber-900 px-6 py-2 rounded font-bold text-sm hover:bg-amber-200 transition-colors inline-flex items-center gap-2">
-                डॉ. नलिन पंड्या के बारे में और जानें <ArrowRight size={16} />
-              </Link>
+    <div className="overflow-hidden bg-[#fffdf9]">
+      <section className="hero-surface relative">
+        <div className="hero-glow" />
+        <div className="site-shell grid min-h-[510px] items-center gap-10 py-12 lg:grid-cols-[1.06fr_.94fr] lg:py-16">
+          <div className="relative z-10">
+            <div className="eyebrow">मुख्य पृष्ठ · पुस्तकें एवं प्रकाशन</div>
+            <h1 className="mt-4 font-serif text-[2.65rem] font-bold leading-[1.14] tracking-[-0.035em] text-[#8f181c] sm:text-[3.3rem] lg:text-[4rem]">
+              Nalin Dada की पुस्तकें एवं प्रकाशन
+            </h1>
+            <p className="mt-5 max-w-[720px] text-base leading-8 text-[#51463e] md:text-lg">
+              Nalin Dada द्वारा लिखी गई पुस्तकों के उपलब्ध फोटो से ज्योतिष, अंक ज्योतिष, आयुर्वेद, स्वास्थ्य, वास्तु, तंत्र-मंत्र, साधना और जीवनोपयोगी विषयों पर उनका विस्तृत लेखन दिखाई देता है।
+            </p>
+            <p className="mt-3 max-w-[700px] text-sm leading-7 text-[#6c5e53]">
+              अभी इस पेज में वास्तविक पुस्तक-कवर के लिए तैयार स्थान रखे गए हैं। अंतिम चरण में आपके पास मौजूद मूल पुस्तक-फोटो इन्हीं स्थानों पर जोड़े जाएंगे।
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a href="#book-library" className="button-primary">
+                <LibraryBig size={18} /> पुस्तक संग्रह देखें <ArrowRight size={18} />
+              </a>
+              <a href="#subjects" className="button-secondary">
+                विषय देखें
+              </a>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Book Grid Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
-            <h2 className="text-3xl font-serif font-bold text-[#5c0a0a]">हमारी प्रमुख पुस्तकें</h2>
-            <div className="flex gap-2 overflow-x-auto w-full md:w-auto pb-2">
-              {categories.map((cat, i) => (
-                <button 
-                  key={i} 
-                  className={`px-4 py-2 rounded-full text-sm font-bold whitespace-nowrap transition-colors ${i === 0 ? 'bg-[#5c0a0a] text-white' : 'bg-gray-100 text-gray-700 hover:bg-amber-100'}`}
-                >
-                  {cat}
-                </button>
+          <div className="relative mx-auto w-full max-w-[510px]">
+            <div className="absolute -inset-4 rounded-[2rem] border border-[#e3b86f]/45" />
+            <div className="relative grid grid-cols-3 gap-3 rounded-[1.7rem] border-[7px] border-white bg-[#f7ead5] p-5 shadow-[0_24px_60px_rgba(78,44,22,.17)]">
+              {books.slice(0, 6).map((book) => (
+                <BookCoverPlaceholder key={book.title} {...book} />
               ))}
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-            {books.map((book, index) => (
-              <motion.div 
-                key={index}
-                className="group cursor-pointer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-              >
-                <div className={`${book.color} aspect-[2/3] rounded-lg shadow-md mb-4 flex flex-col items-center justify-center p-4 text-center text-white relative overflow-hidden group-hover:shadow-2xl transition-all duration-300 transform group-hover:-translate-y-2 border-2 border-white/20`}>
-                  {/* Decorative elements */}
-                  <div className="absolute top-2 left-2 w-full h-full border border-white/10 rounded-lg pointer-events-none"></div>
-                  <div className="text-xs uppercase tracking-widest opacity-60 mb-2">{book.category}</div>
-                  <h4 className="text-sm md:text-base font-serif font-bold leading-tight mb-2">{book.title}</h4>
-                  <div className="text-[10px] italic opacity-70 mt-4">डॉ. नलिन पंड्या</div>
-                  <div className="absolute bottom-4 right-4 bg-white/20 p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ArrowRight size={12} />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+      <section className="section-block">
+        <div className="site-shell grid items-center gap-10 lg:grid-cols-[.82fr_1.18fr]">
+          <div className="relative overflow-hidden rounded-[1.5rem] border border-[#ead8c1] bg-[#fff7e9] p-5">
+            <img
+              src="/images/nalin-speaking.jpg"
+              alt="Nalin Dada speaking and sharing knowledge at an event"
+              className="h-[380px] w-full rounded-[1.1rem] object-cover object-[center_24%]"
+            />
+            <div className="absolute inset-x-8 bottom-8 rounded-[1rem] border border-white/45 bg-[#fffdf9]/92 p-4 shadow-lg backdrop-blur">
+              <p className="text-xs font-bold tracking-[0.12em] text-[#b06a24]">
+                लेखक परिचय
+              </p>
+              <p className="mt-1 font-serif text-lg font-bold text-[#7f171b]">
+                Nalin Dada · Dr. Nalin Pandya
+              </p>
+            </div>
           </div>
-          
-          <div className="text-center mt-16">
-            <button className="bg-amber-100 text-amber-900 px-10 py-4 rounded-full font-bold hover:bg-amber-200 transition-all shadow-sm">
-              सभी पुस्तकें देखें
-            </button>
+
+          <div>
+            <div className="eyebrow">लेखन का विस्तार</div>
+            <h2 className="section-title mt-3">
+              विविध विषयों को सरल रूप में प्रस्तुत करने का प्रयास
+            </h2>
+            <p className="mt-5 text-base leading-8 text-[#5d5148]">
+              आपके द्वारा दिए गए वास्तविक पुस्तक-फोटो में Nalin Dada के लेखन के कई अलग विषय दिखाई देते हैं। इनमें ज्योतिष और अंक ज्योतिष के साथ आयुर्वेद, स्वास्थ्य, प्राकृतिक उपाय, वास्तु, मंत्र-तंत्र और साधना जैसे विषय शामिल हैं।
+            </p>
+            <p className="mt-4 text-base leading-8 text-[#5d5148]">
+              Books page का उद्देश्य इन पुस्तकों को साफ, सम्मानजनक और आसानी से देखने योग्य तरीके से प्रस्तुत करना है। फिलहाल हम पुस्तक संख्या, संस्करण, प्रकाशन वर्ष या बिक्री संबंधी कोई दावा नहीं दिखा रहे हैं क्योंकि वह जानकारी अभी पुष्टि नहीं हुई है।
+            </p>
+            <Link to="/about" className="text-link mt-6">
+              Nalin Dada के बारे में जानें <ArrowRight size={17} />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Book Subjects Section */}
-      <section className="py-20 bg-[#fdf8f3]">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-serif font-bold text-[#5c0a0a] mb-16 text-center">पुस्तकों के विषय</h2>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
-            {[
-              { name: 'ज्योतिष', icon: '✨' },
-              { name: 'अध्यात्म', icon: '🧘' },
-              { name: 'उपचार', icon: '🌿' },
-              { name: 'तंत्र-मंत्र', icon: '🔱' },
-              { name: 'वास्तु', icon: '🏡' },
-              { name: 'आयुर्वेद', icon: '🍃' },
-              { name: 'जीवन मार्गदर्शन', icon: '🧭' },
-              { name: 'विशेष प्रयोग', icon: '📜' },
-            ].map((subject, i) => (
-              <div key={i} className="bg-white p-6 rounded-xl shadow-sm text-center hover:shadow-md transition-shadow border border-amber-50">
-                <div className="text-3xl mb-4">{subject.icon}</div>
-                <h4 className="text-sm font-bold text-[#5c0a0a]">{subject.name}</h4>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section id="book-library" className="section-block scroll-mt-24 bg-[#fbf5eb]">
+        <div className="site-shell">
+          <div className="flex flex-col gap-6 xl:flex-row xl:items-end xl:justify-between">
+            <div>
+              <div className="eyebrow">पुस्तक संग्रह</div>
+              <h2 className="section-title mt-3">विषय के अनुसार पुस्तकें देखें</h2>
+            </div>
 
-      {/* Writing Vision */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-16">
-            <div className="lg:w-1/2">
-              <h3 className="text-amber-600 font-bold mb-2 flex items-center gap-2 italic">
-                <span className="w-8 h-[1px] bg-amber-600"></span> हमारी लेखन दृष्टि
+            <div className="relative w-full xl:max-w-[360px]">
+              <Search
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-[#a06936]"
+                size={18}
+              />
+              <input
+                type="search"
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="पुस्तक या विषय खोजें"
+                className="w-full rounded-full border border-[#dfceb6] bg-white py-3 pl-11 pr-4 text-sm text-[#463b33] outline-none transition focus:border-[#c58b3d] focus:ring-4 focus:ring-[#eacb99]/30"
+              />
+            </div>
+          </div>
+
+          <div className="mt-7 flex gap-2 overflow-x-auto pb-2">
+            {categories.map((category) => {
+              const isActive = activeCategory === category;
+              return (
+                <button
+                  key={category}
+                  type="button"
+                  onClick={() => setActiveCategory(category)}
+                  className={
+                    "whitespace-nowrap rounded-full border px-4 py-2.5 text-xs font-bold transition " +
+                    (isActive
+                      ? "border-[#8f181c] bg-[#8f181c] text-white"
+                      : "border-[#e1d1bc] bg-white text-[#65564b] hover:border-[#cf9b58] hover:bg-[#fff8ed]")
+                  }
+                >
+                  {category}
+                </button>
+              );
+            })}
+          </div>
+
+          {visibleBooks.length > 0 ? (
+            <div className="mt-9 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+              {visibleBooks.map((book) => (
+                <BookCoverPlaceholder key={book.title} {...book} />
+              ))}
+            </div>
+          ) : (
+            <div className="mt-9 rounded-[1.2rem] border border-dashed border-[#d9bd91] bg-white px-6 py-12 text-center">
+              <LibraryBig className="mx-auto text-[#bb7a2e]" size={32} />
+              <h3 className="mt-4 font-serif text-xl font-bold text-[#7f171b]">
+                इस खोज के लिए कोई पुस्तक नहीं मिली
               </h3>
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold text-[#5c0a0a] mb-6">ज्ञान, अनुभव और समाजहित का संगम</h2>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                नलिन दादा की पुस्तकें केवल सैद्धांतिक ज्ञान नहीं, बल्कि वर्षों के अनुभव, साधना और शोध पर आधारित व्यावहारिक अंतर्दृष्टि प्रदान करती हैं। इनका उद्देश्य प्राचीन भारतीय ज्ञान परंपरा को एक सरल भाषा में प्रस्तुत करना है, ताकि हर व्यक्ति इसे अपने दैनिक जीवन में अपनाकर लाभान्वित हो सके।
-              </p>
-              <p className="text-gray-700 leading-relaxed">
-                इन पुस्तकों में आध्यात्मिक उन्नति के साथ-साथ मानसिक, शारीरिक और पारिवारिक जीवन में संतुलन, सकारात्मक ऊर्जा और समाधान के व्यावहारिक उपाय दिए गए हैं।
+              <p className="mt-2 text-sm text-[#74665b]">
+                दूसरा विषय चुनें या खोज शब्द बदलें।
               </p>
             </div>
-            <div className="lg:w-1/2 relative">
-              <img src="https://images.unsplash.com/photo-1491843331657-f050bc0552d0?auto=format&fit=crop&q=80&w=800" alt="Books and Vision" className="rounded-2xl shadow-xl" />
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/90 p-8 rounded-2xl shadow-2xl border border-amber-200 max-w-[320px]">
-                <p className="text-amber-900 font-serif italic text-base">
-                  "हमारी पुस्तकें शास्त्र और विज्ञान, परंपरा और प्रयोग, तथा आध्यात्म और व्यवहार - इन सभी का संतुलित संगम हैं।"
-                </p>
-                <p className="text-right text-xs font-bold text-gray-500 mt-4">— डॉ. नलिन पण्ड्या</p>
-              </div>
-            </div>
+          )}
+        </div>
+      </section>
+
+      <section id="subjects" className="section-block scroll-mt-24">
+        <div className="site-shell">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="eyebrow justify-center">पुस्तकों के प्रमुख विषय</div>
+            <h2 className="section-title mx-auto mt-3">
+              अलग-अलग रुचियों और अध्ययन क्षेत्रों के लिए
+            </h2>
+          </div>
+
+          <div className="mt-9 grid grid-cols-2 gap-4 md:grid-cols-4">
+            {subjects.map(({ name, icon: Icon }) => (
+              <article
+                key={name}
+                className="rounded-[1rem] border border-[#eadbc7] bg-[#fffdf9] px-4 py-6 text-center shadow-[0_6px_18px_rgba(91,55,28,.04)]"
+              >
+                <div className="mx-auto grid h-13 w-13 place-items-center rounded-full border border-[#e2bd82] bg-[#fff7e9] text-[#b56522]">
+                  <Icon size={23} strokeWidth={1.7} />
+                </div>
+                <h3 className="mt-4 font-serif text-base font-bold leading-6 text-[#7f171b]">
+                  {name}
+                </h3>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Why these books are important */}
-      <section className="py-20 bg-[#5c0a0a] text-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-serif font-bold mb-16 text-center">ये पुस्तकें आपके लिए क्यों महत्वपूर्ण हैं?</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-            {[
-              { title: 'सरल भाषा में ज्ञान', desc: 'कठिन विषयों को भी आसान और सरल शब्दों में समझाया गया है।', icon: <BookOpen size={30} /> },
-              { title: 'प्राचीन ज्ञान की आधुनिक प्रस्तुति', desc: 'भारतीय परंपरा के सिद्धांतों को आज के जीवन में उपयोगी रूप में प्रस्तुत किया गया है।', icon: <Filter size={30} /> },
-              { title: 'व्यावहारिक समाधान', desc: 'जीवन की वास्तविक समस्याओं के लिए सरल और प्रभावी उपाय उपलब्ध हैं।', icon: <Search size={30} /> },
-              { title: 'आध्यात्मिक उन्नति', desc: 'आंतरिक शांति, सकारात्मकता और आत्मविश्वास की दिशा में मार्गदर्शन।', icon: <Sparkles size={30} /> },
-              { title: 'हर आयु के लिए उपयोगी', desc: 'गृहस्थ जीवन, करियर, स्वास्थ्य और पारिवारिक जीवन - सभी के लिए प्रेरणादायक।', icon: <Users size={30} /> },
-            ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                  {item.icon}
-                </div>
-                <h4 className="text-lg font-bold mb-3">{item.title}</h4>
-                <p className="text-sm opacity-80 leading-relaxed">{item.desc}</p>
-              </div>
+      <section className="section-block bg-[#fbf5eb]">
+        <div className="site-shell grid items-center gap-9 lg:grid-cols-[1.05fr_.95fr]">
+          <div>
+            <div className="eyebrow">वास्तविक पुस्तक-फोटो</div>
+            <h2 className="section-title mt-3">
+              अंतिम चरण में केवल images replace करनी होंगी
+            </h2>
+            <p className="mt-5 text-base leading-8 text-[#5d5148]">
+              इस layout में हर cover के लिए अलग card और descriptive alt text पहले से तैयार है। जब आप final images जोड़ेंगे, हमें page structure बदलने की जरूरत नहीं होगी—सिर्फ placeholder की जगह वास्तविक cover path लगाना होगा।
+            </p>
+            <div className="mt-6 rounded-[1rem] border border-[#e3cfb3] bg-[#fffdf9] p-5">
+              <p className="text-sm font-bold text-[#7f171b]">अभी जानबूझकर नहीं दिखाया गया:</p>
+              <ul className="mt-3 grid gap-2 text-sm leading-6 text-[#675b51]">
+                <li>• कुल पुस्तकों की संख्या</li>
+                <li>• प्रकाशन वर्ष / edition</li>
+                <li>• कीमत या खरीद लिंक</li>
+                <li>• उपलब्धता / stock</li>
+              </ul>
+              <p className="mt-3 text-xs leading-5 text-[#817268]">
+                ये विवरण Nalin Dada से पुष्टि होने के बाद ही जोड़ना बेहतर रहेगा।
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            {books.slice(6, 12).map((book) => (
+              <BookCoverPlaceholder key={book.title} {...book} />
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="appointment-band">
+        <div className="site-shell grid items-center gap-7 py-10 lg:grid-cols-[1fr_auto]">
+          <div>
+            <div className="flex items-center gap-3 text-[#e5ac53]">
+              <BookOpen size={23} />
+              <span className="text-sm font-bold tracking-[.14em]">
+                पुस्तक संबंधी जानकारी
+              </span>
+            </div>
+            <h2 className="mt-3 font-serif text-3xl font-bold text-white md:text-4xl">
+              किसी विशेष पुस्तक के बारे में पूछना है?
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm leading-7 text-[#dfe8e4] md:text-base">
+              अभी ऑनलाइन खरीद या भुगतान सुविधा तय नहीं की गई है। संपर्क विवरण पूरा होने के बाद इच्छुक पाठक उपलब्ध जानकारी के लिए संपर्क कर सकेंगे।
+            </p>
+          </div>
+          <Link to="/appointment" className="button-gold">
+            संपर्क पेज देखें <ArrowRight size={18} />
+          </Link>
         </div>
       </section>
     </div>
