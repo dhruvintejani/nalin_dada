@@ -1,8 +1,8 @@
 export type MediaAsset = {
-  src: string | null;
-  alt: string;
-  recommendedFile: string;
-  position?: string;
+  readonly src: string | null;
+  readonly alt: string;
+  readonly recommendedFile: string;
+  readonly position?: string;
 };
 
 export const media = {
