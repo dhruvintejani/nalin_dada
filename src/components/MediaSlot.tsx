@@ -46,9 +46,6 @@ const MediaSlot = ({
         </div>
         <p className="mt-4 text-sm font-bold text-[#7f171b]">{label}</p>
         <p className="mt-2 text-xs leading-5 text-[#766457]">{asset.alt}</p>
-        <code className="mt-3 block break-all rounded-lg bg-white/70 px-2 py-1.5 text-[0.62rem] text-[#8b6b4b]">
-          {asset.recommendedFile}
-        </code>
       </div>
     </div>
   );
