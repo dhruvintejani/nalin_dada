@@ -15,6 +15,8 @@ import {
   UserRound,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import MediaSlot from "../components/MediaSlot";
+import { media } from "../config/media";
 
 const categories = [
   "सभी",
@@ -123,28 +125,47 @@ const BookCoverPlaceholder = ({
   category: string;
   alt: string;
   tone: string;
-}) => (
-  <div className="group" role="img" aria-label={alt}>
-    <div className={"book-cover-placeholder " + tone}>
-      <div className="book-cover-border" />
-      <div className="relative z-10 flex h-full flex-col items-center justify-between py-5 text-center">
-        <span className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-white/70">
-          {category}
-        </span>
-        <div>
-          <BookOpen className="mx-auto text-white/90" size={30} strokeWidth={1.5} />
-          <h3 className="mt-4 font-serif text-base font-bold leading-6 text-white">
-            {title}
-          </h3>
-        </div>
-        <div>
-          <p className="text-[0.68rem] font-semibold text-white/75">Nalin Dada</p>
-          <p className="mt-1 text-[0.6rem] text-white/55">वास्तविक कवर बाद में जोड़ा जाएगा</p>
-        </div>
+}) => {
+  const coverIndex = books.findIndex((book) => book.title === title);
+  const coverSrc = media.books[coverIndex]?.src ?? null;
+
+  return (
+    <div className="group" role="img" aria-label={alt}>
+      <div className={"book-cover-placeholder " + tone}>
+        {coverSrc ? (
+          <img
+            src={coverSrc}
+            alt={alt}
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        ) : (
+          <>
+            <div className="book-cover-border" />
+            <div className="relative z-10 flex h-full flex-col items-center justify-between py-5 text-center">
+              <span className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-white/70">
+                {category}
+              </span>
+              <div>
+                <BookOpen className="mx-auto text-white/90" size={30} strokeWidth={1.5} />
+                <h3 className="mt-4 font-serif text-base font-bold leading-6 text-white">
+                  {title}
+                </h3>
+              </div>
+              <div>
+                <p className="text-[0.68rem] font-semibold text-white/75">Nalin Dada</p>
+                <p className="mt-1 text-[0.6rem] text-white/55">
+                  {media.books[coverIndex]?.recommendedFile ?? "book-cover.webp"}
+                </p>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const Books = () => {
   const [activeCategory, setActiveCategory] = useState("सभी");
@@ -205,10 +226,9 @@ const Books = () => {
       <section className="section-block">
         <div className="site-shell grid items-center gap-10 lg:grid-cols-[.82fr_1.18fr]">
           <div className="relative overflow-hidden rounded-[1.5rem] border border-[#ead8c1] bg-[#fff7e9] p-5">
-            <img
-              src="/images/nalin-speaking.jpg"
-              alt="Nalin Dada speaking and sharing knowledge at an event"
-              className="h-[380px] w-full rounded-[1.1rem] object-cover object-[center_24%]"
+            <MediaSlot
+              asset={media.photos.booksAuthor}
+              className="h-[380px] rounded-[1.1rem]"
             />
             <div className="absolute inset-x-8 bottom-8 rounded-[1rem] border border-white/45 bg-[#fffdf9]/92 p-4 shadow-lg backdrop-blur">
               <p className="text-xs font-bold tracking-[0.12em] text-[#b06a24]">
