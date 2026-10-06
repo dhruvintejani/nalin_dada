@@ -441,6 +441,27 @@ a {
   perspective: 900px;
 }
 
+.book-preview-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 190px;
+  object-fit: cover;
+  border-radius: 0.65rem 0.95rem 0.95rem 0.65rem;
+  border-left: 6px solid rgba(66, 34, 22, 0.2);
+  box-shadow: 8px 12px 20px rgba(69, 42, 25, 0.14);
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .book-preview-card:hover .book-preview-image {
+    transform: translateY(-4px) rotateY(-2deg);
+    box-shadow: 10px 16px 28px rgba(69, 42, 25, 0.18);
+  }
+}
+
 .book-spine {
   display: flex;
   height: 100%;
@@ -899,6 +920,32 @@ main article {
   }
 }
 
+.page-loader {
+  display: grid;
+  min-height: min(68vh, 620px);
+  place-items: center;
+  align-content: center;
+  gap: 0.9rem;
+  color: #76543a;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.page-loader-mark {
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 2px solid #ead6b8;
+  border-top-color: #9b151a;
+  border-radius: 999px;
+  animation: loaderSpin 700ms linear infinite;
+}
+
+@keyframes loaderSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 :focus-visible {
   outline: 3px solid rgba(197, 137, 53, 0.45);
   outline-offset: 3px;
@@ -962,7 +1009,8 @@ main article {
     min-height: 170px;
   }
 
-  .book-spine {
+  .book-spine,
+  .book-preview-image {
     min-height: 170px;
   }
 
