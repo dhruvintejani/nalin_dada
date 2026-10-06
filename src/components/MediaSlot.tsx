@@ -14,7 +14,7 @@ const MediaSlot = ({
   className = "",
   imageClassName = "",
   priority = false,
-  label = "वास्तविक फोटो यहाँ जोड़ी जाएगी",
+  label = "फोटो शीघ्र जोड़ी जाएगी",
 }: MediaSlotProps) => {
   if (asset.src) {
     return (
