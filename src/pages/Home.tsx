@@ -170,14 +170,28 @@ const Home = () => (
         </div>
 
         <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
-          {bookThemes.map((theme, index) => (
-            <article key={theme} className="book-preview-card">
-              <div className={`book-spine book-tone-${(index % 4) + 1}`}>
-                <BookOpen size={24} />
-                <span>{theme}</span>
-              </div>
-            </article>
-          ))}
+          {bookThemes.map((theme, index) => {
+            const coverSrc = media.books[index]?.src ?? null;
+
+            return (
+              <article key={theme} className="book-preview-card">
+                {coverSrc ? (
+                  <img
+                    src={coverSrc}
+                    alt={`${theme} विषयक पुस्तक का कवर`}
+                    loading="lazy"
+                    decoding="async"
+                    className="book-preview-image"
+                  />
+                ) : (
+                  <div className={`book-spine book-tone-${(index % 4) + 1}`}>
+                    <BookOpen size={24} />
+                    <span>{theme}</span>
+                  </div>
+                )}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
