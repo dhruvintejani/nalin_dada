@@ -15,8 +15,7 @@ import {
 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
-const NALIN_WHATSAPP_NUMBER = "";
+import { siteConfig } from "../config/site";
 
 const serviceOptions = [
   "ज्योतिष",
@@ -86,7 +85,7 @@ const Appointment = () => {
   const onSubmit = (data: FormData) => {
     setSubmitNote("");
 
-    if (!NALIN_WHATSAPP_NUMBER) {
+    if (!siteConfig.whatsappNumber) {
       setSubmitNote(
         "फॉर्म तैयार है। Nalin Dada का नया WhatsApp नंबर मिलते ही यहाँ नंबर जोड़कर WhatsApp sending सक्रिय कर दी जाएगी।",
       );
@@ -111,7 +110,7 @@ const Appointment = () => {
 
     const whatsappUrl =
       "https://wa.me/" +
-      NALIN_WHATSAPP_NUMBER +
+      siteConfig.whatsappNumber +
       "?text=" +
       encodeURIComponent(messageLines.join("\n"));
 
@@ -144,7 +143,7 @@ const Appointment = () => {
             <div className="mt-8 grid max-w-[720px] gap-3 sm:grid-cols-3">
               <div className="hero-stat">
                 <span className="hero-stat-label">परामर्श शुल्क</span>
-                <strong>₹1,100</strong>
+                <strong>{siteConfig.consultationFee}</strong>
                 <small>कार्यालय में भुगतान</small>
               </div>
               <div className="hero-stat">
@@ -327,8 +326,8 @@ const Appointment = () => {
                   पसंदीदा समय <span className="text-[#9b151a]">*</span>
                   <select {...register("timeSlot")} className={fieldClass + " mt-2"}>
                     <option value="">समय चुनें</option>
-                    <option value="11:00 AM–1:00 PM">सुबह 11:00 AM–1:00 PM</option>
-                    <option value="6:00 PM–8:00 PM">शाम 6:00 PM–8:00 PM</option>
+                    <option value={siteConfig.morningSlot}>सुबह {siteConfig.morningSlot}</option>
+                    <option value={siteConfig.eveningSlot}>शाम {siteConfig.eveningSlot}</option>
                   </select>
                   {errors.timeSlot && (
                     <span className="mt-1.5 block text-xs font-medium text-[#a51f24]">
@@ -401,19 +400,19 @@ const Appointment = () => {
                 परामर्श कार्यालय
               </h2>
               <p className="mt-4 text-sm leading-7 text-[#62564d]">
-                18 Ushadeep Society, 1st Floor, next to H2 Seven Unisex Salon, near Regional Passport Office, Gulbai Tekra, Ahmedabad.
+                {siteConfig.officeAddress}
               </p>
               <div className="mt-5 border-t border-[#eee0cf] pt-5">
                 <p className="flex gap-3 text-sm leading-6 text-[#62564d]">
                   <Clock3 className="mt-0.5 shrink-0 text-[#b56522]" size={19} />
                   <span>
-                    सोमवार–शनिवार
+                    {siteConfig.appointmentDays}
                     <br />
-                    11:00 AM–1:00 PM
+                    {siteConfig.morningSlot}
                     <br />
-                    6:00 PM–8:00 PM
+                    {siteConfig.eveningSlot}
                     <br />
-                    <strong className="text-[#8f181c]">रविवार बंद</strong>
+                    <strong className="text-[#8f181c]">{siteConfig.sundayStatus}</strong>
                   </span>
                 </p>
               </div>
@@ -517,7 +516,7 @@ const Appointment = () => {
               </span>
             </div>
             <h2 className="mt-3 font-serif text-3xl font-bold text-white md:text-4xl">
-              ₹1,100 · कार्यालय में भुगतान
+              {siteConfig.consultationFee} · कार्यालय में भुगतान
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-7 text-[#dfe8e4] md:text-base">
               कोई online payment, video consultation, social media contact या public Ashram location इस website का हिस्सा नहीं है।
