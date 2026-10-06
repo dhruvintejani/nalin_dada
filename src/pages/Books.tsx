@@ -155,9 +155,7 @@ const BookCoverPlaceholder = ({
               </div>
               <div>
                 <p className="text-[0.68rem] font-semibold text-white/75">Nalin Dada</p>
-                <p className="mt-1 text-[0.6rem] text-white/55">
-                  {media.books[coverIndex]?.recommendedFile ?? "book-cover.webp"}
-                </p>
+                <p className="mt-1 text-[0.6rem] text-white/55">पुस्तक कवर</p>
               </div>
             </div>
           </>
