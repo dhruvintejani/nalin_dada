@@ -282,7 +282,7 @@
         },
         {
           "title": "WhatsApp message",
-          "text": "When WhatsApp booking is active, a prepared message will open directly."
+          "text": "Your details are prepared as a WhatsApp appointment message."
         },
         {
           "title": "Time confirmation",
@@ -313,7 +313,7 @@
       "eyebrow": "Range of writing",
       "title": "Presenting diverse subjects in an accessible way",
       "p1": "Nalin Dada's writing includes astrology and numerology as well as Ayurveda, wellness, natural approaches, Vastu, mantra-tantra and sadhana.",
-      "p2": "Publication year, edition, price and availability can be added once confirmed.",
+      "p2": "For information about a particular title, edition, price or availability, please use the contact page.",
       "link": "Learn about Nalin Dada"
     },
     "collection": {
@@ -352,7 +352,7 @@
       "title": "A glimpse across different areas of knowledge",
       "description": "Books related to astrology, wellness, sadhana, Vastu and life are organized together in one place.",
       "detailTitle": "Book details",
-      "detailText": "Additional information such as publication year, edition, price and availability can be added when available."
+      "detailText": "For edition, price and availability details of a particular book, please contact us."
     },
     "cta": {
       "eyebrow": "Book information",
@@ -465,7 +465,7 @@
   "appointment": {
     "eyebrow": "Home · Appointment & Contact",
     "title": "Book a personal consultation",
-    "description": "Fill in the form below to meet Nalin Dada. When WhatsApp booking is active, your details will open in a prepared message and you can press Send yourself.",
+    "description": "Fill in the form below to send an appointment request to Nalin Dada on WhatsApp.",
     "formButton": "Fill appointment form",
     "detailsButton": "View contact details",
     "cards": [
@@ -489,11 +489,7 @@
     "form": {
       "eyebrow": "Appointment form",
       "title": "Enter your details",
-      "description": "This form does not store your information on the website. When WhatsApp booking is active, Submit opens a prepared message with your details.",
-      "valid": "All required information is valid",
-      "incomplete": "Validation appears as you complete the required fields",
-      "ready": "Ready",
-      "pending": "Incomplete",
+      "description": "Enter your details below. On submit, WhatsApp opens with a prepared appointment request for you to review and send.",
       "name": "Your name",
       "namePlaceholder": "Enter your name",
       "mobile": "Mobile number",
@@ -511,9 +507,7 @@
       "messagePlaceholder": "Briefly describe what you would like to discuss...",
       "note": "Appointments are available {{days}}. The selected date and time are not final until confirmed on WhatsApp.",
       "submit": "Prepare WhatsApp request",
-      "submitting": "Preparing…",
-      "submitHelp": "The button becomes active when all required fields are valid and WhatsApp contact is available.",
-      "numberUnavailable": "WhatsApp appointment booking will be available shortly."
+      "submitting": "Preparing…"
     },
     "contact": {
       "officeLabel": "CONSULTATION OFFICE",
