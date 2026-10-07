@@ -456,44 +456,56 @@ a {
   perspective: 900px;
 }
 
+.book-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+}
+
 .book-photo-frame {
   position: relative;
+  width: 100%;
   aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: 0.85rem;
-  background: #f7efe2;
+  background: #fffaf2;
   box-shadow:
     0 10px 24px rgba(69, 42, 25, 0.12),
     inset 0 0 0 1px rgba(225, 208, 185, 0.7);
 }
 
-.book-photo-image,
-.book-photo-image-rotated {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  display: block;
-  transform-origin: center;
-  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
 .book-photo-image {
+  position: absolute;
+  inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  transform: translate(-50%, -50%);
+  object-fit: contain;
+  object-position: center top;
 }
 
 .book-photo-image-rotated {
-  width: 133.34%;
-  height: auto;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  display: block;
+  width: 133.3334%;
+  height: 75%;
   max-width: none;
-  transform: translate(-50%, -50%) rotate(90deg);
+  object-fit: contain;
+  object-position: center top;
+  transform: rotate(90deg);
+  transform-origin: top left;
 }
 
 .book-gallery-card,
 .book-preview-card {
   overflow: hidden;
+}
+
+.book-gallery-card {
+  align-self: start;
 }
 
 .book-hero-collage {
@@ -506,6 +518,9 @@ a {
   width: min(48%, 230px);
   border: 6px solid white;
   box-shadow: 0 20px 45px rgba(65, 39, 22, 0.17);
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 220ms ease;
 }
 
 .book-hero-card-1 {
@@ -530,18 +545,9 @@ a {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .book-gallery-card:hover .book-photo-image,
-  .book-preview-card:hover .book-photo-image {
-    transform: translate(-50%, -50%) scale(1.025);
-  }
-
-  .book-gallery-card:hover .book-photo-image-rotated,
-  .book-preview-card:hover .book-photo-image-rotated {
-    transform: translate(-50%, -50%) rotate(90deg) scale(1.025);
-  }
-
   .book-hero-card:hover {
     z-index: 4;
+    box-shadow: 0 26px 52px rgba(65, 39, 22, 0.21);
   }
 
   .book-hero-card-1:hover {
@@ -557,6 +563,12 @@ a {
   }
 }
 
+@media (max-width: 900px) {
+  .book-gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 720px) {
   .book-hero-collage {
     min-height: 430px;
@@ -564,6 +576,13 @@ a {
 
   .book-hero-card {
     width: min(49%, 190px);
+  }
+}
+
+@media (max-width: 560px) {
+  .book-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
 
