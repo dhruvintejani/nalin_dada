@@ -39,7 +39,13 @@
       "copyright": "© 2026 Nalin Dada. Dr. Nalin Pandya.",
       "appointmentText": "{{days}} · {{morning}} · {{evening}} · ફક્ત અપોઇન્ટમેન્ટથી"
     },
-    "loader": "લોડ થઈ રહ્યું છે…"
+    "loader": "લોડ થઈ રહ્યું છે…",
+    "accessibility": {
+      "primaryNavigation": "મુખ્ય નેવિગેશન",
+      "openMenu": "મેનૂ ખોલો",
+      "closeMenu": "મેનૂ બંધ કરો",
+      "languageSwitcher": "ભાષા પસંદ કરો"
+    }
   },
   "home": {
     "eyebrow": "જીવન · જ્ઞાન · સાધના · માર્ગદર્શન",
@@ -278,7 +284,7 @@
       "items": [
         {
           "title": "અપોઇન્ટમેન્ટ વિનંતી",
-          "text": "Appointment & Contact પેજ પર મૂળ માહિતી અને પ્રશ્ન ભરો."
+          "text": "અપોઇન્ટમેન્ટ અને સંપર્ક પેજ પર મૂળ માહિતી અને પ્રશ્ન ભરો."
         },
         {
           "title": "WhatsApp સંદેશ",
@@ -299,7 +305,7 @@
       "eyebrow": "અપોઇન્ટમેન્ટ પૂર્વ પુષ્ટિથી",
       "title": "{{days}} · {{morning}} અને {{evening}}",
       "description": "ઓફિસ આવતાં પહેલાં અપોઇન્ટમેન્ટની પુષ્ટિ કરો.",
-      "button": "Appointment & Contact"
+      "button": "અપોઇન્ટમેન્ટ અને સંપર્ક"
     }
   },
   "books": {
@@ -435,7 +441,7 @@
     "cards": [
       {
         "title": "ફી {{fee}}",
-        "text": "ફી consultation officeમાં ચૂકવવાની રહેશે. ઓનલાઈન ચુકવણી ઉપલબ્ધ નથી."
+        "text": "ફી પરામર્શ ઓફિસમાં ચૂકવવાની રહેશે. ઓનલાઈન ચુકવણી ઉપલબ્ધ નથી."
       },
       {
         "title": "બે સમય સ્લોટ",
@@ -443,7 +449,7 @@
       },
       {
         "title": "રૂબરૂ પરામર્શ",
-        "text": "Video call અથવા online consultation ઉપલબ્ધ નથી."
+        "text": "વિડિયો કોલ અથવા ઓનલાઈન પરામર્શ ઉપલબ્ધ નથી."
       },
       {
         "title": "પૂર્વ અપોઇન્ટમેન્ટ",
@@ -453,7 +459,7 @@
     "form": {
       "eyebrow": "અપોઇન્ટમેન્ટ ફોર્મ",
       "title": "તમારી માહિતી ભરો",
-      "description": "નીચે તમારી માહિતી ભરો. Submit કરતાં તમારી વિગતો સાથે તૈયાર અપોઇન્ટમેન્ટ સંદેશ WhatsAppમાં ખુલશે, જેને તમે તપાસીને મોકલી શકશો.",
+      "description": "નીચે તમારી માહિતી ભરો. સબમિટ કરતાં તમારી વિગતો સાથે તૈયાર અપોઇન્ટમેન્ટ સંદેશ WhatsAppમાં ખુલશે, જેને તમે તપાસીને મોકલી શકશો.",
       "name": "તમારું નામ",
       "namePlaceholder": "તમારું નામ લખો",
       "mobile": "મોબાઇલ નંબર",
@@ -469,17 +475,17 @@
       "evening": "સાંજ {{time}}",
       "message": "તમારો પ્રશ્ન / સંદેશ",
       "messagePlaceholder": "કયા વિષય પર પરામર્શ જોઈએ છે તે સંક્ષિપ્ત લખો...",
-      "note": "અપોઇન્ટમેન્ટ {{days}} ઉપલબ્ધ છે. પસંદ કરેલી તારીખ અને સમય WhatsApp પર પુષ્ટિ થયા પછી જ final ગણાશે.",
+      "note": "અપોઇન્ટમેન્ટ {{days}} ઉપલબ્ધ છે. પસંદ કરેલી તારીખ અને સમય WhatsApp પર પુષ્ટિ થયા પછી જ નિશ્ચિત ગણાશે.",
       "submit": "WhatsApp વિનંતી તૈયાર કરો",
       "submitting": "તૈયાર થઈ રહ્યું છે…"
     },
     "contact": {
-      "officeLabel": "CONSULTATION OFFICE",
+      "officeLabel": "પરામર્શ ઓફિસ",
       "officeTitle": "પરામર્શ ઓફિસ",
       "hours": "{{days}} · {{morning}} · {{evening}}",
       "phoneLabel": "MOBILE / WHATSAPP",
       "phoneTitle": "મોબાઇલ / WhatsApp",
-      "appointmentLabel": "APPOINTMENT",
+      "appointmentLabel": "અપોઇન્ટમેન્ટ",
       "appointmentTitle": "ફક્ત પૂર્વ અપોઇન્ટમેન્ટથી",
       "appointmentText": "ઓફિસ આવતાં પહેલાં સમયની પુષ્ટિ કરવી જરૂરી છે."
     },
@@ -496,19 +502,19 @@
           "text": "તમારી વિગતો સાથે તૈયાર સંદેશ WhatsAppમાં ખુલશે."
         },
         {
-          "title": "Send દબાવો",
-          "text": "માહિતી તપાસીને તમે પોતે Send દબાવો."
+          "title": "મોકલો",
+          "text": "માહિતી તપાસીને સંદેશ મોકલો."
         },
         {
           "title": "પુષ્ટિ મેળવો",
-          "text": "સમયની પુષ્ટિ પછી office consultation માટે આવો."
+          "text": "સમયની પુષ્ટિ પછી ઓફિસમાં પરામર્શ માટે આવો."
         }
       ]
     },
     "cta": {
       "eyebrow": "વ્યક્તિગત પરામર્શ",
       "title": "{{fee}} · ઓફિસમાં ચુકવણી",
-      "description": "ઓનલાઈન ચુકવણી અને video consultation ઉપલબ્ધ નથી.",
+      "description": "ઓનલાઈન ચુકવણી અને વિડિયો પરામર્શ ઉપલબ્ધ નથી.",
       "button": "અપોઇન્ટમેન્ટ ફોર્મ"
     },
     "services": [
