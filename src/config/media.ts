@@ -8,7 +8,7 @@ export type MediaAsset = {
 export type BookMediaAsset = {
   readonly src: string | null;
   readonly recommendedFile: string;
-  readonly rotate?: 0 | 90;
+  readonly rotate?: 0 | -90;
 };
 
 export const media = {
@@ -106,13 +106,13 @@ export const media = {
   },
   books: [
     { src: "/images/books/book-collection-01.jpeg", recommendedFile: "book-collection-01.jpeg", rotate: 0 },
-    { src: "/images/books/book-collection-02.jpeg", recommendedFile: "book-collection-02.jpeg", rotate: 90 },
-    { src: "/images/books/book-collection-03.jpeg", recommendedFile: "book-collection-03.jpeg", rotate: 90 },
-    { src: "/images/books/book-collection-04.jpeg", recommendedFile: "book-collection-04.jpeg", rotate: 90 },
-    { src: "/images/books/book-collection-05.jpeg", recommendedFile: "book-collection-05.jpeg", rotate: 90 },
-    { src: "/images/books/book-collection-06.jpeg", recommendedFile: "book-collection-06.jpeg", rotate: 90 },
-    { src: "/images/books/book-collection-07.jpeg", recommendedFile: "book-collection-07.jpeg", rotate: 90 },
+    { src: "/images/books/book-collection-02.jpeg", recommendedFile: "book-collection-02.jpeg", rotate: -90 },
+    { src: "/images/books/book-collection-03.jpeg", recommendedFile: "book-collection-03.jpeg", rotate: -90 },
+    { src: "/images/books/book-collection-04.jpeg", recommendedFile: "book-collection-04.jpeg", rotate: -90 },
+    { src: "/images/books/book-collection-05.jpeg", recommendedFile: "book-collection-05.jpeg", rotate: -90 },
+    { src: "/images/books/book-collection-06.jpeg", recommendedFile: "book-collection-06.jpeg", rotate: -90 },
+    { src: "/images/books/book-collection-07.jpeg", recommendedFile: "book-collection-07.jpeg", rotate: -90 },
     { src: "/images/books/book-collection-08.jpeg", recommendedFile: "book-collection-08.jpeg", rotate: 0 },
-    { src: "/images/books/book-collection-09.jpeg", recommendedFile: "book-collection-09.jpeg", rotate: 90 },
+    { src: "/images/books/book-collection-09.jpeg", recommendedFile: "book-collection-09.jpeg", rotate: -90 },
   ] satisfies readonly BookMediaAsset[],
 } as const;
