@@ -39,7 +39,13 @@
       "copyright": "© 2026 Nalin Dada. Dr. Nalin Pandya.",
       "appointmentText": "{{days}} · {{morning}} · {{evening}} · By appointment only"
     },
-    "loader": "Loading…"
+    "loader": "Loading…",
+    "accessibility": {
+      "primaryNavigation": "Primary navigation",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "languageSwitcher": "Language switcher"
+    }
   },
   "home": {
     "eyebrow": "Life · Knowledge · Sadhana · Guidance",
