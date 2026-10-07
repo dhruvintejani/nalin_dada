@@ -15,7 +15,7 @@ const BookCollectionImage = ({
 }: BookCollectionImageProps) => {
   if (!book.src) return null;
 
-  const rotated = book.rotate === 90;
+  const rotated = book.rotate === -90;
 
   return (
     <div
