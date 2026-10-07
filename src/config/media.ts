@@ -3,6 +3,7 @@ export type MediaAsset = {
   readonly alt: string;
   readonly recommendedFile: string;
   readonly position?: string;
+  readonly fit?: "cover" | "contain";
 };
 
 export type BookMediaAsset = {
@@ -23,7 +24,8 @@ export const media = {
       src: "/images/nalin/nalin-riverside.jpeg",
       alt: "Nalin Dada during a spiritual visit by the riverside",
       recommendedFile: "nalin-riverside.jpeg",
-      position: "center 38%",
+      position: "center",
+      fit: "contain",
     },
     aboutHero: {
       src: "/images/nalin/nalin-spiritual-conversation.jpeg",
