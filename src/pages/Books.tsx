@@ -1,36 +1,12 @@
-import {
-  ArrowRight,
-  BookOpen,
-  Compass,
-  Flame,
-  Flower2,
-  Hash,
-  HeartPulse,
-  Home,
-  Leaf,
-  LibraryBig,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight, BookOpen, LibraryBig } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import BookCollectionImage from "../components/BookCollectionImage";
 import MediaSlot from "../components/MediaSlot";
 import { media } from "../config/media";
 
-const subjectIcons = [
-  Sparkles,
-  Hash,
-  Leaf,
-  HeartPulse,
-  Flame,
-  Home,
-  Flower2,
-  Compass,
-];
-
 const Books = () => {
   const { t } = useTranslation();
-  const subjects = t("books.subjects.items", { returnObjects: true }) as string[];
   const availableBooks = media.books.filter((book) => Boolean(book.src));
   const heroBooks = availableBooks.slice(0, 3);
 
@@ -50,12 +26,9 @@ const Books = () => {
             <p className="mt-3 max-w-[700px] text-sm leading-7 text-[#6c5e53]">
               {t("books.subtext")}
             </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <a href="#book-library" className="button-primary">
+            <div className="mt-7">
+              <a href="#all-books" className="button-primary">
                 <LibraryBig size={18} /> {t("books.collectionButton")} <ArrowRight size={18} />
-              </a>
-              <a href="#subjects" className="button-secondary">
-                {t("books.subjectsButton")}
               </a>
             </div>
           </div>
@@ -108,17 +81,9 @@ const Books = () => {
       </section>
 
       {availableBooks.length > 0 && (
-        <section id="book-library" className="section-block scroll-mt-24 bg-[#fbf5eb]">
+        <section id="all-books" className="section-block scroll-mt-24 bg-[#fbf5eb]">
           <div className="site-shell">
-            <div className="mx-auto max-w-3xl text-center">
-              <div className="eyebrow justify-center">{t("books.collection.eyebrow")}</div>
-              <h2 className="section-title mx-auto mt-3">{t("books.collection.title")}</h2>
-              <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-[#706158]">
-                {t("books.collection.galleryDescription")}
-              </p>
-            </div>
-
-            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="book-gallery-grid">
               {availableBooks.map((book, index) => (
                 <article
                   key={book.recommendedFile}
@@ -134,52 +99,6 @@ const Books = () => {
           </div>
         </section>
       )}
-
-      <section id="subjects" className="section-block scroll-mt-24">
-        <div className="site-shell">
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="eyebrow justify-center">{t("books.subjects.eyebrow")}</div>
-            <h2 className="section-title mx-auto mt-3">{t("books.subjects.title")}</h2>
-          </div>
-
-          <div className="mt-9 grid grid-cols-2 gap-4 md:grid-cols-4">
-            {subjects.map((name, index) => {
-              const Icon = subjectIcons[index] ?? BookOpen;
-              return (
-                <article
-                  key={name}
-                  className="rounded-[1rem] border border-[#eadbc7] bg-[#fffdf9] px-4 py-6 text-center shadow-[0_6px_18px_rgba(91,55,28,.04)]"
-                >
-                  <div className="mx-auto grid h-13 w-13 place-items-center rounded-full border border-[#e2bd82] bg-[#fff7e9] text-[#b56522]">
-                    <Icon size={23} strokeWidth={1.7} />
-                  </div>
-                  <h3 className="mt-4 font-serif text-base font-bold leading-6 text-[#7f171b]">
-                    {name}
-                  </h3>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-block bg-[#fbf5eb]">
-        <div className="site-shell">
-          <div className="max-w-3xl">
-            <div className="eyebrow">{t("books.info.eyebrow")}</div>
-            <h2 className="section-title mt-3">{t("books.info.title")}</h2>
-            <p className="mt-5 text-base leading-8 text-[#5d5148]">
-              {t("books.info.description")}
-            </p>
-            <div className="mt-6 rounded-[1rem] border border-[#e3cfb3] bg-[#fffdf9] p-5">
-              <p className="text-sm font-bold text-[#7f171b]">{t("books.info.detailTitle")}</p>
-              <p className="mt-3 text-sm leading-7 text-[#675b51]">
-                {t("books.info.detailText")}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section className="appointment-band">
         <div className="site-shell grid items-center gap-7 py-10 lg:grid-cols-[1fr_auto]">
