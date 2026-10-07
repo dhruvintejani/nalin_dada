@@ -1,5 +1,6 @@
 import { Check, ChevronDown } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
+import type { KeyboardEvent } from "react";
 
 export type PremiumSelectOption = {
   value: string;
@@ -64,7 +65,7 @@ const PremiumSelect = ({
     onBlur?.();
   };
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+  const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
     if (event.key === "ArrowDown") {
       event.preventDefault();
       if (!open) {
@@ -105,6 +106,12 @@ const PremiumSelect = ({
 
     if (event.key === "Escape" && open) {
       event.preventDefault();
+      setOpen(false);
+      onBlur?.();
+      return;
+    }
+
+    if (event.key === "Tab" && open) {
       setOpen(false);
       onBlur?.();
     }
