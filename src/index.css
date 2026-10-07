@@ -76,20 +76,64 @@ a {
   width: 100%;
 }
 
-.language-chip {
-  font-size: 0.78rem;
-  font-weight: 600;
+.language-button {
+  min-height: 32px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  padding: 0.4rem 0.65rem;
   color: #5a4b41;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
 }
 
-.language-active {
-  color: #9b151a;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+.language-button:hover {
+  color: #8f181c;
+  background: #fff5e8;
+  transform: translateY(-1px);
 }
 
-.language-divider {
-  color: #c7b7a3;
+.language-button-active {
+  color: #fff;
+  background: linear-gradient(135deg, #a41920, #831116);
+  box-shadow: 0 6px 16px rgba(139, 20, 25, 0.18);
+}
+
+.language-button-active:hover {
+  color: #fff;
+  background: linear-gradient(135deg, #a41920, #831116);
+}
+
+.language-mobile-button {
+  min-height: 44px;
+  border: 1px solid #e5d7c3;
+  border-radius: 0.8rem;
+  background: #fff;
+  color: #55473e;
+  font-size: 0.82rem;
+  font-weight: 700;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.language-mobile-button:hover {
+  border-color: #d3a15c;
+  background: #fff8ed;
+}
+
+.language-mobile-button-active {
+  border-color: #8f181c;
+  color: #fff;
+  background: #8f181c;
 }
 
 .hero-surface {
@@ -398,36 +442,6 @@ a {
   object-fit: cover;
   transform: scale(1.001);
   transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.media-slot-placeholder {
-  display: grid;
-  place-items: center;
-  border: 1px solid #e4d4bf;
-  background:
-    radial-gradient(circle at 50% 35%, rgba(222, 174, 101, 0.16), transparent 30%),
-    linear-gradient(145deg, #f8ead3, #fffaf2 58%, #f2dfbf);
-}
-
-.media-slot-orb {
-  position: absolute;
-  border-radius: 999px;
-  border: 1px solid rgba(207, 154, 78, 0.3);
-  pointer-events: none;
-}
-
-.media-slot-orb-top {
-  right: -3rem;
-  top: -3.5rem;
-  width: 11rem;
-  height: 11rem;
-}
-
-.media-slot-orb-bottom {
-  bottom: -4rem;
-  left: -3rem;
-  width: 12rem;
-  height: 12rem;
 }
 
 @media (hover: hover) and (pointer: fine) {
