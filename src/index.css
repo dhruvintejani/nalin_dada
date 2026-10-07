@@ -509,15 +509,15 @@ a {
 
 .book-photo-image-rotated {
   position: absolute;
-  top: 0;
-  left: 100%;
+  top: 100%;
+  left: 0;
   display: block;
   width: 133.3334%;
   height: 75%;
   max-width: none;
   object-fit: contain;
   object-position: center top;
-  transform: rotate(90deg);
+  transform: rotate(-90deg);
   transform-origin: top left;
 }
 
