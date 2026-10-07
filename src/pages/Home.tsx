@@ -1,7 +1,6 @@
 import {
   Activity,
   ArrowRight,
-  BookOpen,
   CalendarDays,
   Compass,
   Flame,
@@ -16,6 +15,7 @@ import {
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import BookCollectionImage from "../components/BookCollectionImage";
 import MediaSlot from "../components/MediaSlot";
 import { media } from "../config/media";
 import { siteConfig } from "../config/site";
@@ -38,7 +38,6 @@ const Home = () => {
     title: string;
     text: string;
   }>;
-  const bookThemes = t("home.books.themes", { returnObjects: true }) as string[];
 
   return (
     <div className="overflow-hidden bg-[#fffdf9]">
@@ -166,28 +165,18 @@ const Home = () => {
             </Link>
           </div>
 
-          <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
-            {bookThemes.map((theme, index) => {
-              const coverSrc = media.books[index]?.src ?? null;
-              return (
-                <article key={theme} className="book-preview-card">
-                  {coverSrc ? (
-                    <img
-                      src={coverSrc}
-                      alt={theme}
-                      loading="lazy"
-                      decoding="async"
-                      className="book-preview-image"
-                    />
-                  ) : (
-                    <div className="book-subject-card">
-                      <BookOpen size={24} />
-                      <span>{theme}</span>
-                    </div>
-                  )}
-                </article>
-              );
-            })}
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {media.books.slice(0, 4).map((book, index) => (
+              <article
+                key={book.recommendedFile}
+                className="book-preview-card rounded-[1.1rem] border border-[#ead9c1] bg-white p-2.5 shadow-[0_10px_28px_rgba(78,48,28,.06)]"
+              >
+                <BookCollectionImage
+                  book={book}
+                  alt={`${t("books.collection.imageAlt")} ${index + 1}`}
+                />
+              </article>
+            ))}
           </div>
         </div>
       </section>
