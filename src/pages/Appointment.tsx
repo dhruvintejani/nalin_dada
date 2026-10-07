@@ -39,7 +39,7 @@ type FormData = {
 const Appointment = () => {
   const { t, i18n } = useTranslation();
   const minDate = useMemo(getLocalDateInputValue, []);
-  const whatsappNumber = whatsappNumber.replace(/\D/g, "");
+  const whatsappNumber = siteConfig.whatsappNumber.replace(/\D/g, "");
   const serviceOptions = t("appointment.services", { returnObjects: true }) as string[];
   const cards = t("appointment.cards", { returnObjects: true }) as Array<{
     title: string;
