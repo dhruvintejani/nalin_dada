@@ -39,7 +39,13 @@
       "copyright": "© 2026 Nalin Dada. Dr. Nalin Pandya.",
       "appointmentText": "{{days}} · {{morning}} · {{evening}} · केवल अपॉइंटमेंट"
     },
-    "loader": "लोड हो रहा है…"
+    "loader": "लोड हो रहा है…",
+    "accessibility": {
+      "primaryNavigation": "मुख्य नेविगेशन",
+      "openMenu": "मेनू खोलें",
+      "closeMenu": "मेनू बंद करें",
+      "languageSwitcher": "भाषा चुनें"
+    }
   },
   "home": {
     "eyebrow": "जीवन · ज्ञान · साधना · मार्गदर्शन",
@@ -278,7 +284,7 @@
       "items": [
         {
           "title": "अपॉइंटमेंट अनुरोध",
-          "text": "Appointment & Contact पेज पर अपनी मूल जानकारी और प्रश्न भरें।"
+          "text": "अपॉइंटमेंट एवं संपर्क पेज पर अपनी मूल जानकारी और प्रश्न भरें।"
         },
         {
           "title": "WhatsApp संदेश",
@@ -299,7 +305,7 @@
       "eyebrow": "अपॉइंटमेंट केवल पूर्व पुष्टि से",
       "title": "{{days}} · {{morning}} और {{evening}}",
       "description": "अपॉइंटमेंट पहले से निश्चित करके ही कार्यालय आएँ।",
-      "button": "Appointment & Contact"
+      "button": "अपॉइंटमेंट एवं संपर्क"
     }
   },
   "books": {
@@ -435,7 +441,7 @@
     "cards": [
       {
         "title": "शुल्क {{fee}}",
-        "text": "शुल्क consultation office में भुगतान किया जाएगा। कोई online payment नहीं है।"
+        "text": "शुल्क परामर्श कार्यालय में भुगतान किया जाएगा। ऑनलाइन भुगतान उपलब्ध नहीं है।"
       },
       {
         "title": "दो समय स्लॉट",
@@ -443,7 +449,7 @@
       },
       {
         "title": "व्यक्तिगत परामर्श",
-        "text": "Video call या online consultation उपलब्ध नहीं है।"
+        "text": "वीडियो कॉल या ऑनलाइन परामर्श उपलब्ध नहीं है।"
       },
       {
         "title": "पूर्व अपॉइंटमेंट",
@@ -453,7 +459,7 @@
     "form": {
       "eyebrow": "अपॉइंटमेंट फॉर्म",
       "title": "अपनी जानकारी भरें",
-      "description": "नीचे अपनी जानकारी भरें। Submit करने पर आपकी जानकारी के साथ तैयार अपॉइंटमेंट संदेश WhatsApp में खुलेगा, जिसे आप जाँचकर भेज सकते हैं।",
+      "description": "नीचे अपनी जानकारी भरें। सबमिट करने पर आपकी जानकारी के साथ तैयार अपॉइंटमेंट संदेश WhatsApp में खुलेगा, जिसे आप जाँचकर भेज सकते हैं।",
       "name": "आपका नाम",
       "namePlaceholder": "अपना नाम दर्ज करें",
       "mobile": "मोबाइल नंबर",
@@ -469,23 +475,23 @@
       "evening": "शाम {{time}}",
       "message": "आपका प्रश्न / संदेश",
       "messagePlaceholder": "संक्षेप में बताएं कि आप किस विषय पर परामर्श चाहते हैं...",
-      "note": "अपॉइंटमेंट {{days}} को उपलब्ध हैं। चुनी गई तारीख और समय अंतिम पुष्टि नहीं है; WhatsApp पर पुष्टि मिलने के बाद ही appointment confirm माना जाएगा।",
+      "note": "अपॉइंटमेंट {{days}} को उपलब्ध हैं। चुनी गई तारीख और समय अंतिम पुष्टि नहीं है; WhatsApp पर पुष्टि मिलने के बाद ही अपॉइंटमेंट निश्चित माना जाएगा।",
       "submit": "WhatsApp पर अनुरोध तैयार करें",
       "submitting": "तैयार हो रहा है..."
     },
     "contact": {
-      "officeLabel": "CONSULTATION OFFICE",
+      "officeLabel": "परामर्श कार्यालय",
       "officeTitle": "परामर्श कार्यालय",
       "hours": "{{days}} · {{morning}} · {{evening}}",
       "phoneLabel": "MOBILE / WHATSAPP",
       "phoneTitle": "मोबाइल / WhatsApp",
-      "appointmentLabel": "APPOINTMENT",
+      "appointmentLabel": "अपॉइंटमेंट",
       "appointmentTitle": "केवल पूर्व अपॉइंटमेंट से",
       "appointmentText": "कार्यालय आने से पहले समय की पुष्टि करना आवश्यक है।"
     },
     "process": {
       "eyebrow": "बुकिंग प्रक्रिया",
-      "title": "फॉर्म से appointment confirmation तक",
+      "title": "फॉर्म से अपॉइंटमेंट पुष्टि तक",
       "items": [
         {
           "title": "फॉर्म भरें",
@@ -493,22 +499,22 @@
         },
         {
           "title": "WhatsApp खुलेगा",
-          "text": "आपके विवरण से तैयार message WhatsApp में खुलेगा।"
+          "text": "आपके विवरण से तैयार संदेश WhatsApp में खुलेगा।"
         },
         {
-          "title": "Send दबाएँ",
-          "text": "जानकारी जाँचकर स्वयं Send दबाएँ।"
+          "title": "भेजें",
+          "text": "जानकारी जाँचकर स्वयं संदेश भेजें।"
         },
         {
           "title": "पुष्टि प्राप्त करें",
-          "text": "समय की पुष्टि मिलने के बाद office consultation के लिए आएँ।"
+          "text": "समय की पुष्टि मिलने के बाद कार्यालय में परामर्श के लिए आएँ।"
         }
       ]
     },
     "cta": {
       "eyebrow": "व्यक्तिगत परामर्श",
       "title": "{{fee}} · कार्यालय में भुगतान",
-      "description": "ऑनलाइन भुगतान और video consultation उपलब्ध नहीं है।",
+      "description": "ऑनलाइन भुगतान और वीडियो परामर्श उपलब्ध नहीं है।",
       "button": "अपॉइंटमेंट फॉर्म"
     },
     "services": [
