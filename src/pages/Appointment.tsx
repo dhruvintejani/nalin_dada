@@ -37,7 +37,7 @@ type FormData = {
 };
 
 const Appointment = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const minDate = useMemo(getLocalDateInputValue, []);
   const serviceOptions = t("appointment.services", { returnObjects: true }) as string[];
   const cards = t("appointment.cards", { returnObjects: true }) as Array<{
@@ -88,7 +88,7 @@ const Appointment = () => {
           .max(600, t("appointment.validation.messageMax"))
           .optional(),
       }),
-    [t],
+    [t, i18n.language],
   );
 
   const {
