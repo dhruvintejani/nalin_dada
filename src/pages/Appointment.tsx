@@ -39,6 +39,7 @@ type FormData = {
 const Appointment = () => {
   const { t, i18n } = useTranslation();
   const minDate = useMemo(getLocalDateInputValue, []);
+  const whatsappNumber = whatsappNumber.replace(/\D/g, "");
   const serviceOptions = t("appointment.services", { returnObjects: true }) as string[];
   const cards = t("appointment.cards", { returnObjects: true }) as Array<{
     title: string;
@@ -124,7 +125,7 @@ const Appointment = () => {
   };
 
   const onSubmit = (data: FormData) => {
-    if (!siteConfig.whatsappNumber) return;
+    if (!whatsappNumber) return;
 
     const messageLines = [
       t("appointment.whatsapp.greeting"),
@@ -144,7 +145,7 @@ const Appointment = () => {
 
     const whatsappUrl =
       "https://wa.me/" +
-      siteConfig.whatsappNumber +
+      whatsappNumber +
       "?text=" +
       encodeURIComponent(messageLines.join("\n"));
 
@@ -451,7 +452,7 @@ const Appointment = () => {
                 </div>
               </div>
 
-              {siteConfig.whatsappNumber && (
+              {whatsappNumber && (
                 <div className="mt-6">
                   <button
                     type="submit"
@@ -497,7 +498,7 @@ const Appointment = () => {
               </div>
             </article>
 
-            {siteConfig.whatsappNumber && (
+            {whatsappNumber && (
               <article className="rounded-[1.35rem] border border-[#e4d3bd] bg-white p-6 shadow-[0_10px_28px_rgba(82,50,29,.06)]">
                 <div className="flex items-center gap-3 text-[#b56522]">
                   <Phone size={22} />
@@ -509,12 +510,12 @@ const Appointment = () => {
                   {t("appointment.contact.phoneTitle")}
                 </h2>
                 <a
-                  href={`https://wa.me/${siteConfig.whatsappNumber}`}
+                  href={`https://wa.me/${whatsappNumber}`}
                   target="_blank"
                   rel="noreferrer"
                   className="text-link mt-4"
                 >
-                  {siteConfig.whatsappNumber} <ArrowRight size={16} />
+                  {whatsappNumber} <ArrowRight size={16} />
                 </a>
               </article>
             )}
