@@ -675,8 +675,8 @@ a {
 
 .appointment-band {
   background:
-    radial-gradient(circle at 20% 0%, rgba(225, 171, 82, 0.12), transparent 24rem),
-    #123f37;
+    radial-gradient(circle at 20% 0%, rgba(225, 171, 82, 0.14), transparent 24rem),
+    #5a1115;
 }
 
 .footer-title {
