@@ -307,8 +307,7 @@
     "title": "Books & Publications by Nalin Dada",
     "description": "Nalin Dada's writing spans astrology, numerology, Ayurveda, wellness, Vastu, tantra-mantra, sadhana and practical life themes.",
     "subtext": "The collection is organized by subject so readers can explore areas of interest easily.",
-    "collectionButton": "View book collection",
-    "subjectsButton": "View subjects",
+    "collectionButton": "View all books",
     "author": {
       "eyebrow": "Range of writing",
       "title": "Presenting diverse subjects in an accessible way",
@@ -317,44 +316,7 @@
       "link": "Learn about Nalin Dada"
     },
     "collection": {
-      "eyebrow": "Book collection",
-      "title": "A real look at Nalin Dada's book collection",
-      "search": "Search by book or subject",
-      "emptyTitle": "No book found for this search",
-      "emptyText": "Choose another subject or change your search.",
-      "categories": [
-        "All",
-        "Astrology",
-        "Numerology",
-        "Ayurveda / Wellness",
-        "Tantra-Mantra",
-        "Vastu",
-        "Sadhana",
-        "Life guidance"
-      ],
-      "galleryDescription": "Selected photographs from Nalin Dada's actual published book collection.",
       "imageAlt": "Nalin Dada book collection photograph"
-    },
-    "subjects": {
-      "eyebrow": "Key book subjects",
-      "title": "For different interests and areas of study",
-      "items": [
-        "Astrology",
-        "Numerology",
-        "Ayurveda",
-        "Wellness",
-        "Tantra-Mantra",
-        "Vastu",
-        "Sadhana",
-        "Life guidance"
-      ]
-    },
-    "info": {
-      "eyebrow": "Book collection",
-      "title": "A glimpse across different areas of knowledge",
-      "description": "Books related to astrology, wellness, sadhana, Vastu and life are organized together in one place.",
-      "detailTitle": "Book details",
-      "detailText": "For edition, price and availability details of a particular book, please contact us."
     },
     "cta": {
       "eyebrow": "Book information",
