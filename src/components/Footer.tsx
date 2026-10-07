@@ -17,12 +17,12 @@ const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <footer className="bg-[#123f37] text-[#f7efe1]">
+    <footer className="bg-[#5A1115] text-[#f7efe1]">
       <div className="site-shell py-9">
         <div className="grid gap-8 border-b border-white/15 pb-8 lg:grid-cols-[1.1fr_1.35fr_1fr]">
           <div>
             <Brand inverse />
-            <p className="mt-4 max-w-sm text-sm leading-7 text-[#d7dfd6]">
+            <p className="mt-4 max-w-sm text-sm leading-7 text-[#ead8cf]">
               {t("common.footer.tagline")}
             </p>
           </div>
@@ -40,7 +40,7 @@ const Footer = () => {
 
           <div>
             <h2 className="footer-title">{t("common.footer.office")}</h2>
-            <div className="mt-4 space-y-4 text-sm leading-6 text-[#d7dfd6]">
+            <div className="mt-4 space-y-4 text-sm leading-6 text-[#ead8cf]">
               <p className="flex gap-3">
                 <MapPin className="mt-1 shrink-0 text-[#e2aa51]" size={18} />
                 <span>{siteConfig.officeAddress}</span>
@@ -59,7 +59,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-6 text-xs text-[#c4d1ca]">
+        <div className="pt-6 text-xs text-[#d9c0b9]">
           <p>{t("common.footer.copyright")}</p>
         </div>
       </div>
