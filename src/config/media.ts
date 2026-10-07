@@ -24,8 +24,8 @@ export const media = {
       src: "/images/nalin/nalin-riverside.jpeg",
       alt: "Nalin Dada during a spiritual visit by the riverside",
       recommendedFile: "nalin-riverside.jpeg",
-      position: "center",
-      fit: "contain",
+      position: "center 25%",
+      fit: "cover",
     },
     aboutHero: {
       src: "/images/nalin/nalin-spiritual-conversation.jpeg",
