@@ -25,7 +25,10 @@ const MediaSlot = ({
         loading={priority ? "eager" : "lazy"}
         fetchPriority={priority ? "high" : "auto"}
         decoding="async"
-        style={{ objectPosition: asset.position ?? "center" }}
+        style={{
+          objectPosition: asset.position ?? "center",
+          objectFit: asset.fit ?? "cover",
+        }}
         className={"media-slot-image " + imageClassName}
       />
     </div>
