@@ -1,20 +1,33 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { NavLink, useLocation } from "react-router-dom";
+import type { SupportedLanguage } from "../i18n";
 import Brand from "./Brand";
 
 const links = [
-  { label: "मुख्य पृष्ठ", to: "/" },
-  { label: "हमारे बारे में", to: "/about" },
-  { label: "सेवाएँ", to: "/services" },
-  { label: "पुस्तकें", to: "/books" },
-  { label: "आश्रम", to: "/ashram" },
-  { label: "अपॉइंटमेंट एवं संपर्क", to: "/appointment" },
+  { key: "home", to: "/" },
+  { key: "about", to: "/about" },
+  { key: "services", to: "/services" },
+  { key: "books", to: "/books" },
+  { key: "ashram", to: "/ashram" },
+  { key: "appointment", to: "/appointment" },
+] as const;
+
+const languageOptions: Array<{
+  code: SupportedLanguage;
+  labelKey: "english" | "hindi" | "gujarati";
+}> = [
+  { code: "en", labelKey: "english" },
+  { code: "hi", labelKey: "hindi" },
+  { code: "gu", labelKey: "gujarati" },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
+  const { t, i18n } = useTranslation();
+  const activeLanguage = (i18n.resolvedLanguage ?? i18n.language).split("-")[0];
 
   useEffect(() => {
     setOpen(false);
@@ -27,14 +40,22 @@ const Navbar = () => {
     };
   }, [open]);
 
+  const changeLanguage = async (language: SupportedLanguage) => {
+    await i18n.changeLanguage(language);
+    setOpen(false);
+  };
+
   return (
     <header className="premium-navbar sticky top-0 z-50 border-b border-[#eadfcd] bg-[#fffdf9]/95 backdrop-blur-md">
-      <div className="site-shell flex h-[76px] items-center justify-between gap-5">
-        <NavLink to="/" aria-label="Nalin Dada मुख्य पृष्ठ" className="shrink-0">
+      <div className="site-shell flex h-[76px] items-center justify-between gap-4">
+        <NavLink to="/" aria-label={t("common.nav.home")} className="shrink-0">
           <Brand />
         </NavLink>
 
-        <nav className="hidden items-center gap-3 lg:flex xl:gap-5" aria-label="मुख्य नेविगेशन">
+        <nav
+          className="hidden items-center gap-3 lg:flex xl:gap-5"
+          aria-label={t("common.nav.home")}
+        >
           {links.map((link) => (
             <NavLink
               key={link.to}
@@ -44,23 +65,36 @@ const Navbar = () => {
               }
               end={link.to === "/"}
             >
-              {link.label}
+              {t(`common.nav.${link.key}`)}
             </NavLink>
           ))}
         </nav>
 
-        <div className="language-switcher hidden items-center gap-2 xl:flex" aria-label="भाषा विकल्प">
-          <span className="language-chip">English</span>
-          <span className="language-divider">|</span>
-          <span className="language-chip language-active">हिन्दी</span>
-          <span className="language-divider">|</span>
-          <span className="language-chip">ગુજરાતી</span>
+        <div
+          className="language-switcher hidden items-center gap-1 xl:flex"
+          aria-label={t("common.language.label")}
+        >
+          {languageOptions.map((option) => {
+            const active = activeLanguage === option.code;
+
+            return (
+              <button
+                key={option.code}
+                type="button"
+                onClick={() => void changeLanguage(option.code)}
+                aria-pressed={active}
+                className={`language-button ${active ? "language-button-active" : ""}`}
+              >
+                {t(`common.language.${option.labelKey}`)}
+              </button>
+            );
+          })}
         </div>
 
         <button
           type="button"
           className="nav-menu-button grid h-11 w-11 place-items-center rounded-full lg:hidden"
-          aria-label={open ? "मेनू बंद करें" : "मेनू खोलें"}
+          aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((value) => !value)}
         >
@@ -71,7 +105,7 @@ const Navbar = () => {
       {open && (
         <div className="mobile-menu-surface fixed inset-x-0 top-[77px] z-50 h-[calc(100dvh-77px)] overflow-y-auto bg-[#fffdf9] lg:hidden">
           <div className="site-shell py-6">
-            <nav className="grid gap-1" aria-label="मोबाइल नेविगेशन">
+            <nav className="grid gap-1" aria-label={t("common.nav.home")}>
               {links.map((link) => (
                 <NavLink
                   key={link.to}
@@ -81,17 +115,31 @@ const Navbar = () => {
                   }
                   end={link.to === "/"}
                 >
-                  {link.label}
+                  {t(`common.nav.${link.key}`)}
                 </NavLink>
               ))}
             </nav>
 
-            <div className="mt-6 flex items-center gap-3 border-t border-[#eadfcd] pt-5 text-sm">
-              <span>English</span>
-              <span className="text-[#b68a54]">|</span>
-              <span className="font-bold text-[#9b151a]">हिन्दी</span>
-              <span className="text-[#b68a54]">|</span>
-              <span>ગુજરાતી</span>
+            <div className="mt-6 border-t border-[#eadfcd] pt-5">
+              <p className="mb-3 text-xs font-bold uppercase tracking-[0.12em] text-[#8b6a4d]">
+                {t("common.language.label")}
+              </p>
+              <div className="grid grid-cols-3 gap-2">
+                {languageOptions.map((option) => {
+                  const active = activeLanguage === option.code;
+                  return (
+                    <button
+                      key={option.code}
+                      type="button"
+                      onClick={() => void changeLanguage(option.code)}
+                      aria-pressed={active}
+                      className={`language-mobile-button ${active ? "language-mobile-button-active" : ""}`}
+                    >
+                      {t(`common.language.${option.labelKey}`)}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
