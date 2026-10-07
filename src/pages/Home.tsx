@@ -180,7 +180,7 @@ const Home = () => {
                       className="book-preview-image"
                     />
                   ) : (
-                    <div className={`book-spine book-tone-${(index % 4) + 1}`}>
+                    <div className="book-subject-card">
                       <BookOpen size={24} />
                       <span>{theme}</span>
                     </div>
