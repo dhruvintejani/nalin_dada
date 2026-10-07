@@ -221,7 +221,7 @@ const Home = () => {
             <h2 className="mt-3 font-serif text-3xl font-bold text-white md:text-4xl">
               {t("home.cta.title", { fee: siteConfig.consultationFee })}
             </h2>
-            <p className="mt-3 max-w-2xl text-sm leading-7 text-[#dfe8e4] md:text-base">
+            <p className="mt-3 max-w-2xl text-sm leading-7 text-[#ead8cf] md:text-base">
               {t("home.cta.description")}
             </p>
           </div>
