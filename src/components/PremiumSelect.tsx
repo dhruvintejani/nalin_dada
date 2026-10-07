@@ -126,6 +126,9 @@ const PremiumSelect = ({
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={listboxId}
+        aria-activedescendant={
+          open ? `${listboxId}-option-${activeIndex}` : undefined
+        }
         aria-invalid={invalid || undefined}
         aria-describedby={describedBy}
         onClick={() => setOpen((current) => !current)}
@@ -167,9 +170,11 @@ const PremiumSelect = ({
 
               return (
                 <button
+                  id={`${listboxId}-option-${index}`}
                   key={option.value}
                   type="button"
                   role="option"
+                  tabIndex={-1}
                   aria-selected={isSelected}
                   onMouseEnter={() => setActiveIndex(index)}
                   onMouseDown={(event) => event.preventDefault()}
