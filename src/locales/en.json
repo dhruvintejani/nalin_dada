@@ -318,7 +318,7 @@
     },
     "collection": {
       "eyebrow": "Book collection",
-      "title": "Browse books by subject",
+      "title": "A real look at Nalin Dada's book collection",
       "search": "Search by book or subject",
       "emptyTitle": "No book found for this search",
       "emptyText": "Choose another subject or change your search.",
@@ -331,7 +331,9 @@
         "Vastu",
         "Sadhana",
         "Life guidance"
-      ]
+      ],
+      "galleryDescription": "Selected photographs from Nalin Dada's actual published book collection.",
+      "imageAlt": "Nalin Dada book collection photograph"
     },
     "subjects": {
       "eyebrow": "Key book subjects",
