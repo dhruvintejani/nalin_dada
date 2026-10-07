@@ -102,11 +102,11 @@ const Home = () => {
       <section className="section-block">
         <div className={`site-shell grid items-center gap-10 ${media.photos.homeAbout.src ? "lg:grid-cols-[.92fr_1.08fr]" : ""}`}>
           {media.photos.homeAbout.src && (
-            <div className="relative mx-auto w-full max-w-[520px]">
+            <div className="relative mx-auto w-full max-w-[360px]">
               <div className="absolute -left-4 -top-4 h-24 w-24 rounded-3xl bg-[#f3dfbd]" />
               <MediaSlot
                 asset={media.photos.homeAbout}
-                className="relative h-[420px] rounded-[1.6rem] shadow-[0_18px_45px_rgba(74,44,24,.14)]"
+                className="relative h-[560px] rounded-[1.6rem] bg-[#f7ead5] shadow-[0_18px_45px_rgba(74,44,24,.14)] sm:h-[640px]"
               />
             </div>
           )}
