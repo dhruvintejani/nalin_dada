@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { NavLink, useLocation } from "react-router-dom";
@@ -25,6 +25,7 @@ const languageOptions: Array<{
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
   const { t, i18n } = useTranslation();
   const activeLanguage = (i18n.resolvedLanguage ?? i18n.language).split("-")[0];
@@ -35,8 +36,19 @@ const Navbar = () => {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && open) {
+        setOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
     return () => {
       document.body.style.overflow = "";
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [open]);
 
@@ -54,7 +66,7 @@ const Navbar = () => {
 
         <nav
           className="hidden items-center gap-5 xl:flex"
-          aria-label={t("common.nav.home")}
+          aria-label={t("common.accessibility.primaryNavigation")}
         >
           {links.map((link) => (
             <NavLink
@@ -72,7 +84,7 @@ const Navbar = () => {
 
         <div
           className="language-switcher hidden items-center gap-1 xl:flex"
-          aria-label={t("common.language.label")}
+          aria-label={t("common.accessibility.languageSwitcher")}
         >
           {languageOptions.map((option) => {
             const active = activeLanguage === option.code;
@@ -92,10 +104,16 @@ const Navbar = () => {
         </div>
 
         <button
+          ref={menuButtonRef}
           type="button"
           className="nav-menu-button grid h-11 w-11 place-items-center rounded-full xl:hidden"
-          aria-label={open ? "Close menu" : "Open menu"}
+          aria-label={
+            open
+              ? t("common.accessibility.closeMenu")
+              : t("common.accessibility.openMenu")
+          }
           aria-expanded={open}
+          aria-controls="mobile-navigation"
           onClick={() => setOpen((value) => !value)}
         >
           {open ? <X size={23} /> : <Menu size={23} />}
@@ -103,9 +121,15 @@ const Navbar = () => {
       </div>
 
       {open && (
-        <div className="mobile-menu-surface fixed inset-x-0 top-[77px] z-50 h-[calc(100dvh-77px)] overflow-y-auto bg-[#fffdf9] xl:hidden">
+        <div
+          id="mobile-navigation"
+          className="mobile-menu-surface fixed inset-x-0 top-[77px] z-50 h-[calc(100dvh-77px)] overflow-y-auto bg-[#fffdf9] xl:hidden"
+        >
           <div className="site-shell py-6">
-            <nav className="grid gap-1" aria-label={t("common.nav.home")}>
+            <nav
+              className="grid gap-1"
+              aria-label={t("common.accessibility.primaryNavigation")}
+            >
               {links.map((link) => (
                 <NavLink
                   key={link.to}
