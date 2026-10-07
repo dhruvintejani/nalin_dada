@@ -124,7 +124,7 @@
     "places": {
       "ashramKicker": "Sadhana & spiritual journey",
       "ashramTitle": "Ashram",
-      "ashramText": "Explore Nalin Dada's spiritual journey connected with Pitambara Peeth, japa, tapa and anushthan.",
+      "ashramText": "Explore Nalin Dada's spiritual journey connected with Pitambara Peeth, Jap, Sadhana and anushthan.",
       "ashramLink": "Learn about the Ashram",
       "officeKicker": "Personal consultation",
       "officeTitle": "Consultation office"
@@ -179,8 +179,8 @@
         },
         {
           "year": "About 35 years",
-          "title": "Continued japa, tapa and anushthan",
-          "text": "According to Nalin Dada, japa, tapa and anushthans have continued at this sadhana place for about 35 years."
+          "title": "Continued Jap, Sadhana and anushthan",
+          "text": "According to Nalin Dada, Jap, Sadhana and anushthans have continued at this sadhana place for about 35 years."
         }
       ]
     },
@@ -244,7 +244,7 @@
         },
         {
           "title": "Tantra & mantra sadhana",
-          "text": "Guidance related to traditional mantra, japa and sadhana according to the situation."
+          "text": "Guidance related to traditional mantra, Jap and Sadhana according to the situation."
         },
         {
           "title": "Traditional remedies",
@@ -328,7 +328,7 @@
   "ashram": {
     "eyebrow": "Sadhana · Tradition · Pitambara Peeth",
     "title": "Pitambara Peeth Sadhana Bhumi",
-    "description": "Japa, tapa, Gayatri anushthan and sadhana associated with Pitambara Peeth form an important part of Nalin Dada's spiritual journey.",
+    "description": "Jap, Sadhana, Gayatri anushthan and practices associated with Pitambara Peeth form an important part of Nalin Dada's spiritual journey.",
     "journeyButton": "View sadhana journey",
     "contactButton": "Contact for guidance",
     "stats": [
@@ -350,9 +350,9 @@
     ],
     "intro": {
       "eyebrow": "About the Ashram",
-      "title": "A place of sadhana, japa and spiritual discipline",
+      "title": "A place of Jap, Sadhana and spiritual discipline",
       "p1": "This place is part of Nalin Dada's sadhana journey and the tradition connected with Pitambara Peeth and Baglamukhi sadhana.",
-      "p2": "Matters related to specific japa, anushthan or spiritual practice are taken forward through personal discussion."
+      "p2": "Matters related to specific Jap, Sadhana or anushthan are taken forward through personal discussion."
     },
     "journey": {
       "eyebrow": "Sadhana journey",
@@ -373,7 +373,7 @@
         },
         {
           "title": "About 35 years of sadhana",
-          "text": "According to him, japa, tapa and anushthans have continued at this sadhana place for about 35 years."
+          "text": "According to him, Jap, Sadhana and anushthans have continued at this sadhana place for about 35 years."
         }
       ]
     },
@@ -383,8 +383,8 @@
       "description": "Suitability and process are decided through personal discussion.",
       "items": [
         {
-          "title": "Baglamukhi japa & anushthan",
-          "text": "Guidance related to the traditional practice of Baglamukhi japa and anushthan."
+          "title": "Baglamukhi Jap & anushthan",
+          "text": "Guidance related to the traditional practice of Baglamukhi Jap and anushthan."
         },
         {
           "title": "Gayatri anushthan",
@@ -395,8 +395,8 @@
           "text": "Traditional practices such as Narayan Bali and Panch Bali are discussed according to need."
         },
         {
-          "title": "Japa, tapa & sadhana",
-          "text": "Japa, tapa and other spiritual practices are discussed according to the seeker's need and appropriate guidance."
+          "title": "Jap & Sadhana",
+          "text": "Jap and Sadhana are discussed according to the seeker's need and appropriate guidance."
         }
       ]
     },
@@ -416,7 +416,7 @@
       },
       {
         "title": "Sadhana-focused place",
-        "text": "The place is associated with japa, tapa and spiritual practice."
+        "text": "The place is associated with Jap and Sadhana."
       }
     ],
     "cta": {
