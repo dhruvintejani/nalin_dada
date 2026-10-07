@@ -1,0 +1,602 @@
+{
+  "common": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "services": "Services",
+      "books": "Books",
+      "ashram": "Ashram",
+      "appointment": "Appointment & Contact"
+    },
+    "language": {
+      "english": "English",
+      "hindi": "हिन्दी",
+      "gujarati": "ગુજરાતી",
+      "label": "Choose language"
+    },
+    "buttons": {
+      "appointment": "Book appointment",
+      "services": "View services",
+      "learnMore": "Learn more",
+      "books": "View books",
+      "contact": "Contact",
+      "sendWhatsApp": "Send request on WhatsApp"
+    },
+    "appointment": {
+      "feeLabel": "Consultation fee",
+      "feePayment": "Pay at the office",
+      "daysLabel": "Appointments",
+      "days": "Monday–Saturday",
+      "timeLabel": "Timings",
+      "appointmentOnly": "By prior appointment only",
+      "morning": "11:00 AM–1:00 PM",
+      "evening": "6:00 PM–8:00 PM"
+    },
+    "footer": {
+      "tagline": "Guidance for a balanced and meaningful life through astrology, spiritual guidance, traditional knowledge and practical insight.",
+      "quickLinks": "Quick links",
+      "office": "Consultation office",
+      "copyright": "© 2026 Nalin Dada. Dr. Nalin Pandya.",
+      "appointmentText": "{{days}} · {{morning}} · {{evening}} · By appointment only"
+    },
+    "loader": "Loading…"
+  },
+  "home": {
+    "eyebrow": "Life · Knowledge · Sadhana · Guidance",
+    "hero": {
+      "title": "Spiritual guidance, astrology and a holistic view of life",
+      "description": "Personal guidance and information related to astrology, palmistry, numerology, Ayurveda and natural wellness, Nabhi Therapy, spiritual guidance and traditional sadhana.",
+      "primary": "Book appointment",
+      "secondary": "View our services"
+    },
+    "stats": {
+      "fee": "Consultation fee",
+      "hours": "Timings",
+      "days": "Appointments",
+      "officePayment": "Pay at the office",
+      "daysValue": "Monday–Saturday"
+    },
+    "intro": {
+      "eyebrow": "About",
+      "title": "Nalin Dada · Dr. Nalin Pandya",
+      "p1": "Nalin Dada shares his experience in astrology, palmistry, numerology, natural wellness, Nabhi Therapy, spiritual guidance and traditional sadhana in a simple and conversational way.",
+      "p2": "His spiritual journey includes experiences connected with Gayatri Sant Shantvanji Maharaj at Karnali in 1981, Gayatri anushthans and the later revival of a sadhana place.",
+      "link": "Learn more about Nalin Dada"
+    },
+    "services": {
+      "eyebrow": "Our services",
+      "title": "Personal guidance for different aspects of life",
+      "items": [
+        {
+          "title": "Astrology",
+          "text": "Astrological guidance for different aspects of life."
+        },
+        {
+          "title": "Palmistry",
+          "text": "Understanding personality and life direction through palmistry."
+        },
+        {
+          "title": "Numerology",
+          "text": "A traditional approach to understanding life patterns through numbers."
+        },
+        {
+          "title": "Ayurveda & natural wellness",
+          "text": "Information related to traditional wellness knowledge and natural lifestyle."
+        },
+        {
+          "title": "Holistic life guidance",
+          "text": "A balanced view of mind, lifestyle and personal circumstances."
+        },
+        {
+          "title": "Nabhi Therapy",
+          "text": "Information about traditional practices associated with Nabhi Therapy."
+        },
+        {
+          "title": "Spiritual guidance",
+          "text": "Personal direction for questions related to peace, sadhana and purpose."
+        },
+        {
+          "title": "Tantra & mantra",
+          "text": "Guidance related to traditional mantra, sadhana and spiritual practice."
+        },
+        {
+          "title": "Life guidance",
+          "text": "Calm, conversational guidance for personal challenges and direction."
+        }
+      ],
+      "all": "View all services"
+    },
+    "books": {
+      "eyebrow": "Books & Publications",
+      "title": "Themes of knowledge, sadhana and life",
+      "link": "View book collection",
+      "themes": [
+        "Astrology",
+        "Numerology",
+        "Ayurveda",
+        "Vastu",
+        "Tantra & Mantra",
+        "Wellness",
+        "Spiritual practice",
+        "Life guidance"
+      ]
+    },
+    "places": {
+      "ashramKicker": "Sadhana & spiritual journey",
+      "ashramTitle": "Ashram",
+      "ashramText": "Explore Nalin Dada's spiritual journey connected with Pitambara Peeth, japa, tapa and anushthan.",
+      "ashramLink": "Learn about the Ashram",
+      "officeKicker": "Personal consultation",
+      "officeTitle": "Consultation office"
+    },
+    "cta": {
+      "eyebrow": "Personal consultation",
+      "title": "Consultation fee {{fee}}",
+      "description": "The consultation fee is paid at the office. Online payment and online/video consultations are not available.",
+      "button": "Appointment & Contact"
+    }
+  },
+  "about": {
+    "eyebrow": "Home · About",
+    "title": "About Nalin Dada",
+    "subtitle": "A long journey of astrology, spiritual practice, traditional knowledge and life guidance",
+    "description": "Dr. Nalin Pandya, lovingly known as Nalin Dada, engages with people on astrology, palmistry, numerology, natural wellness, Nabhi Therapy, mantra-tantra and spiritual life.",
+    "journeyButton": "View his journey",
+    "booksButton": "View books",
+    "overview": {
+      "eyebrow": "About Nalin Dada",
+      "title": "A blend of knowledge, sadhana and life experience",
+      "p1": "Nalin Dada's work is not limited to one subject. It includes astrology, palmistry, numerology, Ayurveda and natural wellness, Nabhi Therapy, mantra-tantra, spiritual practices and personal life guidance.",
+      "p2": "His approach across these areas is simple, conversational and experience-based.",
+      "highlight": "Sadhana, knowledge and life experience — three important foundations of Nalin Dada's journey."
+    },
+    "areas": {
+      "eyebrow": "Key areas",
+      "title": "Major areas of his work and interest",
+      "items": [
+        "Spiritual guidance",
+        "Astrology & palmistry",
+        "Numerology",
+        "Ayurveda & natural knowledge",
+        "Mantra, tantra & sadhana",
+        "Life guidance"
+      ]
+    },
+    "journey": {
+      "eyebrow": "Spiritual journey",
+      "title": "Important milestones shared by Nalin Dada",
+      "description": "Some important milestones from his spiritual journey, as shared by him.",
+      "items": [
+        {
+          "year": "1981",
+          "title": "An important phase of sadhana at Karnali",
+          "text": "Nalin Dada has shared that in 1981 he was called to a sadhana place associated with Gayatri Sant Shantvanji Maharaj and Dakshinamurti Siddh Temple at Karnali, where he performed many Gayatri anushthans."
+        },
+        {
+          "year": "Later journey",
+          "title": "Finding and reviving a sadhana place",
+          "text": "He later came across a place connected with an earlier Pitambara Peeth / Baglamukhi sadhana tradition. He restored the place and revived its sadhana tradition."
+        },
+        {
+          "year": "About 35 years",
+          "title": "Continued japa, tapa and anushthan",
+          "text": "According to Nalin Dada, japa, tapa and anushthans have continued at this sadhana place for about 35 years."
+        }
+      ]
+    },
+    "writing": {
+      "eyebrow": "Books & writing",
+      "title": "Written work across different subjects",
+      "description": "Nalin Dada's writing spans astrology, numerology, wellness, natural approaches, Ayurveda, Vastu, mantra-tantra, sadhana and practical life themes.",
+      "button": "View books page",
+      "themes": [
+        "Astrology",
+        "Wellness",
+        "Sadhana",
+        "Life wisdom"
+      ]
+    },
+    "cta": {
+      "eyebrow": "Personal guidance",
+      "title": "For a personal consultation with Nalin Dada",
+      "description": "Consultations are by appointment only. The fee is {{fee}} and is paid at the office. Online or video consultations are not available.",
+      "button": "Appointment & Contact"
+    }
+  },
+  "services": {
+    "eyebrow": "Home · Services",
+    "title": "Services by Nalin Dada",
+    "description": "Astrology, palmistry, numerology, traditional wellness knowledge, Nabhi Therapy, spiritual guidance and mantra-sadhana are presented here in a clear and organized way.",
+    "appointmentButton": "Book appointment",
+    "allButton": "View all services",
+    "list": {
+      "eyebrow": "Key services",
+      "title": "Different guidance for different needs",
+      "description": "Every person's situation is different, so the right area of guidance depends on the question, purpose and need.",
+      "items": [
+        {
+          "title": "Astrology",
+          "text": "Personal guidance for understanding different aspects of life through an astrological perspective."
+        },
+        {
+          "title": "Palmistry",
+          "text": "Understanding personality, tendencies and life direction through palmistry."
+        },
+        {
+          "title": "Numerology",
+          "text": "A traditional approach to understanding life patterns through numbers and birth details."
+        },
+        {
+          "title": "Ayurveda & natural wellness",
+          "text": "General information related to natural lifestyle, traditional wellness knowledge and daily routine."
+        },
+        {
+          "title": "Holistic life guidance",
+          "text": "Conversation to understand mind, lifestyle and personal circumstances in a balanced way."
+        },
+        {
+          "title": "Nabhi Therapy",
+          "text": "Information based on traditional practices associated with Nabhi Therapy and Nalin Dada's experience."
+        },
+        {
+          "title": "Spiritual guidance",
+          "text": "Personal direction for questions related to sadhana, peace, reflection and purpose."
+        },
+        {
+          "title": "Tantra & mantra sadhana",
+          "text": "Guidance related to traditional mantra, japa and sadhana according to the situation."
+        },
+        {
+          "title": "Traditional remedies",
+          "text": "General guidance on traditional and spiritual approaches related to life situations."
+        }
+      ]
+    },
+    "consultation": {
+      "eyebrow": "Personal consultation",
+      "title": "Understand the question first, then discuss the right direction",
+      "description": "A personal consultation begins by understanding the person's question and circumstances. The conversation then continues according to the relevant subject.",
+      "points": [
+        "Understand your question and concern",
+        "Identify the appropriate area of guidance",
+        "Explain guidance in simple language",
+        "Clarify next steps when needed"
+      ],
+      "button": "Book a personal consultation"
+    },
+    "cards": {
+      "privacyTitle": "Personal conversation",
+      "privacyText": "Consultations take place personally in a respectful environment.",
+      "feeTitle": "Consultation fee {{fee}}",
+      "feeText": "The fee is paid at the office. Online payment is not available.",
+      "offlineTitle": "In-person consultation only",
+      "offlineText": "Online or video consultations are not available."
+    },
+    "process": {
+      "eyebrow": "Consultation process",
+      "title": "From appointment request to personal guidance",
+      "items": [
+        {
+          "title": "Appointment request",
+          "text": "Enter your basic details and question on the Appointment & Contact page."
+        },
+        {
+          "title": "WhatsApp message",
+          "text": "When WhatsApp booking is active, a prepared message will open directly."
+        },
+        {
+          "title": "Time confirmation",
+          "text": "After the available time is confirmed, the consultation takes place at the office."
+        },
+        {
+          "title": "Personal guidance",
+          "text": "You meet Nalin Dada in person according to your question and chosen subject."
+        }
+      ]
+    },
+    "disclaimer": "Natural wellness, Ayurveda, Nabhi Therapy and other health-related content is presented as general traditional information and personal experience. It is not a substitute for emergency care or medical diagnosis/treatment.",
+    "cta": {
+      "eyebrow": "Appointments by prior confirmation",
+      "title": "{{days}} · {{morning}} and {{evening}}",
+      "description": "Please confirm your appointment before visiting the office.",
+      "button": "Appointment & Contact"
+    }
+  },
+  "books": {
+    "eyebrow": "Home · Books & Publications",
+    "title": "Books & Publications by Nalin Dada",
+    "description": "Nalin Dada's writing spans astrology, numerology, Ayurveda, wellness, Vastu, tantra-mantra, sadhana and practical life themes.",
+    "subtext": "The collection is organized by subject so readers can explore areas of interest easily.",
+    "collectionButton": "View book collection",
+    "subjectsButton": "View subjects",
+    "author": {
+      "eyebrow": "Range of writing",
+      "title": "Presenting diverse subjects in an accessible way",
+      "p1": "Nalin Dada's writing includes astrology and numerology as well as Ayurveda, wellness, natural approaches, Vastu, mantra-tantra and sadhana.",
+      "p2": "Publication year, edition, price and availability can be added once confirmed.",
+      "link": "Learn about Nalin Dada"
+    },
+    "collection": {
+      "eyebrow": "Book collection",
+      "title": "Browse books by subject",
+      "search": "Search by book or subject",
+      "emptyTitle": "No book found for this search",
+      "emptyText": "Choose another subject or change your search.",
+      "categories": [
+        "All",
+        "Astrology",
+        "Numerology",
+        "Ayurveda / Wellness",
+        "Tantra-Mantra",
+        "Vastu",
+        "Sadhana",
+        "Life guidance"
+      ]
+    },
+    "subjects": {
+      "eyebrow": "Key book subjects",
+      "title": "For different interests and areas of study",
+      "items": [
+        "Astrology",
+        "Numerology",
+        "Ayurveda",
+        "Wellness",
+        "Tantra-Mantra",
+        "Vastu",
+        "Sadhana",
+        "Life guidance"
+      ]
+    },
+    "info": {
+      "eyebrow": "Book collection",
+      "title": "A glimpse across different areas of knowledge",
+      "description": "Books related to astrology, wellness, sadhana, Vastu and life are organized together in one place.",
+      "detailTitle": "Book details",
+      "detailText": "Additional information such as publication year, edition, price and availability can be added when available."
+    },
+    "cta": {
+      "eyebrow": "Book information",
+      "title": "Looking for information about a particular book?",
+      "description": "You can contact us regarding availability, price or purchase information. Online purchase or payment is not currently available.",
+      "button": "View contact page"
+    }
+  },
+  "ashram": {
+    "eyebrow": "Sadhana · Tradition · Pitambara Peeth",
+    "title": "Pitambara Peeth Sadhana Bhumi",
+    "description": "Japa, tapa, Gayatri anushthan and sadhana associated with Pitambara Peeth form an important part of Nalin Dada's spiritual journey.",
+    "journeyButton": "View sadhana journey",
+    "contactButton": "Contact for guidance",
+    "stats": [
+      {
+        "label": "Tradition",
+        "value": "Pitambara Peeth",
+        "text": "Sadhana and anushthan"
+      },
+      {
+        "label": "Sadhana",
+        "value": "About 35 years",
+        "text": "As shared by Nalin Dada"
+      },
+      {
+        "label": "Guidance",
+        "value": "Personal discussion",
+        "text": "According to the need"
+      }
+    ],
+    "intro": {
+      "eyebrow": "About the Ashram",
+      "title": "A place of sadhana, japa and spiritual discipline",
+      "p1": "This place is part of Nalin Dada's sadhana journey and the tradition connected with Pitambara Peeth and Baglamukhi sadhana.",
+      "p2": "Matters related to specific japa, anushthan or spiritual practice are taken forward through personal discussion."
+    },
+    "journey": {
+      "eyebrow": "Sadhana journey",
+      "title": "Important milestones shared by Nalin Dada",
+      "description": "This journey is based on key experiences and sadhana milestones shared by Nalin Dada.",
+      "items": [
+        {
+          "title": "1981 · Sadhana at Karnali",
+          "text": "In 1981, Nalin Dada performed many Gayatri anushthans at a sadhana place associated with Gayatri Sant Shantvanji Maharaj and Dakshinamurti Siddh Temple at Karnali."
+        },
+        {
+          "title": "Finding a siddha place",
+          "text": "He later came across an old sadhana place connected with a Pitambara Peeth / Baglamukhi tradition."
+        },
+        {
+          "title": "Restoration and revival",
+          "text": "Nalin Dada restored the place and revived the sadhana tradition of Pitambara Peeth."
+        },
+        {
+          "title": "About 35 years of sadhana",
+          "text": "According to him, japa, tapa and anushthans have continued at this sadhana place for about 35 years."
+        }
+      ]
+    },
+    "practices": {
+      "eyebrow": "Sadhana & anushthan",
+      "title": "Spiritual practices connected with sadhana",
+      "description": "Suitability and process are decided through personal discussion.",
+      "items": [
+        {
+          "title": "Baglamukhi japa & anushthan",
+          "text": "Guidance related to the traditional practice of Baglamukhi japa and anushthan."
+        },
+        {
+          "title": "Gayatri anushthan",
+          "text": "Gayatri anushthans have held a special place in Nalin Dada's spiritual journey."
+        },
+        {
+          "title": "Rituals related to Pitru Dosh",
+          "text": "Traditional practices such as Narayan Bali and Panch Bali are discussed according to need."
+        },
+        {
+          "title": "Japa, tapa & sadhana",
+          "text": "Japa, tapa and other spiritual practices are discussed according to the seeker's need and appropriate guidance."
+        }
+      ]
+    },
+    "gallery": {
+      "eyebrow": "Ashram glimpses",
+      "title": "Quiet and spiritual glimpses of the sadhana place",
+      "description": "Available real photographs are presented respectfully."
+    },
+    "cards": [
+      {
+        "title": "Prior discussion",
+        "text": "Needs related to sadhana or a specific anushthan are understood personally first."
+      },
+      {
+        "title": "Appropriate guidance",
+        "text": "Each sadhana or anushthan is considered according to the individual's need."
+      },
+      {
+        "title": "Sadhana-focused place",
+        "text": "The place is associated with japa, tapa and spiritual practice."
+      }
+    ],
+    "cta": {
+      "eyebrow": "Ashram guidance",
+      "title": "For questions related to sadhana or anushthan",
+      "description": "Appropriate guidance can be discussed personally with Nalin Dada.",
+      "button": "Appointment & Contact"
+    }
+  },
+  "appointment": {
+    "eyebrow": "Home · Appointment & Contact",
+    "title": "Book a personal consultation",
+    "description": "Fill in the form below to meet Nalin Dada. When WhatsApp booking is active, your details will open in a prepared message and you can press Send yourself.",
+    "formButton": "Fill appointment form",
+    "detailsButton": "View contact details",
+    "cards": [
+      {
+        "title": "Fee {{fee}}",
+        "text": "The fee is paid at the consultation office. Online payment is not available."
+      },
+      {
+        "title": "Two time slots",
+        "text": "{{morning}} and {{evening}}."
+      },
+      {
+        "title": "In-person consultation",
+        "text": "Video call or online consultation is not available."
+      },
+      {
+        "title": "Prior appointment",
+        "text": "Consultations are available {{days}} by prior appointment."
+      }
+    ],
+    "form": {
+      "eyebrow": "Appointment form",
+      "title": "Enter your details",
+      "description": "This form does not store your information on the website. When WhatsApp booking is active, Submit opens a prepared message with your details.",
+      "valid": "All required information is valid",
+      "incomplete": "Validation appears as you complete the required fields",
+      "ready": "Ready",
+      "pending": "Incomplete",
+      "name": "Your name",
+      "namePlaceholder": "Enter your name",
+      "mobile": "Mobile number",
+      "mobilePlaceholder": "10-digit mobile number",
+      "city": "City",
+      "cityPlaceholder": "Enter your city",
+      "service": "Service / subject",
+      "servicePlaceholder": "Choose a service",
+      "date": "Preferred date",
+      "time": "Preferred time",
+      "timePlaceholder": "Choose a time",
+      "morning": "Morning {{time}}",
+      "evening": "Evening {{time}}",
+      "message": "Your question / message",
+      "messagePlaceholder": "Briefly describe what you would like to discuss...",
+      "note": "Appointments are available {{days}}. The selected date and time are not final until confirmed on WhatsApp.",
+      "submit": "Prepare WhatsApp request",
+      "submitting": "Preparing…",
+      "submitHelp": "The button becomes active when all required fields are valid and WhatsApp contact is available.",
+      "numberUnavailable": "WhatsApp appointment booking will be available shortly."
+    },
+    "contact": {
+      "officeLabel": "CONSULTATION OFFICE",
+      "officeTitle": "Consultation office",
+      "hours": "{{days}} · {{morning}} · {{evening}}",
+      "phoneLabel": "MOBILE / WHATSAPP",
+      "phoneTitle": "Mobile / WhatsApp",
+      "appointmentLabel": "APPOINTMENT",
+      "appointmentTitle": "By prior appointment only",
+      "appointmentText": "Please confirm your time before visiting the office."
+    },
+    "process": {
+      "eyebrow": "Booking process",
+      "title": "From form to appointment confirmation",
+      "items": [
+        {
+          "title": "Fill the form",
+          "text": "Enter your name, number, city, subject, date and preferred time."
+        },
+        {
+          "title": "WhatsApp opens",
+          "text": "A prepared message with your details opens in WhatsApp."
+        },
+        {
+          "title": "Press Send",
+          "text": "Review the details and press Send yourself."
+        },
+        {
+          "title": "Receive confirmation",
+          "text": "Visit the office after your appointment time is confirmed."
+        }
+      ]
+    },
+    "cta": {
+      "eyebrow": "Personal consultation",
+      "title": "{{fee}} · Pay at the office",
+      "description": "Online payment and video consultation are not available.",
+      "button": "Appointment form"
+    },
+    "services": [
+      "Astrology",
+      "Palmistry",
+      "Numerology",
+      "Ayurveda & natural wellness",
+      "Holistic life guidance",
+      "Nabhi Therapy",
+      "Spiritual guidance",
+      "Tantra & mantra sadhana",
+      "Traditional remedies",
+      "Other / discuss first"
+    ],
+    "validation": {
+      "nameMin": "Please enter your full name",
+      "nameMax": "Keep the name under 80 characters",
+      "mobile": "Please enter a valid 10-digit Indian mobile number",
+      "cityMin": "Please enter your city",
+      "cityMax": "Keep the city name under 80 characters",
+      "service": "Please choose a service",
+      "dateRequired": "Please choose a preferred date",
+      "datePast": "Please choose today or a future date",
+      "dateSunday": "Appointments are available Monday to Saturday",
+      "time": "Please choose a time",
+      "messageMax": "Keep the message under 600 characters"
+    },
+    "whatsapp": {
+      "greeting": "Namaste Nalin Dada 🙏",
+      "intro": "I am sending an appointment request through the website.",
+      "name": "Name",
+      "mobile": "Mobile",
+      "city": "City",
+      "service": "Service / subject",
+      "date": "Preferred date",
+      "time": "Preferred time",
+      "message": "Message",
+      "confirm": "Please confirm an available time."
+    }
+  },
+  "titles": {
+    "home": "Nalin Dada | Dr. Nalin Pandya",
+    "about": "About | Nalin Dada",
+    "services": "Services | Nalin Dada",
+    "books": "Books & Publications | Nalin Dada",
+    "ashram": "Ashram | Nalin Dada",
+    "appointment": "Appointment & Contact | Nalin Dada"
+  }
+}
