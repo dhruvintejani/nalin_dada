@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { useTranslation } from "react-i18next";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -11,12 +12,16 @@ const Books = lazy(() => import("./pages/Books"));
 const Ashram = lazy(() => import("./pages/Ashram"));
 const Appointment = lazy(() => import("./pages/Appointment"));
 
-const PageLoader = () => (
-  <div className="page-loader" role="status" aria-live="polite">
-    <div className="page-loader-mark" />
-    <span>लोड हो रहा है…</span>
-  </div>
-);
+const PageLoader = () => {
+  const { t } = useTranslation();
+
+  return (
+    <div className="page-loader" role="status" aria-live="polite">
+      <div className="page-loader-mark" />
+      <span>{t("common.loader")}</span>
+    </div>
+  );
+};
 
 const App = () => (
   <BrowserRouter>
