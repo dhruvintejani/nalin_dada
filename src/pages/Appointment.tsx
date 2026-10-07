@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   ArrowRight,
@@ -13,9 +13,10 @@ import {
   WalletCards,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
 import MediaSlot from "../components/MediaSlot";
+import PremiumSelect from "../components/PremiumSelect";
 import { media } from "../config/media";
 import { siteConfig } from "../config/site";
 
@@ -37,7 +38,6 @@ type FormData = {
 
 const Appointment = () => {
   const { t } = useTranslation();
-  const [submitNote, setSubmitNote] = useState("");
   const minDate = useMemo(getLocalDateInputValue, []);
   const serviceOptions = t("appointment.services", { returnObjects: true }) as string[];
   const cards = t("appointment.cards", { returnObjects: true }) as Array<{
@@ -93,6 +93,7 @@ const Appointment = () => {
 
   const {
     register,
+    control,
     handleSubmit,
     watch,
     formState: { errors, isSubmitting, isValid, dirtyFields },
@@ -123,12 +124,7 @@ const Appointment = () => {
   };
 
   const onSubmit = (data: FormData) => {
-    setSubmitNote("");
-
-    if (!siteConfig.whatsappNumber) {
-      setSubmitNote(t("appointment.form.numberUnavailable"));
-      return;
-    }
+    if (!siteConfig.whatsappNumber) return;
 
     const messageLines = [
       t("appointment.whatsapp.greeting"),
@@ -155,7 +151,6 @@ const Appointment = () => {
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
-  const canSubmit = isValid && Boolean(siteConfig.whatsappNumber);
 
   return (
     <div className="overflow-hidden bg-[#fffdf9]">
@@ -265,28 +260,6 @@ const Appointment = () => {
               className="premium-form mt-8 rounded-[1.5rem] border border-[#e4d3bd] bg-[#fbf5eb] p-5 shadow-[0_12px_34px_rgba(82,50,29,.06)] sm:p-7 lg:p-9"
               noValidate
             >
-              <div className="mb-6 flex flex-col gap-2 rounded-[1rem] border border-[#ead9c1] bg-white/80 px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex items-center gap-2 text-sm font-semibold text-[#62554b]">
-                  <CheckCircle2
-                    size={18}
-                    className={isValid ? "text-[#3f7f5b]" : "text-[#b89363]"}
-                  />
-                  <span>
-                    {isValid
-                      ? t("appointment.form.valid")
-                      : t("appointment.form.incomplete")}
-                  </span>
-                </div>
-                <span
-                  className={
-                    "validation-status " +
-                    (isValid ? "validation-status-valid" : "validation-status-pending")
-                  }
-                >
-                  {isValid ? t("appointment.form.ready") : t("appointment.form.pending")}
-                </span>
-              </div>
-
               <div className="grid gap-5 md:grid-cols-2">
                 <label className="field-label" htmlFor="appointment-name">
                   {t("appointment.form.name")} <span className="required-mark">*</span>
@@ -345,28 +318,38 @@ const Appointment = () => {
                   )}
                 </label>
 
-                <label className="field-label" htmlFor="appointment-service">
-                  {t("appointment.form.service")} <span className="required-mark">*</span>
-                  <select
-                    id="appointment-service"
-                    {...register("service")}
-                    aria-invalid={Boolean(errors.service)}
-                    aria-describedby={errors.service ? "service-error" : undefined}
-                    className={"form-control premium-select mt-2 " + fieldState("service")}
-                  >
-                    <option value="">{t("appointment.form.servicePlaceholder")}</option>
-                    {serviceOptions.map((service) => (
-                      <option key={service} value={service}>
-                        {service}
-                      </option>
-                    ))}
-                  </select>
+                <div className="field-label">
+                  <label htmlFor="appointment-service">
+                    {t("appointment.form.service")} <span className="required-mark">*</span>
+                  </label>
+                  <div className="mt-2">
+                    <Controller
+                      name="service"
+                      control={control}
+                      render={({ field }) => (
+                        <PremiumSelect
+                          id="appointment-service"
+                          value={field.value}
+                          options={serviceOptions.map((service) => ({
+                            value: service,
+                            label: service,
+                          }))}
+                          placeholder={t("appointment.form.servicePlaceholder")}
+                          onChange={field.onChange}
+                          onBlur={field.onBlur}
+                          invalid={Boolean(errors.service)}
+                          valid={Boolean(dirtyFields.service && !errors.service)}
+                          describedBy={errors.service ? "service-error" : undefined}
+                        />
+                      )}
+                    />
+                  </div>
                   {errors.service && (
                     <span id="service-error" className="field-error" role="alert">
                       {errors.service.message}
                     </span>
                   )}
-                </label>
+                </div>
 
                 <label className="field-label" htmlFor="appointment-date">
                   {t("appointment.form.date")} <span className="required-mark">*</span>
@@ -386,29 +369,48 @@ const Appointment = () => {
                   )}
                 </label>
 
-                <label className="field-label" htmlFor="appointment-time">
-                  {t("appointment.form.time")} <span className="required-mark">*</span>
-                  <select
-                    id="appointment-time"
-                    {...register("timeSlot")}
-                    aria-invalid={Boolean(errors.timeSlot)}
-                    aria-describedby={errors.timeSlot ? "time-error" : undefined}
-                    className={"form-control premium-select mt-2 " + fieldState("timeSlot")}
-                  >
-                    <option value="">{t("appointment.form.timePlaceholder")}</option>
-                    <option value={siteConfig.morningSlot}>
-                      {t("appointment.form.morning", { time: siteConfig.morningSlot })}
-                    </option>
-                    <option value={siteConfig.eveningSlot}>
-                      {t("appointment.form.evening", { time: siteConfig.eveningSlot })}
-                    </option>
-                  </select>
+                <div className="field-label">
+                  <label htmlFor="appointment-time">
+                    {t("appointment.form.time")} <span className="required-mark">*</span>
+                  </label>
+                  <div className="mt-2">
+                    <Controller
+                      name="timeSlot"
+                      control={control}
+                      render={({ field }) => (
+                        <PremiumSelect
+                          id="appointment-time"
+                          value={field.value}
+                          options={[
+                            {
+                              value: siteConfig.morningSlot,
+                              label: t("appointment.form.morning", {
+                                time: siteConfig.morningSlot,
+                              }),
+                            },
+                            {
+                              value: siteConfig.eveningSlot,
+                              label: t("appointment.form.evening", {
+                                time: siteConfig.eveningSlot,
+                              }),
+                            },
+                          ]}
+                          placeholder={t("appointment.form.timePlaceholder")}
+                          onChange={field.onChange}
+                          onBlur={field.onBlur}
+                          invalid={Boolean(errors.timeSlot)}
+                          valid={Boolean(dirtyFields.timeSlot && !errors.timeSlot)}
+                          describedBy={errors.timeSlot ? "time-error" : undefined}
+                        />
+                      )}
+                    />
+                  </div>
                   {errors.timeSlot && (
                     <span id="time-error" className="field-error" role="alert">
                       {errors.timeSlot.message}
                     </span>
                   )}
-                </label>
+                </div>
               </div>
 
               <label className="field-label mt-5 block" htmlFor="appointment-message">
@@ -449,37 +451,21 @@ const Appointment = () => {
                 </div>
               </div>
 
-              {!siteConfig.whatsappNumber && (
-                <div className="form-notice mt-5" role="status">
-                  <Info size={18} className="shrink-0" />
-                  <span>{t("appointment.form.numberUnavailable")}</span>
+              {siteConfig.whatsappNumber && (
+                <div className="mt-6">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting || !isValid}
+                    className="button-primary button-submit w-full sm:w-auto"
+                  >
+                    <MessageCircleMore size={19} />
+                    {isSubmitting
+                      ? t("appointment.form.submitting")
+                      : t("appointment.form.submit")}
+                    <ArrowRight size={18} />
+                  </button>
                 </div>
               )}
-
-              <div className="mt-6">
-                <button
-                  type="submit"
-                  disabled={isSubmitting || !canSubmit}
-                  className="button-primary button-submit w-full sm:w-auto"
-                >
-                  <MessageCircleMore size={19} />
-                  {isSubmitting
-                    ? t("appointment.form.submitting")
-                    : t("appointment.form.submit")}
-                  <ArrowRight size={18} />
-                </button>
-
-                <p className="mt-3 max-w-2xl text-xs leading-6 text-[#7b6c60]">
-                  {t("appointment.form.submitHelp")}
-                </p>
-
-                {submitNote && (
-                  <div className="form-notice mt-4" role="status" aria-live="polite">
-                    <Info size={18} className="shrink-0" />
-                    <span>{submitNote}</span>
-                  </div>
-                )}
-              </div>
             </form>
           </div>
 
