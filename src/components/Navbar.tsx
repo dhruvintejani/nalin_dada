@@ -83,6 +83,7 @@ const Navbar = () => {
         </nav>
 
         <div
+          role="group"
           className="language-switcher hidden items-center gap-1 xl:flex"
           aria-label={t("common.accessibility.languageSwitcher")}
         >
@@ -148,7 +149,11 @@ const Navbar = () => {
               <p className="mb-3 text-xs font-bold uppercase tracking-[0.12em] text-[#8b6a4d]">
                 {t("common.language.label")}
               </p>
-              <div className="grid grid-cols-3 gap-2">
+              <div
+                role="group"
+                aria-label={t("common.accessibility.languageSwitcher")}
+                className="grid grid-cols-3 gap-2"
+              >
                 {languageOptions.map((option) => {
                   const active = activeLanguage === option.code;
                   return (
