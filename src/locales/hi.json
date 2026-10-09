@@ -37,7 +37,8 @@
       "quickLinks": "त्वरित लिंक",
       "office": "परामर्श कार्यालय",
       "copyright": "© 2026 Nalin Dada. Dr. Nalin Pandya.",
-      "appointmentText": "{{days}} · {{morning}} · {{evening}} · केवल अपॉइंटमेंट"
+      "appointmentText": "{{days}} · {{morning}} · {{evening}} · केवल अपॉइंटमेंट",
+      "contactNumbers": "संपर्क नंबर"
     },
     "loader": "लोड हो रहा है…",
     "accessibility": {
@@ -45,6 +46,9 @@
       "openMenu": "मेनू खोलें",
       "closeMenu": "मेनू बंद करें",
       "languageSwitcher": "भाषा चुनें"
+    },
+    "institution": {
+      "name": "गूढ़विद्या अनुसंधान केंद्र"
     }
   },
   "home": {
@@ -483,11 +487,12 @@
       "officeLabel": "परामर्श कार्यालय",
       "officeTitle": "परामर्श कार्यालय",
       "hours": "{{days}} · {{morning}} · {{evening}}",
-      "phoneLabel": "मोबाइल / WhatsApp",
-      "phoneTitle": "मोबाइल / WhatsApp",
+      "phoneLabel": "संपर्क नंबर",
+      "phoneTitle": "संपर्क नंबर",
       "appointmentLabel": "अपॉइंटमेंट",
       "appointmentTitle": "केवल पूर्व अपॉइंटमेंट से",
-      "appointmentText": "कार्यालय आने से पहले समय की पुष्टि करना आवश्यक है।"
+      "appointmentText": "कार्यालय आने से पहले समय की पुष्टि करना आवश्यक है।",
+      "whatsappAppointment": "अपॉइंटमेंट के लिए WhatsApp"
     },
     "process": {
       "eyebrow": "बुकिंग प्रक्रिया",
@@ -553,6 +558,13 @@
       "time": "पसंदीदा समय",
       "message": "संदेश",
       "confirm": "कृपया उपलब्ध समय की पुष्टि करें।"
+    },
+    "inPersonMessage": {
+      "eyebrow": "रूबरू परामर्श क्यों",
+      "title": "मिलना एक गहरा संबंध बनाता है",
+      "line1": "ऑनलाइन सुन सकते हैं, लेकिन वह कान तक ही रहता है। दिल तक जाने का रास्ता आमने-सामने ही खुल सकता है; दिल खोलने के लिए सामने आना ज़रूरी है।",
+      "line2": "मिलना एक गहरा संबंध बनाता है, वरना आप केवल एक क्लाइंट बनकर रह जाते हैं।",
+      "author": "Nalin Dada"
     }
   },
   "titles": {
