@@ -24,7 +24,7 @@
     },
     "appointment": {
       "feeLabel": "Consultation fee",
-      "feePayment": "Pay at the office",
+      "feePayment": "Office or online payment",
       "daysLabel": "Appointments",
       "days": "Monday–Saturday",
       "timeLabel": "Timings",
@@ -278,7 +278,7 @@
       "privacyTitle": "Personal conversation",
       "privacyText": "Consultations take place personally in a respectful environment.",
       "feeTitle": "Consultation fee {{fee}}",
-      "feeText": "The fee is paid at the office. Online payment is not available.",
+      "feeText": "The consultation fee can be paid at the office or online. Payment details are shared during appointment confirmation.",
       "offlineTitle": "In-person consultation only",
       "offlineText": "Online or video consultations are not available."
     },
@@ -331,7 +331,7 @@
     "cta": {
       "eyebrow": "Book information",
       "title": "Looking for information about a particular book?",
-      "description": "You can contact us regarding availability, price or purchase information. Online purchase or payment is not currently available.",
+      "description": "Contact us for availability, price and purchase information. Online payment is available for books; payment details are shared during confirmation.",
       "button": "View contact page"
     }
   },
@@ -445,7 +445,7 @@
     "cards": [
       {
         "title": "Fee {{fee}}",
-        "text": "The fee is paid at the consultation office. Online payment is not available."
+        "text": "The consultation fee can be paid at the office or online after the appointment is confirmed."
       },
       {
         "title": "Two time slots",
@@ -518,8 +518,8 @@
     },
     "cta": {
       "eyebrow": "Personal consultation",
-      "title": "{{fee}} · Pay at the office",
-      "description": "Online payment and video consultation are not available.",
+      "title": "{{fee}} · Office or online payment",
+      "description": "Online payment is available for confirmed appointments. Consultations remain in person; video consultation is not available.",
       "button": "Appointment form"
     },
     "services": [
