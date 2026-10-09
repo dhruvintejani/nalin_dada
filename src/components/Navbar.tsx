@@ -28,13 +28,17 @@ const Navbar = () => {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const lockedScrollYRef = useRef(0);
+  const restoreScrollOnCloseRef = useRef(true);
   const location = useLocation();
   const { t, i18n } = useTranslation();
   const activeLanguage = (i18n.resolvedLanguage ?? i18n.language).split("-")[0];
 
   useEffect(() => {
-    setOpen(false);
-  }, [location.pathname]);
+    if (open) {
+      restoreScrollOnCloseRef.current = false;
+      setOpen(false);
+    }
+  }, [location.pathname, open]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -53,6 +57,7 @@ const Navbar = () => {
     }
 
     lockedScrollYRef.current = window.scrollY;
+    restoreScrollOnCloseRef.current = true;
     const body = document.body;
 
     body.style.position = "fixed";
@@ -76,13 +81,20 @@ const Navbar = () => {
       body.style.width = "";
       body.style.overflow = "";
 
-      window.scrollTo({
-        top: lockedScrollYRef.current,
-        left: 0,
-        behavior: "auto",
-      });
+      if (restoreScrollOnCloseRef.current) {
+        window.scrollTo({
+          top: lockedScrollYRef.current,
+          left: 0,
+          behavior: "auto",
+        });
+      }
     };
   }, [open]);
+
+  const navigateFromMenu = () => {
+    restoreScrollOnCloseRef.current = false;
+    setOpen(false);
+  };
 
   const changeLanguage = async (language: SupportedLanguage) => {
     await i18n.changeLanguage(language);
@@ -168,6 +180,7 @@ const Navbar = () => {
                 <NavLink
                   key={link.to}
                   to={link.to}
+                  onClick={navigateFromMenu}
                   className={({ isActive }) =>
                     `rounded-xl px-4 py-3.5 text-base font-semibold transition ${isActive ? "bg-[#8f181c] text-white" : "text-[#4d3b31] hover:bg-[#fbf2e5]"}`
                   }
