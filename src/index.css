@@ -1087,27 +1087,80 @@ main article {
 
 .page-loader {
   display: grid;
-  min-height: min(68vh, 620px);
+  min-height: calc(100dvh - 76px);
   place-items: center;
-  align-content: center;
-  gap: 0.9rem;
+  padding: 2rem 1rem;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(224, 167, 79, 0.12), transparent 15rem),
+    #fffdf9;
+}
+
+.page-loader-content {
+  display: grid;
+  width: min(280px, 82vw);
+  justify-items: center;
+  gap: 0.85rem;
   color: #76543a;
+  text-align: center;
+}
+
+.page-loader-symbol {
+  display: grid;
+  width: 4rem;
+  height: 3.25rem;
+  place-items: center;
+  animation: loaderLotusPulse 1.15s ease-in-out infinite;
+}
+
+.page-loader-symbol svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.page-loader-text {
+  color: #6d5140;
   font-size: 0.82rem;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.04em;
 }
 
-.page-loader-mark {
-  width: 2.2rem;
-  height: 2.2rem;
-  border: 2px solid #ead6b8;
-  border-top-color: #9b151a;
+.page-loader-track {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  overflow: hidden;
   border-radius: 999px;
-  animation: loaderSpin 700ms linear infinite;
+  background: #f0e0ca;
 }
 
-@keyframes loaderSpin {
+.page-loader-track span {
+  position: absolute;
+  inset: 0 auto 0 -42%;
+  width: 42%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #8f181c, #d49a45, #8f181c);
+  animation: loaderTrack 900ms ease-in-out infinite;
+}
+
+@keyframes loaderLotusPulse {
+  0%,
+  100% {
+    opacity: 0.78;
+    transform: translateY(0) scale(0.97);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.03);
+  }
+}
+
+@keyframes loaderTrack {
+  from {
+    left: -42%;
+  }
   to {
-    transform: rotate(360deg);
+    left: 100%;
   }
 }
 
