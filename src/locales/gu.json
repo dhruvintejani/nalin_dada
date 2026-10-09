@@ -37,7 +37,8 @@
       "quickLinks": "ઝડપી લિંક્સ",
       "office": "પરામર્શ ઓફિસ",
       "copyright": "© 2026 Nalin Dada. Dr. Nalin Pandya.",
-      "appointmentText": "{{days}} · {{morning}} · {{evening}} · ફક્ત અપોઇન્ટમેન્ટથી"
+      "appointmentText": "{{days}} · {{morning}} · {{evening}} · ફક્ત અપોઇન્ટમેન્ટથી",
+      "contactNumbers": "સંપર્ક નંબર"
     },
     "loader": "લોડ થઈ રહ્યું છે…",
     "accessibility": {
@@ -45,6 +46,9 @@
       "openMenu": "મેનૂ ખોલો",
       "closeMenu": "મેનૂ બંધ કરો",
       "languageSwitcher": "ભાષા પસંદ કરો"
+    },
+    "institution": {
+      "name": "ગૂઢવિદ્યા અનુસંધાન કેન્દ્ર"
     }
   },
   "home": {
@@ -483,11 +487,12 @@
       "officeLabel": "પરામર્શ ઓફિસ",
       "officeTitle": "પરામર્શ ઓફિસ",
       "hours": "{{days}} · {{morning}} · {{evening}}",
-      "phoneLabel": "મોબાઇલ / WhatsApp",
-      "phoneTitle": "મોબાઇલ / WhatsApp",
+      "phoneLabel": "સંપર્ક નંબર",
+      "phoneTitle": "સંપર્ક નંબર",
       "appointmentLabel": "અપોઇન્ટમેન્ટ",
       "appointmentTitle": "ફક્ત પૂર્વ અપોઇન્ટમેન્ટથી",
-      "appointmentText": "ઓફિસ આવતાં પહેલાં સમયની પુષ્ટિ કરવી જરૂરી છે."
+      "appointmentText": "ઓફિસ આવતાં પહેલાં સમયની પુષ્ટિ કરવી જરૂરી છે.",
+      "whatsappAppointment": "અપોઇન્ટમેન્ટ માટે WhatsApp"
     },
     "process": {
       "eyebrow": "બુકિંગ પ્રક્રિયા",
@@ -553,6 +558,13 @@
       "time": "પસંદ સમય",
       "message": "સંદેશ",
       "confirm": "કૃપા કરીને ઉપલબ્ધ સમયની પુષ્ટિ કરો."
+    },
+    "inPersonMessage": {
+      "eyebrow": "રૂબરૂ પરામર્શ શા માટે",
+      "title": "રૂબરૂ મળવાથી વધુ ઊંડો સંબંધ બને છે",
+      "line1": "ઓનલાઈન સાંભળી શકાય છે, પરંતુ વાત ઘણી વાર કાન સુધી જ રહે છે. દિલ સુધી પહોંચવાનો રસ્તો રૂબરૂ મળવાથી વધુ ખુલે છે; દિલ ખોલવા માટે સામે આવવું જરૂરી છે.",
+      "line2": "રૂબરૂ મળવાથી વધુ ઊંડો સંબંધ બને છે; નહીં તો સંબંધ માત્ર ક્લાયન્ટ સુધી સીમિત રહી શકે છે.",
+      "author": "Nalin Dada"
     }
   },
   "titles": {
