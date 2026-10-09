@@ -15,10 +15,10 @@ export type BookMediaAsset = {
 export const media = {
   photos: {
     homeHero: {
-      src: "/images/nalin/nalin-speaking-event.jpeg",
-      alt: "Nalin Dada speaking at an astrology and spiritual gathering",
-      recommendedFile: "nalin-speaking-event.jpeg",
-      position: "center 34%",
+      src: "/images/nalin/nalin-dada-portrait-80.jpeg",
+      alt: "Portrait of Nalin Dada",
+      recommendedFile: "nalin-dada-portrait-80.jpeg",
+      position: "center 42%",
     },
     homeAbout: {
       src: "/images/nalin/nalin-riverside.jpeg",
