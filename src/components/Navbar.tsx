@@ -14,6 +14,19 @@ const links = [
   { key: "appointment", to: "/appointment" },
 ] as const;
 
+const routePreloaders: Record<string, () => Promise<unknown>> = {
+  "/": () => import("../pages/Home"),
+  "/about": () => import("../pages/About"),
+  "/services": () => import("../pages/Services"),
+  "/books": () => import("../pages/Books"),
+  "/ashram": () => import("../pages/Ashram"),
+  "/appointment": () => import("../pages/Appointment"),
+};
+
+const preloadRoute = (path: string) => {
+  void routePreloaders[path]?.();
+};
+
 const languageOptions: Array<{
   code: SupportedLanguage;
   labelKey: "english" | "hindi" | "gujarati";
@@ -39,6 +52,14 @@ const Navbar = () => {
       setOpen(false);
     }
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (open) {
+      Object.entries(routePreloaders).forEach(([path, preload]) => {
+        if (path !== location.pathname) void preload();
+      });
+    }
+  }, [open, location.pathname]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -116,6 +137,8 @@ const Navbar = () => {
             <NavLink
               key={link.to}
               to={link.to}
+              onPointerEnter={() => preloadRoute(link.to)}
+              onFocus={() => preloadRoute(link.to)}
               className={({ isActive }) =>
                 `nav-link ${isActive ? "nav-link-active" : ""}`
               }
@@ -180,6 +203,8 @@ const Navbar = () => {
                 <NavLink
                   key={link.to}
                   to={link.to}
+                  onPointerDown={() => preloadRoute(link.to)}
+                  onFocus={() => preloadRoute(link.to)}
                   onClick={navigateFromMenu}
                   className={({ isActive }) =>
                     `rounded-xl px-4 py-3.5 text-base font-semibold transition ${isActive ? "bg-[#8f181c] text-white" : "text-[#4d3b31] hover:bg-[#fbf2e5]"}`
