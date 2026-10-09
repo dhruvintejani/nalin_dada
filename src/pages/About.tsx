@@ -43,6 +43,9 @@ const About = () => {
             <p className="mt-5 max-w-[720px] text-base leading-8 text-[#51463e] md:text-lg">
               {t("about.description")}
             </p>
+            <p className="mt-4 inline-flex rounded-full border border-[#dfbd86] bg-[#fff8ea] px-4 py-2 text-sm font-bold text-[#9a5b22]">
+              {t("common.institution.name")}
+            </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <a href="#journey" className="button-primary">
                 {t("about.journeyButton")} <ArrowRight size={18} />
