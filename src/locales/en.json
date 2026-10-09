@@ -37,7 +37,8 @@
       "quickLinks": "Quick links",
       "office": "Consultation office",
       "copyright": "© 2026 Nalin Dada. Dr. Nalin Pandya.",
-      "appointmentText": "{{days}} · {{morning}} · {{evening}} · By appointment only"
+      "appointmentText": "{{days}} · {{morning}} · {{evening}} · By appointment only",
+      "contactNumbers": "Contact numbers"
     },
     "loader": "Loading…",
     "accessibility": {
@@ -45,6 +46,9 @@
       "openMenu": "Open menu",
       "closeMenu": "Close menu",
       "languageSwitcher": "Language switcher"
+    },
+    "institution": {
+      "name": "Gudhvidya Anusandhan Kendra"
     }
   },
   "home": {
@@ -483,11 +487,12 @@
       "officeLabel": "CONSULTATION OFFICE",
       "officeTitle": "Consultation office",
       "hours": "{{days}} · {{morning}} · {{evening}}",
-      "phoneLabel": "MOBILE / WHATSAPP",
-      "phoneTitle": "Mobile / WhatsApp",
+      "phoneLabel": "Contact numbers",
+      "phoneTitle": "Contact numbers",
       "appointmentLabel": "APPOINTMENT",
       "appointmentTitle": "By prior appointment only",
-      "appointmentText": "Please confirm your time before visiting the office."
+      "appointmentText": "Please confirm your time before visiting the office.",
+      "whatsappAppointment": "WhatsApp for appointment requests"
     },
     "process": {
       "eyebrow": "Booking process",
@@ -553,6 +558,13 @@
       "time": "Preferred time",
       "message": "Message",
       "confirm": "Please confirm an available time."
+    },
+    "inPersonMessage": {
+      "eyebrow": "Why in-person consultation",
+      "title": "A meeting can create a deeper connection",
+      "line1": "Online, words may be heard, but they can remain only at the ears. The path to the heart opens face to face; to open the heart, being present in person matters.",
+      "line2": "Meeting in person creates a deeper connection. Otherwise, the relationship can remain only that of a client.",
+      "author": "Nalin Dada"
     }
   },
   "titles": {
