@@ -52,6 +52,21 @@ const Home = () => {
             <p className="mt-5 max-w-[680px] text-base leading-8 text-[#4f443b] md:text-lg">
               {t("home.hero.description")}
             </p>
+
+            <div className="mt-5 max-w-[680px] rounded-[1.15rem] border border-[#e4cfad] bg-[#fff9ee]/90 p-4 shadow-[0_8px_24px_rgba(80,48,26,.05)]">
+              <div className="flex flex-wrap gap-x-5 gap-y-2">
+                <span className="font-serif text-lg font-bold text-[#8f181c]">
+                  {t("home.legacy.age")}
+                </span>
+                <span className="font-serif text-lg font-bold text-[#b06a24]">
+                  {t("home.legacy.experience")}
+                </span>
+              </div>
+              <p className="mt-2 text-sm leading-7 text-[#65564b]">
+                {t("home.legacy.text")}
+              </p>
+            </div>
+
             <div className="mt-7 flex flex-wrap gap-3">
               <Link to="/appointment" className="button-primary">
                 <CalendarDays size={18} /> {t("home.hero.primary")} <ArrowRight size={18} />
