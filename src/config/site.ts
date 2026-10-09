@@ -6,5 +6,6 @@ export const siteConfig = {
     "18 Ushadeep Society, 1st Floor, next to H2 Seven Unisex Salon, near Regional Passport Office, Gulbai Tekra.",
   morningSlot: "11:00 AM–1:00 PM",
   eveningSlot: "6:00 PM–8:00 PM",
-  whatsappNumber: "",
+  contactNumbers: ["9426077017", "9825021954"],
+  whatsappNumber: "919825021954",
 } as const;
