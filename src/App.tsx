@@ -28,7 +28,7 @@ const App = () => (
     <ScrollToTop />
     <div className="min-h-screen bg-[#fffdf9] text-[#3e342d]">
       <Navbar />
-      <main>
+      <main className="pt-[76px]">
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<Home />} />
