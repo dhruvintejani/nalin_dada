@@ -15,9 +15,9 @@ export type BookMediaAsset = {
 export const media = {
   photos: {
     homeHero: {
-      src: "/images/nalin/nalin-dada-portrait-80.jpeg",
+      src: "/images/nalin/nalin-dada-portrait-80.webp",
       alt: "Portrait of Nalin Dada",
-      recommendedFile: "nalin-dada-portrait-80.jpeg",
+      recommendedFile: "nalin-dada-portrait-80.webp",
       position: "center 42%",
     },
     homeAbout: {
