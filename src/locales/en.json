@@ -63,7 +63,7 @@
       "fee": "Consultation fee",
       "hours": "Timings",
       "days": "Appointments",
-      "officePayment": "Pay at the office",
+      "officePayment": "Office or online payment",
       "daysValue": "Monday–Saturday"
     },
     "intro": {
@@ -142,8 +142,13 @@
     "cta": {
       "eyebrow": "Personal consultation",
       "title": "Consultation fee {{fee}}",
-      "description": "The consultation fee is paid at the office. Online payment and online/video consultations are not available.",
+      "description": "The consultation fee can be paid at the office or online after appointment confirmation. Consultations are in person; online/video consultation is not available.",
       "button": "Appointment & Contact"
+    },
+    "legacy": {
+      "age": "80 years of life",
+      "experience": "52 years of experience",
+      "text": "At 80, Nalin Dada continues his commitment to public service. With 52 years of experience across Ayurveda, Vastu, astrology, yoga and sadhana, he shares traditional knowledge and life experience for healthier, more balanced living."
     }
   },
   "about": {
@@ -209,7 +214,7 @@
     "cta": {
       "eyebrow": "Personal guidance",
       "title": "For a personal consultation with Nalin Dada",
-      "description": "Consultations are by appointment only. The fee is {{fee}} and is paid at the office. Online or video consultations are not available.",
+      "description": "Consultation is by appointment. The fee is {{fee}} and can be paid at the office or online after confirmation. Online/video consultation is not available.",
       "button": "Appointment & Contact"
     }
   },
