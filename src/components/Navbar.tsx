@@ -38,7 +38,7 @@ const Navbar = () => {
       restoreScrollOnCloseRef.current = false;
       setOpen(false);
     }
-  }, [location.pathname, open]);
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
