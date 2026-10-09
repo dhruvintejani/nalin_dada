@@ -9,6 +9,7 @@ import {
   MapPin,
   MessageCircleMore,
   Phone,
+  Quote,
   UserRound,
   WalletCards,
 } from "lucide-react";
@@ -19,6 +20,9 @@ import MediaSlot from "../components/MediaSlot";
 import PremiumSelect from "../components/PremiumSelect";
 import { media } from "../config/media";
 import { siteConfig } from "../config/site";
+
+const formatPhone = (number: string) =>
+  number.replace(/(\d{5})(\d{5})/, "$1 $2");
 
 const getLocalDateInputValue = () => {
   const now = new Date();
@@ -243,6 +247,34 @@ const Appointment = () => {
                 </article>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-block">
+        <div className="site-shell">
+          <div className="relative overflow-hidden rounded-[1.7rem] border border-[#e4cfad] bg-[linear-gradient(120deg,#fff8ec,#fffdf9_58%,#f6e5c8)] px-6 py-9 shadow-[0_16px_40px_rgba(80,45,25,.07)] md:px-10 md:py-11">
+            <Quote
+              className="absolute right-6 top-5 text-[#d9a353]/20 md:right-9 md:top-7"
+              size={84}
+              strokeWidth={1.2}
+              aria-hidden="true"
+            />
+            <div className="relative max-w-4xl">
+              <div className="eyebrow">{t("appointment.inPersonMessage.eyebrow")}</div>
+              <h2 className="mt-3 max-w-3xl font-serif text-2xl font-bold leading-tight text-[#8f181c] md:text-3xl">
+                {t("appointment.inPersonMessage.title")}
+              </h2>
+              <p className="mt-5 font-serif text-lg leading-9 text-[#5f493b] md:text-xl">
+                “{t("appointment.inPersonMessage.line1")}”
+              </p>
+              <p className="mt-4 text-sm leading-7 text-[#6a5a4f] md:text-base">
+                {t("appointment.inPersonMessage.line2")}
+              </p>
+              <p className="mt-5 text-sm font-bold text-[#b06a24]">
+                — {t("appointment.inPersonMessage.author")}
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -481,6 +513,9 @@ const Appointment = () => {
               <h2 className="mt-3 font-serif text-2xl font-bold text-[#7f171b]">
                 {t("appointment.contact.officeTitle")}
               </h2>
+              <p className="mt-2 text-sm font-bold text-[#b06a24]">
+                {t("common.institution.name")}
+              </p>
               <p className="mt-4 text-sm leading-7 text-[#62564d]">
                 {siteConfig.officeAddress}
               </p>
@@ -498,27 +533,40 @@ const Appointment = () => {
               </div>
             </article>
 
-            {whatsappNumber && (
-              <article className="rounded-[1.35rem] border border-[#e4d3bd] bg-white p-6 shadow-[0_10px_28px_rgba(82,50,29,.06)]">
-                <div className="flex items-center gap-3 text-[#b56522]">
-                  <Phone size={22} />
-                  <span className="text-xs font-bold tracking-[.12em]">
-                    {t("appointment.contact.phoneLabel")}
-                  </span>
-                </div>
-                <h2 className="mt-3 font-serif text-xl font-bold text-[#7f171b]">
-                  {t("appointment.contact.phoneTitle")}
-                </h2>
+            <article className="rounded-[1.35rem] border border-[#e4d3bd] bg-white p-6 shadow-[0_10px_28px_rgba(82,50,29,.06)]">
+              <div className="flex items-center gap-3 text-[#b56522]">
+                <Phone size={22} />
+                <span className="text-xs font-bold tracking-[.12em]">
+                  {t("appointment.contact.phoneLabel")}
+                </span>
+              </div>
+              <h2 className="mt-3 font-serif text-xl font-bold text-[#7f171b]">
+                {t("appointment.contact.phoneTitle")}
+              </h2>
+              <div className="mt-4 grid gap-2">
+                {siteConfig.contactNumbers.map((number) => (
+                  <a
+                    key={number}
+                    href={`tel:+91${number}`}
+                    className="text-link w-fit"
+                  >
+                    {formatPhone(number)}
+                  </a>
+                ))}
+              </div>
+              {whatsappNumber && (
                 <a
                   href={`https://wa.me/${whatsappNumber}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-link mt-4"
+                  className="button-secondary mt-5"
                 >
-                  {whatsappNumber} <ArrowRight size={16} />
+                  <MessageCircleMore size={18} />
+                  {t("appointment.contact.whatsappAppointment")}
+                  <ArrowRight size={16} />
                 </a>
-              </article>
-            )}
+              )}
+            </article>
 
             <article className="rounded-[1.35rem] border border-[#e4d3bd] bg-[#123f37] p-6 text-white shadow-[0_10px_28px_rgba(34,58,51,.12)]">
               <div className="flex items-center gap-3 text-[#e5ac53]">
