@@ -26,6 +26,8 @@ const languageOptions: Array<{
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const lockedScrollYRef = useRef(0);
   const location = useLocation();
   const { t, i18n } = useTranslation();
   const activeLanguage = (i18n.resolvedLanguage ?? i18n.language).split("-")[0];
@@ -35,8 +37,6 @@ const Navbar = () => {
   }, [location.pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape" && open) {
         setOpen(false);
@@ -46,9 +46,41 @@ const Navbar = () => {
 
     document.addEventListener("keydown", handleKeyDown);
 
+    if (!open) {
+      return () => {
+        document.removeEventListener("keydown", handleKeyDown);
+      };
+    }
+
+    lockedScrollYRef.current = window.scrollY;
+    const body = document.body;
+
+    body.style.position = "fixed";
+    body.style.top = `-${lockedScrollYRef.current}px`;
+    body.style.left = "0";
+    body.style.right = "0";
+    body.style.width = "100%";
+    body.style.overflow = "hidden";
+
+    requestAnimationFrame(() => {
+      menuRef.current?.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    });
+
     return () => {
-      document.body.style.overflow = "";
       document.removeEventListener("keydown", handleKeyDown);
+
+      body.style.position = "";
+      body.style.top = "";
+      body.style.left = "";
+      body.style.right = "";
+      body.style.width = "";
+      body.style.overflow = "";
+
+      window.scrollTo({
+        top: lockedScrollYRef.current,
+        left: 0,
+        behavior: "auto",
+      });
     };
   }, [open]);
 
@@ -58,7 +90,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="premium-navbar sticky top-0 z-50 border-b border-[#eadfcd] bg-[#fffdf9]/95 backdrop-blur-md">
+    <header className="premium-navbar fixed inset-x-0 top-0 z-50 border-b border-[#eadfcd] bg-[#fffdf9]/95 backdrop-blur-md">
       <div className="site-shell flex h-[76px] items-center justify-between gap-4">
         <NavLink to="/" aria-label={t("common.nav.home")} className="shrink-0">
           <Brand />
@@ -123,8 +155,9 @@ const Navbar = () => {
 
       {open && (
         <div
+          ref={menuRef}
           id="mobile-navigation"
-          className="mobile-menu-surface fixed inset-x-0 top-[77px] z-50 h-[calc(100dvh-77px)] overflow-y-auto bg-[#fffdf9] xl:hidden"
+          className="mobile-menu-surface absolute inset-x-0 top-full h-[calc(100dvh-76px)] overflow-y-auto overscroll-contain bg-[#fffdf9] xl:hidden"
         >
           <div className="site-shell py-6">
             <nav
